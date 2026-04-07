@@ -1,0 +1,69 @@
+@let vm = vm$ | async;
+
+<div class="page-shell">
+  <app-navbar />
+
+  @if (vm?.status === 'success') {
+    @let data = $any(vm).data;
+    <main>
+      <app-hero [user]="data.user" [stats]="data.stats" [source]="data.source" />
+
+      @defer (on viewport) {
+        <app-about
+          [user]="data.user"
+          [languageSummary]="data.languageSummary"
+          [stats]="data.stats"
+          [source]="data.source"
+          [cachedAt]="data.cachedAt"
+        />
+      } @placeholder {
+        <section id="about" class="placeholder-section">
+          <div class="section-skeleton large"></div>
+          <div class="section-skeleton medium"></div>
+        </section>
+      }
+
+      @defer (on viewport) {
+        <app-projects [repositories]="data.repositories" />
+      } @placeholder {
+        <section id="projects" class="placeholder-section cards">
+          <div class="section-skeleton card"></div>
+          <div class="section-skeleton card"></div>
+          <div class="section-skeleton card"></div>
+        </section>
+      }
+    </main>
+
+    <app-footer [user]="data.user" />
+  } @else if (vm?.status === 'error') {
+    <main class="status-panel">
+      <section class="message-card">
+        <p class="eyebrow">GitHub API</p>
+        <h1>No pude cargar tu portafolio en este momento</h1>
+        <p>{{ $any(vm).message }}</p>
+        <div class="actions">
+          <a class="button primary" [href]="config.ctaSecondary.url" target="_blank" rel="noreferrer">
+            Ver perfil de GitHub
+          </a>
+          <a class="button secondary" href="">Reintentar</a>
+        </div>
+      </section>
+    </main>
+  } @else {
+    <main class="status-panel">
+      <section class="message-card">
+        <p class="eyebrow">Cargando</p>
+        <h1>Sincronizando proyectos y lenguajes desde GitHub</h1>
+        <p>
+          Estoy consultando tu perfil, repositorios y métricas de lenguajes para armar el portafolio
+          en tiempo real.
+        </p>
+        <div class="loading-grid">
+          <div class="section-skeleton card"></div>
+          <div class="section-skeleton card"></div>
+          <div class="section-skeleton card"></div>
+        </div>
+      </section>
+    </main>
+  }
+</div>

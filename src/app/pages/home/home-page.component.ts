@@ -1,0 +1,35 @@
+import { AsyncPipe } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { catchError, map, of, startWith } from 'rxjs';
+
+import { portfolioConfig } from '../../core/config/portfolio.config';
+import { PortfolioData } from '../../core/models/github.models';
+import { GitHubService } from '../../core/services/github.service';
+import { AboutComponent } from '../../sections/about/about.component';
+import { FooterComponent } from '../../sections/footer/footer.component';
+import { HeroComponent } from '../../sections/hero/hero.component';
+import { NavbarComponent } from '../../sections/navbar/navbar.component';
+import { ProjectsComponent } from '../../sections/projects/projects.component';
+
+@Component({
+  selector: 'app-home-page',
+  imports: [AsyncPipe, AboutComponent, FooterComponent, HeroComponent, NavbarComponent, ProjectsComponent],
+  templateUrl: './home-page.component.html',
+  styleUrl: './home-page.component.scss',
+})
+export class HomePageComponent {
+  private readonly githubService = inject(GitHubService);
+
+  protected readonly config = portfolioConfig;
+
+  protected readonly vm$ = this.githubService.getPortfolioData().pipe(
+    map((data: PortfolioData) => ({ status: 'success', data }) as const),
+    startWith({ status: 'loading' } as const),
+    catchError((error: Error) =>
+      of({
+        status: 'error',
+        message: error.message,
+      } as const),
+    ),
+  );
+}

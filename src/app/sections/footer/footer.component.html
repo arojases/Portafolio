@@ -1,0 +1,14 @@
+<section id="contact" data-section class="footer">
+  <div class="footer__copy">
+    <p class="eyebrow">Contacto</p>
+    <h2>Construyamos una experiencia web clara, rapida y memorable.</h2>
+    <p>{{ config.footerMessage }}</p>
+  </div>
+
+  <div class="footer__actions">
+    <a [href]="user.html_url" target="_blank" rel="noreferrer">GitHub</a>
+    @if (user.blog) {
+      <a [href]="user.blog" target="_blank" rel="noreferrer">Sitio</a>
+    }
+  </div>
+</section>

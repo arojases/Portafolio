@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ariel Rojas | Portafolio</title>
+    <meta
+      name="description"
+      content="Portafolio de Ariel Rojas, desarrollador frontend y full stack."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --font-display: "Space Grotesk", sans-serif;
+        --font-body: "Manrope", sans-serif;
+        --bg-primary: #08111f;
+        --bg-secondary: #0f1b2f;
+        --surface: rgba(11, 20, 36, 0.84);
+        --surface-soft: rgba(148, 163, 184, 0.12);
+        --border: rgba(148, 163, 184, 0.2);
+        --text-primary: #f8fafc;
+        --text-secondary: #dbeafe;
+        --text-muted: #94a3b8;
+        --accent: #eb5d1e;
+        --accent-2: #f59e0b;
+        --shadow: 0 18px 50px rgba(2, 6, 23, 0.34);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        font-family: var(--font-body);
+        color: var(--text-primary);
+        background:
+          radial-gradient(circle at top, rgba(235, 93, 30, 0.16), transparent 20%),
+          radial-gradient(circle at 100% 20%, rgba(15, 118, 110, 0.14), transparent 18%),
+          linear-gradient(180deg, var(--bg-secondary), var(--bg-primary) 42%);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 36px 36px;
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.65), transparent 80%);
+        pointer-events: none;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--accent-2);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .section-heading h2,
+      .hero-copy h1 {
+        margin: 0;
+        font-family: var(--font-display);
+        line-height: 1.05;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(14px);
+        background: rgba(8, 17, 31, 0.72);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+      }
+
+      .topbar__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 18px 0;
+      }
+
+      .brand {
+        font-family: var(--font-display);
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .nav {
+        display: flex;
+        gap: 16px;
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+      }
+
+      .nav a:hover {
+        color: var(--accent-2);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.3fr 0.9fr;
+        gap: 28px;
+        align-items: center;
+        padding: 68px 0 36px;
+      }
+
+      .hero-copy,
+      .hero-card,
+      .about-card,
+      .skills-card,
+      .project-card,
+      .contact-card {
+        border: 1px solid var(--border);
+        background: var(--surface);
+        box-shadow: var(--shadow);
+        border-radius: 28px;
+      }
+
+      .hero-copy {
+        padding: 36px;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2.8rem, 6vw, 5rem);
+      }
+
+      .role {
+        margin: 14px 0 0;
+        color: var(--accent-2);
+        font-weight: 700;
+      }
+
+      .headline {
+        margin: 18px 0 0;
+        font-size: 1.18rem;
+        color: var(--text-secondary);
+      }
+
+      .summary {
+        margin: 18px 0 0;
+        color: var(--text-muted);
+        line-height: 1.75;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 18px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 700;
+      }
+
+      .button.primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #1b1204;
+      }
+
+      .button.secondary {
+        border-color: var(--border);
+        color: var(--text-secondary);
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 26px;
+      }
+
+      .meta span,
+      .pill {
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: var(--surface-soft);
+        color: var(--text-secondary);
+        font-size: 0.92rem;
+      }
+
+      .hero-card {
+        overflow: hidden;
+      }
+
+      .hero-card img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+      }
+
+      .hero-card__content {
+        padding: 24px;
+      }
+
+      .hero-card__label {
+        margin: 0 0 8px;
+        color: var(--accent-2);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .hero-card h2 {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: 1.7rem;
+      }
+
+      .hero-card p {
+        color: var(--text-muted);
+        line-height: 1.7;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .stats-grid div {
+        padding: 14px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(148, 163, 184, 0.12);
+      }
+
+      .stats-grid dt {
+        margin: 0 0 6px;
+        color: var(--text-muted);
+        font-size: 0.82rem;
+      }
+
+      .stats-grid dd {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 800;
+      }
+
+      .section {
+        padding: 28px 0;
+      }
+
+      .section-heading {
+        margin-bottom: 20px;
+      }
+
+      .section-heading h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .section-heading p {
+        max-width: 760px;
+        color: var(--text-muted);
+        line-height: 1.75;
+      }
+
+      .about-grid,
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+      }
+
+      .about-card,
+      .skills-card,
+      .contact-card {
+        padding: 28px;
+      }
+
+      .about-card p,
+      .skills-card p,
+      .contact-card p {
+        color: var(--text-muted);
+        line-height: 1.75;
+      }
+
+      .highlights {
+        margin: 20px 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 10px;
+      }
+
+      .highlights li {
+        padding: 14px 16px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(148, 163, 184, 0.12);
+      }
+
+      .skill-row + .skill-row {
+        margin-top: 14px;
+      }
+
+      .skill-meta {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+
+      .skill-bar {
+        height: 11px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .skill-bar span {
+        display: block;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .project-card {
+        padding: 24px;
+      }
+
+      .project-card h3 {
+        margin: 0;
+        font-size: 1.22rem;
+        font-family: var(--font-display);
+      }
+
+      .project-card p {
+        color: var(--text-muted);
+        line-height: 1.7;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 16px 0 18px;
+      }
+
+      .project-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .project-footer a {
+        color: var(--accent-2);
+        font-weight: 700;
+      }
+
+      .contact-card h3 {
+        margin: 0 0 10px;
+        font-family: var(--font-display);
+      }
+
+      .contact-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .footer {
+        padding: 32px 0 48px;
+        color: var(--text-muted);
+        text-align: center;
+      }
+
+      @media (max-width: 960px) {
+        .hero,
+        .about-grid,
+        .contact-grid,
+        .project-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar__inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero-copy,
+        .hero-card__content,
+        .about-card,
+        .skills-card,
+        .project-card,
+        .contact-card {
+          padding: 22px;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .nav {
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar__inner">
+        <div class="brand">Ariel Rojas</div>
+        <nav class="nav">
+          <a href="#about">Sobre mi</a>
+          <a href="#projects">Proyectos</a>
+          <a href="#contact">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Angular + GitHub</p>
+          <h1>Ariel Rojas</h1>
+          <p class="role">Desarrollador Frontend y Full Stack</p>
+          <p class="headline">Portafolio conectado en tiempo real con GitHub.</p>
+          <p class="summary">
+            Diseño y construyo experiencias web modernas, accesibles y mantenibles. Esta version
+            estatica resume mi perfil profesional para compartirlo facilmente en un solo archivo.
+          </p>
+
+          <div class="actions">
+            <a class="button primary" href="#projects">Explorar proyectos</a>
+            <a
+              class="button secondary"
+              href="https://github.com/arojases"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Perfil de GitHub
+            </a>
+          </div>
+
+          <div class="meta">
+            <span>Interfaces modernas</span>
+            <span>Angular y frontend escalable</span>
+            <span>Colaboracion en productos digitales</span>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <img src="https://github.com/arojases.png" alt="Avatar de Ariel Rojas" />
+          <div class="hero-card__content">
+            <p class="hero-card__label">Resumen profesional</p>
+            <h2>Enfoque practico y visual</h2>
+            <p>
+              Perfil orientado a construir productos web claros, rapidos y listos para produccion,
+              con foco en experiencia de usuario, mantenibilidad y resultados.
+            </p>
+
+            <dl class="stats-grid">
+              <div>
+                <dt>Rol</dt>
+                <dd>Frontend</dd>
+              </div>
+              <div>
+                <dt>Enfoque</dt>
+                <dd>UX + UI</dd>
+              </div>
+              <div>
+                <dt>Trabajo</dt>
+                <dd>Remoto</dd>
+              </div>
+            </dl>
+          </div>
+        </aside>
+      </section>
+
+      <section id="about" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Sobre mi</p>
+          <h2>Perfil tecnico pensado para mostrar valor rapido</h2>
+          <p>
+            Esta version HTML conserva la idea central del portafolio: presentar experiencia,
+            stack y acceso directo a proyectos reales sin depender de una instalacion tecnica.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="about-card">
+            <h3>Resumen profesional</h3>
+            <p>
+              Desarrollo interfaces y experiencias web enfocadas en claridad, rendimiento y buena
+              presentacion. Me interesa construir soluciones que se vean bien, sean faciles de usar
+              y se puedan mantener con orden.
+            </p>
+
+            <ul class="highlights">
+              <li><strong>Frontend moderno:</strong> Angular, componentes reutilizables y UI clara.</li>
+              <li><strong>Integracion real:</strong> APIs, datos en vivo y estructura mantenible.</li>
+              <li><strong>Entrega profesional:</strong> portafolios, productos y landing pages listas para compartir.</li>
+            </ul>
+
+            <a class="button secondary" href="https://github.com/arojases" target="_blank" rel="noreferrer">
+              Abrir GitHub
+            </a>
+          </article>
+
+          <article class="skills-card">
+            <h3>Stack y fortalezas</h3>
+            <p>
+              Puedes ajustar estos porcentajes luego si quieres que reflejen exactamente tus datos,
+              pero ya quedan presentados de forma visual para enviar el archivo hoy mismo.
+            </p>
+
+            <div class="skill-row">
+              <div class="skill-meta">
+                <span>Angular</span>
+                <strong>90%</strong>
+              </div>
+              <div class="skill-bar"><span style="width: 90%"></span></div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-meta">
+                <span>TypeScript</span>
+                <strong>86%</strong>
+              </div>
+              <div class="skill-bar"><span style="width: 86%"></span></div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-meta">
+                <span>HTML / CSS / SCSS</span>
+                <strong>92%</strong>
+              </div>
+              <div class="skill-bar"><span style="width: 92%"></span></div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-meta">
+                <span>Integracion con APIs</span>
+                <strong>82%</strong>
+              </div>
+              <div class="skill-bar"><span style="width: 82%"></span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Proyectos</p>
+          <h2>Muestra compacta para enviar por archivo o correo</h2>
+          <p>
+            Estas tarjetas resumen el tipo de trabajo que presentas. Si quieres, luego puedo
+            convertirlas en tarjetas con tus repositorios reales uno por uno.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <h3>Portafolio Angular</h3>
+            <p>
+              Sitio personal construido con Angular, enfoque visual fuerte y estructura pensada para
+              destacar perfil profesional, tecnologias y proyectos.
+            </p>
+            <div class="tags">
+              <span class="pill">Angular</span>
+              <span class="pill">SCSS</span>
+              <span class="pill">TypeScript</span>
+            </div>
+            <div class="project-footer">
+              <span>Presentacion profesional</span>
+              <a href="https://github.com/arojases" target="_blank" rel="noreferrer">Ver GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Integracion con GitHub API</h3>
+            <p>
+              Consumo de datos reales para mostrar actividad, repositorios y stack tecnico en una
+              interfaz clara y facil de actualizar.
+            </p>
+            <div class="tags">
+              <span class="pill">REST API</span>
+              <span class="pill">Datos en vivo</span>
+              <span class="pill">Frontend</span>
+            </div>
+            <div class="project-footer">
+              <span>Datos reales</span>
+              <a href="https://github.com/arojases" target="_blank" rel="noreferrer">Ver perfil</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Interfaces escalables</h3>
+            <p>
+              Desarrollo de experiencias web orientadas a rendimiento, claridad visual y crecimiento
+              futuro, con componentes reutilizables y base mantenible.
+            </p>
+            <div class="tags">
+              <span class="pill">UI</span>
+              <span class="pill">UX</span>
+              <span class="pill">Arquitectura</span>
+            </div>
+            <div class="project-footer">
+              <span>Listo para colaborar</span>
+              <a href="https://github.com/arojases" target="_blank" rel="noreferrer">Contacto</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Contacto</p>
+          <h2>Construyamos una experiencia web clara, rapida y memorable</h2>
+          <p>
+            Disponible para colaborar en productos digitales, interfaces escalables y experiencias
+            frontend de alto impacto.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <article class="contact-card">
+            <h3>Perfil profesional</h3>
+            <p>
+              Puedes compartir este archivo directamente o usarlo como version ligera de
+              presentacion para clientes, postulaciones o contactos.
+            </p>
+            <div class="contact-links">
+              <a class="button primary" href="https://github.com/arojases" target="_blank" rel="noreferrer">
+                GitHub
+              </a>
+            </div>
+          </article>
+
+          <article class="contact-card">
+            <h3>Personalizacion rapida</h3>
+            <p>
+              Si me compartes tu correo, LinkedIn o los proyectos exactos que quieres mostrar, te
+              lo dejo aun mas listo para enviar sin texto de ejemplo.
+            </p>
+            <div class="contact-links">
+              <a class="button secondary" href="https://github.com/arojases" target="_blank" rel="noreferrer">
+                Perfil publico
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer container">
+      Archivo HTML estatico generado para compartir el portafolio sin depender del build de Angular.
+    </footer>
+  </body>
+</html>

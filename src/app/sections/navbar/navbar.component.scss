@@ -1,0 +1,111 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: min(100% - 1.5rem, 78rem);
+  margin: 1rem auto 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface-elevated) 82%, transparent);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow-soft);
+}
+
+.brand a,
+.github-link,
+.nav-link,
+.theme-toggle,
+.menu-toggle {
+  color: var(--text-primary);
+  text-decoration: none;
+  font: inherit;
+}
+
+.brand a {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-link,
+.theme-toggle,
+.github-link {
+  border: 0;
+  background: transparent;
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  font-weight: 600;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.nav-link.active,
+.nav-link:hover,
+.theme-toggle:hover,
+.github-link:hover {
+  background: var(--surface-muted);
+}
+
+.github-link {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.menu-toggle {
+  display: none;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  background: transparent;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 1.1rem;
+  height: 2px;
+  margin: 0.28rem auto;
+  background: currentColor;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    border-radius: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .menu-toggle {
+    display: inline-block;
+  }
+
+  .nav-links {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 0.75rem);
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 1.5rem;
+    background: var(--surface-elevated);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+}

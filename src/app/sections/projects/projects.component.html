@@ -1,0 +1,90 @@
+<section id="projects" data-section class="projects" @fadeInUp>
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Proyectos</p>
+      <h2>Repositorios publicos renderizados automaticamente</h2>
+      <p>
+        Cada tarjeta se construye con datos de la API de GitHub: descripcion, lenguajes, stars,
+        forks y ultima actualizacion.
+      </p>
+    </div>
+
+    <div class="sort-controls">
+      <button type="button" [class.active]="sortMode() === 'updated'" (click)="setSortMode('updated')">
+        Recientes
+      </button>
+      <button type="button" [class.active]="sortMode() === 'stars'" (click)="setSortMode('stars')">
+        Stars
+      </button>
+      <button type="button" [class.active]="sortMode() === 'name'" (click)="setSortMode('name')">
+        A-Z
+      </button>
+    </div>
+  </div>
+
+  <div class="filter-row">
+    @for (technology of technologies(); track technology) {
+      <button
+        type="button"
+        class="chip"
+        [class.active]="selectedLanguage() === technology"
+        (click)="selectLanguage(technology)"
+      >
+        {{ technology === 'all' ? 'Todas' : technology }}
+      </button>
+    }
+  </div>
+
+  <div class="project-grid" @staggerReveal>
+    @for (repository of filteredRepositories(); track repository.id) {
+      <article class="project-card">
+        <div class="project-card__header">
+          <div>
+            <div class="project-card__title">
+              <h3>{{ repository.name }}</h3>
+              @if (repository.isFork) {
+                <span class="badge">Fork</span>
+              }
+            </div>
+            <p>{{ repository.description }}</p>
+          </div>
+
+          <span class="date">Actualizado {{ repository.updatedAt | date: 'MMM y' }}</span>
+        </div>
+
+        <div class="language-list">
+          @for (language of repository.languages; track language.name) {
+            <span class="language-pill">{{ language.name }} · {{ language.percentage }}%</span>
+          }
+        </div>
+
+        @if (repository.topics.length) {
+          <div class="topics">
+            @for (topic of repository.topics.slice(0, 3); track topic) {
+              <span>#{{ topic }}</span>
+            }
+          </div>
+        }
+
+        <div class="project-card__footer">
+          <div class="stats">
+            <span>{{ repository.stars }} stars</span>
+            <span>{{ repository.forks }} forks</span>
+          </div>
+
+          <div class="actions">
+            @if (repository.homepage) {
+              <a [href]="repository.homepage" target="_blank" rel="noreferrer">Demo</a>
+            }
+            <a [href]="repository.htmlUrl" target="_blank" rel="noreferrer">Repositorio</a>
+          </div>
+        </div>
+      </article>
+    } @empty {
+      <article class="empty-state">
+        <h3>No hay proyectos para este filtro</h3>
+        <p>Prueba con otra tecnologia o vuelve a la vista general.</p>
+      </article>
+    }
+  </div>
+</section>

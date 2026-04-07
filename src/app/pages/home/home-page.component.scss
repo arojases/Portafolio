@@ -1,0 +1,128 @@
+.page-shell {
+  min-height: 100vh;
+}
+
+main {
+  display: block;
+}
+
+.status-panel {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 8rem 1.5rem 3rem;
+}
+
+.message-card {
+  width: min(100%, 56rem);
+  border: 1px solid var(--border-color);
+  border-radius: 2rem;
+  background: var(--surface-elevated);
+  box-shadow: var(--shadow-soft);
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 0.95;
+}
+
+p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+.actions,
+.loading-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  border-radius: 999px;
+  padding: 0 1.25rem;
+  border: 1px solid transparent;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.button.primary {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.button.secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.placeholder-section {
+  width: min(100% - 2rem, 78rem);
+  margin: 0 auto;
+  padding: 2rem 0 0;
+}
+
+.placeholder-section.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.section-skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
+}
+
+.section-skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  animation: skeleton 1.3s infinite;
+}
+
+.section-skeleton.large {
+  height: 15rem;
+  margin-bottom: 1rem;
+}
+
+.section-skeleton.medium {
+  height: 9rem;
+}
+
+.section-skeleton.card {
+  height: 16rem;
+  flex: 1 1 16rem;
+}
+
+@keyframes skeleton {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (max-width: 900px) {
+  .placeholder-section.cards {
+    grid-template-columns: 1fr;
+  }
+}
