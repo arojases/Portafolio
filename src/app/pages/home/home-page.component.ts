@@ -4,7 +4,7 @@ import { catchError, map, of, startWith } from 'rxjs';
 
 import { portfolioConfig } from '../../core/config/portfolio.config';
 import { PortfolioData } from '../../core/models/github.models';
-import { GitHubService } from '../../core/services/github.service';
+import { PortfolioDataService } from '../../core/services/portfolio-data.service';
 import { AboutComponent } from '../../sections/about/about.component';
 import { FooterComponent } from '../../sections/footer/footer.component';
 import { HeroComponent } from '../../sections/hero/hero.component';
@@ -18,11 +18,11 @@ import { ProjectsComponent } from '../../sections/projects/projects.component';
   styleUrl: './home-page.component.scss',
 })
 export class HomePageComponent {
-  private readonly githubService = inject(GitHubService);
+  private readonly portfolioDataService = inject(PortfolioDataService);
 
   protected readonly config = portfolioConfig;
 
-  protected readonly vm$ = this.githubService.getPortfolioData().pipe(
+  protected readonly vm$ = this.portfolioDataService.getPortfolioData().pipe(
     map((data: PortfolioData) => ({ status: 'success', data }) as const),
     startWith({ status: 'loading' } as const),
     catchError((error: Error) =>

@@ -6,6 +6,7 @@
     "start": "ng serve --port 4300",
     "build": "ng build",
     "build:pages": "ng build --base-href /Portafolio/",
+    "sync:github": "node scripts/generate-portfolio-data.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
