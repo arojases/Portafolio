@@ -4,7 +4,7 @@ import { Component, Input, computed, signal } from '@angular/core';
 import { ProjectCardData } from '../../core/models/github.models';
 import { fadeInUp, staggerReveal } from '../../shared/animations/fade.animation';
 
-type SortMode = 'updated' | 'name';
+type SortMode = 'created' | 'name';
 
 @Component({
   selector: 'app-projects',
@@ -19,7 +19,7 @@ export class ProjectsComponent {
   }
 
   protected readonly selectedLanguage = signal('all');
-  protected readonly sortMode = signal<SortMode>('updated');
+  protected readonly sortMode = signal<SortMode>('created');
 
   private readonly _repositories = signal<ProjectCardData[]>([]);
 
@@ -48,7 +48,7 @@ export class ProjectsComponent {
           return left.name.localeCompare(right.name);
         }
 
-        return new Date(right.updatedAt).getTime() - new Date(left.updatedAt).getTime();
+        return new Date(right.createdAt).getTime() - new Date(left.createdAt).getTime();
       });
   });
 

@@ -10,8 +10,8 @@
     </div>
 
     <div class="sort-controls">
-      <button type="button" [class.active]="sortMode() === 'updated'" (click)="setSortMode('updated')">
-        Recientes
+      <button type="button" [class.active]="sortMode() === 'created'" (click)="setSortMode('created')">
+        Nuevos
       </button>
       <button type="button" [class.active]="sortMode() === 'name'" (click)="setSortMode('name')">
         A-Z

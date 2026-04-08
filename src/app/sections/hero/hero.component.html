@@ -1,17 +1,17 @@
 <section id="hero" data-section class="hero" @fadeInUp>
   <div class="hero-copy">
     <p class="eyebrow">Angular + GitHub API</p>
-    <h1>{{ user.name || user.login }}</h1>
+    <h1>{{ config.fullName }}</h1>
     <p class="role">{{ config.role }}</p>
     <p class="headline">{{ config.headline }}</p>
     <p class="summary">{{ user.bio || config.summary }}</p>
   </div>
 
   <aside class="hero-card">
-    <img [src]="user.avatar_url" [alt]="'Avatar de ' + (user.name || user.login)" loading="lazy" />
+    <img [src]="user.avatar_url" [alt]="'Avatar de ' + config.fullName" loading="lazy" />
     <div class="hero-card__content">
       <p class="hero-card__label">Resumen profesional</p>
-      <h2>{{ user.name || user.login }}</h2>
+      <h2>{{ config.fullName }}</h2>
       <p>{{ user.location || 'Trabajo remoto y proyectos web escalables.' }}</p>
 
       <dl>

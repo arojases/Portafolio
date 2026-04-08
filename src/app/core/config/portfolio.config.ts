@@ -1,9 +1,10 @@
-export const portfolioConfig = {
+ï»¿export const portfolioConfig = {
   githubUsername: 'arojases',
+  fullName: 'Ariel Rojas',
   role: 'Desarrollador Frontend y Full Stack',
   headline: 'Portafolio conectado en tiempo real con GitHub.',
   summary:
-    'Diseño y construyo experiencias web modernas, accesibles y mantenibles. Este portafolio se actualiza automáticamente con mis repositorios públicos para mostrar trabajo real y tecnología utilizada.',
+    'DiseÃ±o y construyo experiencias web modernas, accesibles y mantenibles. Este portafolio se actualiza automaticamente con mis repositorios publicos para mostrar trabajo real y tecnologia utilizada.',
   ctaPrimary: {
     label: 'Ver proyectos',
     target: '#projects',
