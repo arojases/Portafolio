@@ -6,7 +6,7 @@
   @if (vm?.status === 'success') {
     @let data = $any(vm).data;
     <main>
-      <app-hero [user]="data.user" [stats]="data.stats" [source]="data.source" />
+      <app-hero [user]="data.user" />
 
       @defer (on viewport) {
         <app-projects [repositories]="data.repositories" />

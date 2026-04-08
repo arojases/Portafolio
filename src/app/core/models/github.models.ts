@@ -21,6 +21,7 @@ export interface GitHubRepositoryApi {
   fork: boolean;
   stargazers_count: number;
   forks_count: number;
+  created_at: string;
   updated_at: string;
   pushed_at: string;
   topics: string[];
@@ -41,6 +42,7 @@ export interface ProjectCardData {
   description: string;
   htmlUrl: string;
   homepage: string | null;
+  createdAt: string;
   updatedAt: string;
   pushedAt: string;
   stars: number;

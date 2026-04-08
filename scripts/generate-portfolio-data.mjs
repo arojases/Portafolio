@@ -49,6 +49,7 @@ function mapRepository(repository, languageMap) {
       'Repositorio publicado en GitHub sin descripcion adicional disponible.',
     htmlUrl: repository.html_url,
     homepage: repository.homepage,
+    createdAt: repository.created_at,
     updatedAt: repository.updated_at,
     pushedAt: repository.pushed_at,
     stars: repository.stargazers_count,
@@ -75,7 +76,7 @@ function aggregateLanguages(repositories) {
 async function main() {
   const user = await fetchJson(`${apiUrl}/users/${username}`);
   const repositories = await fetchJson(
-    `${apiUrl}/users/${username}/repos?sort=updated&direction=desc&per_page=100`,
+    `${apiUrl}/users/${username}/repos?sort=created&direction=desc&per_page=100`,
   );
 
   const mappedRepositories = await Promise.all(
@@ -90,7 +91,7 @@ async function main() {
   );
 
   const sortedRepositories = [...mappedRepositories].sort(
-    (left, right) => new Date(right.updatedAt).getTime() - new Date(left.updatedAt).getTime(),
+    (left, right) => new Date(right.createdAt).getTime() - new Date(left.createdAt).getTime(),
   );
 
   const languageSummary = aggregateLanguages(sortedRepositories);

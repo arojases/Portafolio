@@ -24,7 +24,7 @@ export class GitHubService {
 
   private readonly repositories$ = this.http
     .get<GitHubRepositoryApi[]>(`${this.apiUrl}/users/${this.username}/repos`, {
-      params: new HttpParams().set('sort', 'updated').set('direction', 'desc').set('per_page', '100'),
+      params: new HttpParams().set('sort', 'created').set('direction', 'desc').set('per_page', '100'),
     })
     .pipe(shareReplay(1));
 
@@ -96,6 +96,7 @@ export class GitHubService {
         'Repositorio publicado en GitHub sin descripcion adicional disponible.',
       htmlUrl: repository.html_url,
       homepage: repository.homepage,
+      createdAt: repository.created_at,
       updatedAt: repository.updated_at,
       pushedAt: repository.pushed_at,
       stars: repository.stargazers_count,
@@ -115,7 +116,7 @@ export class GitHubService {
     return {
       user,
       repositories: [...repositories].sort(
-        (left, right) => new Date(right.updatedAt).getTime() - new Date(left.updatedAt).getTime(),
+        (left, right) => new Date(right.createdAt).getTime() - new Date(left.createdAt).getTime(),
       ),
       languageSummary,
       stats: {

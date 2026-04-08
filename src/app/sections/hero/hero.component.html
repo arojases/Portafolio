@@ -5,21 +5,6 @@
     <p class="role">{{ config.role }}</p>
     <p class="headline">{{ config.headline }}</p>
     <p class="summary">{{ user.bio || config.summary }}</p>
-
-    <div class="actions">
-      <a class="button primary" [href]="user.html_url" target="_blank" rel="noreferrer">
-        Perfil de GitHub
-      </a>
-    </div>
-
-    <div class="meta">
-      <span>{{ stats.totalRepos }} repos publicos</span>
-      <span>{{ stats.totalStars }} stars</span>
-      <span>{{ stats.featuredLanguage }} como stack destacado</span>
-      <span [class.cache]="source === 'cache'">
-        {{ source === 'live' ? 'Sincronizacion en vivo' : 'Mostrando cache local' }}
-      </span>
-    </div>
   </div>
 
   <aside class="hero-card">
