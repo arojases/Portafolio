@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { portfolioConfig } from '../../core/config/portfolio.config';
-import { GitHubUser } from '../../core/models/github.models';
+import { GitHubUser, PortfolioStats } from '../../core/models/github.models';
 import { fadeInUp } from '../../shared/animations/fade.animation';
 
 @Component({
@@ -12,6 +12,7 @@ import { fadeInUp } from '../../shared/animations/fade.animation';
 })
 export class HeroComponent {
   @Input({ required: true }) user!: GitHubUser;
+  @Input({ required: true }) stats!: PortfolioStats;
 
   protected readonly config = portfolioConfig;
 }
