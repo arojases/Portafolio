@@ -30,7 +30,6 @@
 .section-heading p,
 .project-card p,
 .date,
-.stats,
 .topics,
 .empty-state p {
   color: var(--text-muted);
@@ -41,7 +40,6 @@
 .language-list,
 .topics,
 .project-card__footer,
-.stats,
 .actions {
   display: flex;
   flex-wrap: wrap;

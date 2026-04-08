@@ -13,9 +13,6 @@
       <button type="button" [class.active]="sortMode() === 'updated'" (click)="setSortMode('updated')">
         Recientes
       </button>
-      <button type="button" [class.active]="sortMode() === 'stars'" (click)="setSortMode('stars')">
-        Stars
-      </button>
       <button type="button" [class.active]="sortMode() === 'name'" (click)="setSortMode('name')">
         A-Z
       </button>
@@ -67,11 +64,6 @@
         }
 
         <div class="project-card__footer">
-          <div class="stats">
-            <span>{{ repository.stars }} stars</span>
-            <span>{{ repository.forks }} forks</span>
-          </div>
-
           <div class="actions">
             @if (repository.homepage) {
               <a [href]="repository.homepage" target="_blank" rel="noreferrer">Demo</a>

@@ -4,7 +4,7 @@ import { Component, Input, computed, signal } from '@angular/core';
 import { ProjectCardData } from '../../core/models/github.models';
 import { fadeInUp, staggerReveal } from '../../shared/animations/fade.animation';
 
-type SortMode = 'updated' | 'stars' | 'name';
+type SortMode = 'updated' | 'name';
 
 @Component({
   selector: 'app-projects',
@@ -44,10 +44,6 @@ export class ProjectsComponent {
           : repository.languages.some((language) => language.name === selectedLanguage),
       )
       .sort((left, right) => {
-        if (sortMode === 'stars') {
-          return right.stars - left.stars;
-        }
-
         if (sortMode === 'name') {
           return left.name.localeCompare(right.name);
         }
