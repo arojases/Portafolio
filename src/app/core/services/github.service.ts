@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+ï»¿import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, catchError, forkJoin, from, map, mergeMap, of, shareReplay, throwError, toArray } from 'rxjs';
 
@@ -14,7 +14,8 @@ interface PortfolioCache {
 export class GitHubService {
   private readonly http = inject(HttpClient);
   private readonly apiUrl = 'https://api.github.com';
-  private readonly cacheKey = 'portfolio-github-cache-v1';
+  private readonly cacheKey = 'portfolio-github-cache-v2';
+  private readonly cacheMaxAgeMs = 1000 * 60 * 30;
   private readonly username = portfolioConfig.githubUsername;
 
   private readonly user$ = this.http
@@ -92,7 +93,7 @@ export class GitHubService {
       name: repository.name,
       description:
         repository.description?.trim() ||
-        'Repositorio publicado en GitHub sin descripción adicional disponible.',
+        'Repositorio publicado en GitHub sin descripcion adicional disponible.',
       htmlUrl: repository.html_url,
       homepage: repository.homepage,
       updatedAt: repository.updated_at,
@@ -174,7 +175,15 @@ export class GitHubService {
     }
 
     try {
-      return JSON.parse(raw) as PortfolioCache;
+      const payload = JSON.parse(raw) as PortfolioCache;
+      const cachedAtTime = new Date(payload.cachedAt).getTime();
+
+      if (!Number.isFinite(cachedAtTime) || Date.now() - cachedAtTime > this.cacheMaxAgeMs) {
+        localStorage.removeItem(this.cacheKey);
+        return null;
+      }
+
+      return payload;
     } catch {
       localStorage.removeItem(this.cacheKey);
       return null;
