@@ -10,7 +10,7 @@ export const fadeInUp = trigger('fadeInUp', [
 export const staggerReveal = trigger('staggerReveal', [
   transition(':enter', [
     query(
-      ':self > *',
+      ':scope > *',
       [
         style({ opacity: 0, transform: 'translateY(18px)' }),
         stagger(
