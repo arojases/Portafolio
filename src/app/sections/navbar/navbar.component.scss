@@ -19,7 +19,6 @@
 .brand a,
 .github-link,
 .nav-link,
-.theme-toggle,
 .menu-toggle {
   color: var(--text-primary);
   text-decoration: none;
@@ -41,7 +40,6 @@
 }
 
 .nav-link,
-.theme-toggle,
 .github-link {
   border: 0;
   background: transparent;
@@ -53,7 +51,6 @@
 
 .nav-link.active,
 .nav-link:hover,
-.theme-toggle:hover,
 .github-link:hover {
   background: var(--surface-muted);
 }

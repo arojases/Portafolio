@@ -3,7 +3,6 @@ import { AfterViewInit, Component, HostListener, inject, signal } from '@angular
 import { RouterLink } from '@angular/router';
 
 import { portfolioConfig } from '../../core/config/portfolio.config';
-import { ThemeService } from '../../core/services/theme.service';
 
 interface NavItem {
   id: string;
@@ -19,7 +18,6 @@ interface NavItem {
 export class NavbarComponent implements AfterViewInit {
   protected readonly items: NavItem[] = [
     { id: 'hero', label: 'Inicio' },
-    { id: 'about', label: 'Sobre mi' },
     { id: 'projects', label: 'Proyectos' },
     { id: 'contact', label: 'Contacto' },
   ];
@@ -27,7 +25,6 @@ export class NavbarComponent implements AfterViewInit {
   protected readonly config = portfolioConfig;
   protected readonly activeSection = signal('hero');
   protected readonly menuOpen = signal(false);
-  protected readonly themeService = inject(ThemeService);
 
   private observer?: IntersectionObserver;
   private readonly viewportScroller = inject(ViewportScroller);
@@ -73,9 +70,5 @@ export class NavbarComponent implements AfterViewInit {
 
   protected toggleMenu(): void {
     this.menuOpen.update((current) => !current);
-  }
-
-  protected toggleTheme(): void {
-    this.themeService.toggleTheme();
   }
 }

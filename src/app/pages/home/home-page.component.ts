@@ -5,7 +5,6 @@ import { catchError, map, of, startWith } from 'rxjs';
 import { portfolioConfig } from '../../core/config/portfolio.config';
 import { PortfolioData } from '../../core/models/github.models';
 import { PortfolioDataService } from '../../core/services/portfolio-data.service';
-import { AboutComponent } from '../../sections/about/about.component';
 import { FooterComponent } from '../../sections/footer/footer.component';
 import { HeroComponent } from '../../sections/hero/hero.component';
 import { NavbarComponent } from '../../sections/navbar/navbar.component';
@@ -13,7 +12,7 @@ import { ProjectsComponent } from '../../sections/projects/projects.component';
 
 @Component({
   selector: 'app-home-page',
-  imports: [AsyncPipe, AboutComponent, FooterComponent, HeroComponent, NavbarComponent, ProjectsComponent],
+  imports: [AsyncPipe, FooterComponent, HeroComponent, NavbarComponent, ProjectsComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })

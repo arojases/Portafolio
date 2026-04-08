@@ -1,4 +1,4 @@
-@let vm = vm$ | async;
+ï»¿@let vm = vm$ | async;
 
 <div class="page-shell">
   <app-navbar />
@@ -7,21 +7,6 @@
     @let data = $any(vm).data;
     <main>
       <app-hero [user]="data.user" [stats]="data.stats" [source]="data.source" />
-
-      @defer (on viewport) {
-        <app-about
-          [user]="data.user"
-          [languageSummary]="data.languageSummary"
-          [stats]="data.stats"
-          [source]="data.source"
-          [cachedAt]="data.cachedAt"
-        />
-      } @placeholder {
-        <section id="about" class="placeholder-section">
-          <div class="section-skeleton large"></div>
-          <div class="section-skeleton medium"></div>
-        </section>
-      }
 
       @defer (on viewport) {
         <app-projects [repositories]="data.repositories" />
@@ -55,7 +40,7 @@
         <p class="eyebrow">Cargando</p>
         <h1>Sincronizando proyectos y lenguajes desde GitHub</h1>
         <p>
-          Estoy consultando tu perfil, repositorios y métricas de lenguajes para armar el portafolio
+          Estoy consultando tu perfil, repositorios y metricas de lenguajes para armar el portafolio
           en tiempo real.
         </p>
         <div class="loading-grid">
