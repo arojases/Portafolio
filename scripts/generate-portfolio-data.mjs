@@ -74,6 +74,13 @@ function resolveDemo(repository) {
     };
   }
 
+  if (repository.has_pages) {
+    return {
+      url: getGitHubPagesUrl(repository),
+      label: 'Ver demo',
+    };
+  }
+
   return {
     url: null,
     label: repository.fork ? 'Demo no disponible' : 'Explorar demo',
@@ -86,6 +93,17 @@ function normalizeUrl(url) {
   }
 
   return `https://${url}`;
+}
+
+function getGitHubPagesUrl(repository) {
+  const owner = repository.owner.login;
+  const userSiteName = `${owner}.github.io`;
+
+  if (repository.name.toLowerCase() === userSiteName.toLowerCase()) {
+    return `https://${owner}.github.io/`;
+  }
+
+  return `https://${owner}.github.io/${repository.name}/`;
 }
 
 function aggregateLanguages(repositories) {

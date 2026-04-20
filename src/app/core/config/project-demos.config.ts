@@ -5,6 +5,12 @@ export interface ProjectDemoEntry {
 }
 
 export const projectDemoConfigByRepositoryId: Record<number, ProjectDemoEntry> = {
+  1216241405: {
+    overview:
+      'Demo HTML inspirada en la experiencia real de Latido: acceso, vinculo compartido y mensajes afectivos en una interfaz interactiva.',
+    primaryUrl: 'project-demos/Latido/index.html',
+    primaryLabel: 'Abrir Latido',
+  },
   898691876: {
     overview:
       'Este repositorio contiene decenas de mini proyectos independientes. La card abre una galeria local para elegir una demo real del conjunto.',

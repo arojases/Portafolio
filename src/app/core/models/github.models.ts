@@ -18,6 +18,7 @@ export interface GitHubRepositoryApi {
   description: string | null;
   html_url: string;
   homepage: string | null;
+  has_pages: boolean;
   fork: boolean;
   stargazers_count: number;
   forks_count: number;

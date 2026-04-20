@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latido Demo</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+
+      :root {
+        color-scheme: light;
+        --latido-surface: rgba(255, 255, 255, 0.82);
+        --latido-primary: #ea5f78;
+        --latido-primary-strong: #d44561;
+        --latido-secondary: #ff9a62;
+        --latido-ink: #4d2931;
+        --latido-muted: #88626b;
+        --latido-border: rgba(212, 107, 129, 0.18);
+        --latido-shadow: 0 24px 70px rgba(212, 91, 117, 0.14);
+        --latido-radius-xl: 28px;
+        --latido-radius-lg: 22px;
+        --latido-radius-md: 16px;
+        --latido-radius-pill: 999px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Manrope', sans-serif;
+        color: var(--latido-ink);
+        background:
+          radial-gradient(circle at top left, rgba(255, 207, 134, 0.45), transparent 28%),
+          radial-gradient(circle at top right, rgba(244, 111, 132, 0.17), transparent 34%),
+          linear-gradient(180deg, #fffaf7 0%, #fff2ee 48%, #fff8f4 100%);
+        overflow-x: hidden;
+      }
+
+      .hearts {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .heart {
+        position: absolute;
+        bottom: -40px;
+        font-size: 20px;
+        opacity: 0;
+        animation: float 8s linear infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0) scale(0.8);
+          opacity: 0;
+        }
+        12% {
+          opacity: 0.35;
+        }
+        100% {
+          transform: translateY(-110vh) scale(1.15);
+          opacity: 0;
+        }
+      }
+
+      .glass-card {
+        background: var(--latido-surface);
+        border: 1px solid var(--latido-border);
+        box-shadow: var(--latido-shadow);
+        backdrop-filter: blur(18px);
+      }
+
+      .app {
+        width: min(1120px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 1rem 0 3rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .notice {
+        margin: 1rem 0 1.4rem;
+        padding: 0.95rem 1.1rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid var(--latido-border);
+        color: var(--latido-muted);
+        text-align: center;
+      }
+
+      .hero,
+      .workspace,
+      .chat-grid {
+        display: grid;
+        gap: 1.25rem;
+      }
+
+      .hero {
+        align-items: start;
+        padding-top: 1rem;
+      }
+
+      .hero__copy {
+        padding: 2rem 0 0.5rem;
+      }
+
+      .eyebrow,
+      .hero__label,
+      .room__eyebrow,
+      .messages__header span {
+        color: var(--latido-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-size: 0.78rem;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      .hero__copy h1 {
+        margin: 0.6rem 0 1rem;
+        font-family: 'Fraunces', serif;
+        font-size: clamp(2.8rem, 7vw, 5.2rem);
+        line-height: 0.97;
+      }
+
+      .hero__copy p,
+      .workspace__summary p,
+      .auth-panel__header p,
+      .room__copy p {
+        max-width: 62ch;
+        color: var(--latido-muted);
+        line-height: 1.75;
+      }
+
+      .hero__stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1.6rem;
+      }
+
+      .hero__stats span {
+        padding: 0.8rem 1rem;
+        border-radius: var(--latido-radius-pill);
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(212, 107, 129, 0.12);
+      }
+
+      .auth-panel,
+      .workspace__summary,
+      .room,
+      .messages,
+      .composer,
+      .hero__account {
+        border-radius: var(--latido-radius-xl);
+        padding: 1.4rem;
+      }
+
+      .auth-panel__tabs,
+      .composer__quick,
+      .room__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      .auth-panel__tabs button,
+      .composer__quick button,
+      .room__ghost {
+        border: 1px solid var(--latido-border);
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--latido-ink);
+      }
+
+      .auth-panel__tabs button,
+      .composer__quick button,
+      .room__ghost,
+      .primary,
+      .danger {
+        min-height: 46px;
+        padding: 0 1rem;
+        border-radius: var(--latido-radius-pill);
+      }
+
+      .auth-panel__tabs button.is-active,
+      .primary,
+      .danger {
+        border: 0;
+        color: white;
+        background: linear-gradient(135deg, var(--latido-primary), var(--latido-primary-strong));
+      }
+
+      .danger {
+        background: linear-gradient(135deg, #c0566b, #a83d53);
+      }
+
+      .auth-panel__form,
+      .room__form,
+      .composer__form {
+        display: grid;
+        gap: 0.9rem;
+        margin-top: 1rem;
+      }
+
+      label {
+        display: grid;
+        gap: 0.4rem;
+        font-weight: 600;
+      }
+
+      input {
+        min-height: 48px;
+        padding: 0 0.95rem;
+        border-radius: var(--latido-radius-md);
+        border: 1px solid rgba(212, 107, 129, 0.2);
+        background: rgba(255, 255, 255, 0.86);
+        color: var(--latido-ink);
+      }
+
+      .auth-panel__error,
+      .room__error,
+      .room__tip {
+        margin: 0.85rem 0 0;
+        color: var(--latido-primary-strong);
+      }
+
+      .hero__account h2,
+      .workspace__summary h3,
+      .auth-panel h2,
+      .messages h3,
+      .room h3 {
+        margin: 0.4rem 0 0.5rem;
+        font-family: 'Fraunces', serif;
+      }
+
+      .workspace__summary {
+        align-self: start;
+      }
+
+      .room__active {
+        display: grid;
+        gap: 0.65rem;
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: var(--latido-radius-lg);
+        background: rgba(255, 255, 255, 0.62);
+      }
+
+      .room__active strong {
+        font-size: 1.5rem;
+        letter-spacing: 0.12em;
+      }
+
+      .messages__header {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: end;
+      }
+
+      .messages__list {
+        display: grid;
+        gap: 0.9rem;
+        margin-top: 1rem;
+        max-height: 26rem;
+        overflow: auto;
+        padding-right: 0.2rem;
+      }
+
+      .bubble {
+        max-width: min(100%, 28rem);
+        padding: 0.95rem 1rem;
+        border-radius: 1.2rem 1.2rem 1.2rem 0.5rem;
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid var(--latido-border);
+        box-shadow: 0 10px 30px rgba(212, 91, 117, 0.08);
+      }
+
+      .bubble--mine {
+        margin-left: auto;
+        border-radius: 1.2rem 1.2rem 0.5rem 1.2rem;
+        background: linear-gradient(135deg, rgba(234, 95, 120, 0.94), rgba(212, 69, 97, 0.9));
+        color: white;
+      }
+
+      .bubble footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 0.7rem;
+        font-size: 0.82rem;
+        color: var(--latido-muted);
+      }
+
+      .bubble--mine footer {
+        color: rgba(255, 244, 246, 0.88);
+      }
+
+      .messages__empty {
+        padding: 1.4rem;
+        border-radius: var(--latido-radius-lg);
+        background: rgba(255, 255, 255, 0.58);
+        text-align: center;
+      }
+
+      .composer__quick {
+        margin-bottom: 1rem;
+      }
+
+      .composer__form {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+      }
+
+      .composer__form input {
+        width: 100%;
+      }
+
+      .composer__form button {
+        min-height: 48px;
+        padding: 0 1.1rem;
+        border-radius: var(--latido-radius-pill);
+        border: 0;
+        color: white;
+        background: linear-gradient(135deg, var(--latido-secondary), var(--latido-primary));
+      }
+
+      .meta {
+        margin-top: 0.8rem;
+        color: var(--latido-muted);
+        font-size: 0.92rem;
+      }
+
+      @media (min-width: 900px) {
+        .hero,
+        .workspace {
+          grid-template-columns: 1.08fr 0.92fr;
+        }
+
+        .chat-grid {
+          grid-template-columns: 1.08fr 0.92fr;
+          align-items: start;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .composer__form {
+          grid-template-columns: 1fr;
+        }
+
+        .messages__header {
+          flex-direction: column;
+          align-items: start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hearts" id="hearts"></div>
+
+    <main class="app">
+      <p class="notice">
+        Demo funcional inspirada en la app real. Muestra el flujo principal sin Firebase ni tiempo
+        real conectado.
+      </p>
+
+      <section class="hero">
+        <div class="hero__copy">
+          <span class="eyebrow">Mensajes que se sienten cercanos</span>
+          <h1>Latido convierte un "pensando en ti" en una experiencia viva y compartida.</h1>
+          <p>
+            Una demo interactiva basada en la estructura real del proyecto Angular. Puedes probar el
+            acceso, entrar a un vinculo y enviar mensajes de muestra.
+          </p>
+
+          <div class="hero__stats">
+            <span>Angular + TypeScript</span>
+            <span>Experiencia emocional</span>
+            <span>Flujo de vinculo privado</span>
+          </div>
+        </div>
+
+        <section class="auth-panel glass-card" id="authPanel">
+          <div class="auth-panel__header">
+            <span class="eyebrow">Tu conexion empieza aqui</span>
+            <h2>Entren a su espacio privado</h2>
+            <p>Accede rapido con un nombre temporal y empieza a enviar pequenos latidos.</p>
+          </div>
+
+          <div class="auth-panel__tabs">
+            <button type="button" class="is-active" data-mode="anonymous">Anonimo</button>
+            <button type="button" data-mode="signin">Ingresar</button>
+            <button type="button" data-mode="signup">Crear cuenta</button>
+          </div>
+
+          <form class="auth-panel__form" id="authForm">
+            <label>
+              Nombre visible
+              <input type="text" id="nickname" placeholder="Ej: Sol, Nico, Mi amor" value="Ariel" />
+            </label>
+            <label class="email-field" hidden>
+              Correo
+              <input type="email" id="email" placeholder="tu@correo.com" />
+            </label>
+            <label class="password-field" hidden>
+              Contrasena
+              <input type="password" id="password" placeholder="Minimo 6 caracteres" />
+            </label>
+            <button type="submit" class="primary" id="authSubmit">Entrar al instante</button>
+          </form>
+          <p class="meta" id="authMeta">Modo anonimo activo para una entrada inmediata.</p>
+        </section>
+      </section>
+
+      <section class="workspace">
+        <section class="room glass-card">
+          <div class="room__copy">
+            <span class="room__eyebrow">Vinculo privado</span>
+            <h3>Conecta su espacio compartido</h3>
+            <p>Usen el mismo codigo para compartir una conversacion intima entre dos personas.</p>
+          </div>
+
+          <div class="room__active" id="roomActive" hidden>
+            <p>Estan conectados con el codigo</p>
+            <strong id="activeCode">SOL-LUNA</strong>
+            <button type="button" class="danger" id="leaveRoom">Salir del vinculo</button>
+          </div>
+
+          <form class="room__form" id="roomForm">
+            <label>
+              Codigo del vinculo
+              <input type="text" id="roomCode" placeholder="Ej: SOL-LUNA" />
+            </label>
+
+            <div class="room__actions">
+              <button type="button" class="room__ghost" id="suggestCode">Sugerir codigo</button>
+              <button type="submit" class="primary">Entrar al vinculo</button>
+            </div>
+          </form>
+
+          <p class="room__tip" id="roomTip"></p>
+        </section>
+
+        <section class="workspace__summary glass-card">
+          <span class="eyebrow">Conexion actual</span>
+          <h3>Compartiendo con Sol</h3>
+          <p>
+            En la app real todo se sincroniza con Firebase Firestore. En esta demo, el historial se
+            actualiza al instante dentro de la misma pagina para mostrar la experiencia principal.
+          </p>
+        </section>
+      </section>
+
+      <section class="chat-grid">
+        <section class="messages glass-card">
+          <div class="messages__header">
+            <div>
+              <span>Historial vivo</span>
+              <h3>Su conversacion</h3>
+            </div>
+            <p><span id="messageCount">3</span> mensajes</p>
+          </div>
+
+          <div class="messages__list" id="messageList">
+            <article class="bubble">
+              <p>Hoy me acorde de ti cuando vi el atardecer.</p>
+              <footer><span>Sol</span><time>18:02</time></footer>
+            </article>
+            <article class="bubble bubble--mine">
+              <p>Yo tambien. Te estaba por escribir justo ahora.</p>
+              <footer><span>Tu</span><time>18:04</time></footer>
+            </article>
+            <article class="bubble">
+              <p>Entonces este mensaje llego en el momento exacto.</p>
+              <footer><span>Sol</span><time>18:05</time></footer>
+            </article>
+          </div>
+        </section>
+
+        <section class="composer glass-card">
+          <div class="composer__quick">
+            <button type="button" data-quick="Pensando en ti">Pensando en ti</button>
+            <button type="button" data-quick="Te extrano">Te extrano</button>
+            <button type="button" data-quick="Te amo">Te amo</button>
+            <button type="button" data-quick="Llegue bien">Llegue bien</button>
+          </div>
+
+          <form class="composer__form" id="composerForm">
+            <input
+              id="messageInput"
+              type="text"
+              placeholder="Escribe un detalle, un recuerdo o un pequeno latido..."
+            />
+            <button type="submit">Enviar ahora</button>
+          </form>
+        </section>
+      </section>
+    </main>
+
+    <script>
+      const tabs = document.querySelectorAll('[data-mode]');
+      const authMeta = document.getElementById('authMeta');
+      const authSubmit = document.getElementById('authSubmit');
+      const emailField = document.querySelector('.email-field');
+      const passwordField = document.querySelector('.password-field');
+      const nicknameInput = document.getElementById('nickname');
+      const roomForm = document.getElementById('roomForm');
+      const roomCode = document.getElementById('roomCode');
+      const roomTip = document.getElementById('roomTip');
+      const roomActive = document.getElementById('roomActive');
+      const activeCode = document.getElementById('activeCode');
+      const leaveRoom = document.getElementById('leaveRoom');
+      const messageList = document.getElementById('messageList');
+      const messageCount = document.getElementById('messageCount');
+      const messageInput = document.getElementById('messageInput');
+      const hearts = document.getElementById('hearts');
+      const authPanel = document.getElementById('authPanel');
+
+      let mode = 'anonymous';
+
+      function updateAuthMode(nextMode) {
+        mode = nextMode;
+        tabs.forEach((tab) => tab.classList.toggle('is-active', tab.dataset.mode === nextMode));
+
+        const anonymous = nextMode === 'anonymous';
+        const signup = nextMode === 'signup';
+
+        emailField.hidden = anonymous;
+        passwordField.hidden = anonymous;
+        nicknameInput.parentElement.hidden = nextMode === 'signin';
+
+        authSubmit.textContent = anonymous
+          ? 'Entrar al instante'
+          : signup
+            ? 'Crear cuenta'
+            : 'Ingresar a Latido';
+
+        authMeta.textContent = anonymous
+          ? 'Modo anonimo activo para una entrada inmediata.'
+          : signup
+            ? 'Simulando el alta de una cuenta compartida.'
+            : 'Simulando un acceso con correo y contrasena.';
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => updateAuthMode(tab.dataset.mode));
+      });
+
+      authPanel.addEventListener('submit', (event) => {
+        event.preventDefault();
+        spawnHeartBurst(10);
+        authMeta.textContent = 'Sesion simulada iniciada. Ahora puedes entrar a su vinculo.';
+      });
+
+      document.getElementById('suggestCode').addEventListener('click', () => {
+        const options = ['SOL-LUNA', 'NOCHE-CIELO', 'CALMA-ABRAZO', 'LATIDO-UNO'];
+        const suggestion = options[Math.floor(Math.random() * options.length)];
+        roomCode.value = suggestion;
+        roomTip.textContent = `Idea rapida: ${suggestion}`;
+      });
+
+      roomForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const code = roomCode.value.trim() || 'SOL-LUNA';
+        activeCode.textContent = code.toUpperCase();
+        roomActive.hidden = false;
+        roomForm.hidden = true;
+        roomTip.textContent = 'Vinculo conectado en la demo local.';
+        spawnHeartBurst(12);
+      });
+
+      leaveRoom.addEventListener('click', () => {
+        roomActive.hidden = true;
+        roomForm.hidden = false;
+        roomTip.textContent = 'Saliste del vinculo. Puedes probar con otro codigo.';
+      });
+
+      function currentTime() {
+        const now = new Date();
+        return `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+      }
+
+      function addMessage(text, mine = true) {
+        const article = document.createElement('article');
+        article.className = `bubble${mine ? ' bubble--mine' : ''}`;
+        article.innerHTML = `
+          <p>${text}</p>
+          <footer><span>${mine ? 'Tu' : 'Sol'}</span><time>${currentTime()}</time></footer>
+        `;
+        messageList.appendChild(article);
+        messageCount.textContent = String(messageList.children.length);
+        messageList.scrollTop = messageList.scrollHeight;
+        spawnHeartBurst(mine ? 8 : 5);
+      }
+
+      document.querySelectorAll('[data-quick]').forEach((button) => {
+        button.addEventListener('click', () => addMessage(button.dataset.quick, true));
+      });
+
+      document.getElementById('composerForm').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const value = messageInput.value.trim();
+        if (!value) return;
+        addMessage(value, true);
+        messageInput.value = '';
+
+        setTimeout(() => {
+          const replies = [
+            'Lo senti justo al instante.',
+            'Gracias por este latido.',
+            'Yo tambien estaba pensando en ti.',
+            'Se sintio cerquita, incluso desde aqui.'
+          ];
+          addMessage(replies[Math.floor(Math.random() * replies.length)], false);
+        }, 900);
+      });
+
+      function spawnHeartBurst(count) {
+        for (let index = 0; index < count; index += 1) {
+          const node = document.createElement('span');
+          node.className = 'heart';
+          node.textContent = ['❤', '♡', '♥'][Math.floor(Math.random() * 3)];
+          node.style.left = `${10 + Math.random() * 80}%`;
+          node.style.animationDuration = `${5 + Math.random() * 4}s`;
+          node.style.animationDelay = `${Math.random() * 0.6}s`;
+          hearts.appendChild(node);
+          setTimeout(() => node.remove(), 9000);
+        }
+      }
+
+      setInterval(() => spawnHeartBurst(1), 1800);
+      updateAuthMode('anonymous');
+    </script>
+  </body>
+</html>

@@ -133,6 +133,13 @@ export class PortfolioDataService {
       };
     }
 
+    if (repository.has_pages) {
+      return {
+        url: this.getGitHubPagesUrl(repository),
+        label: 'Ver demo',
+      };
+    }
+
     return {
       url: null,
       label: repository.fork ? 'Demo no disponible' : 'Explorar demo',
@@ -145,6 +152,17 @@ export class PortfolioDataService {
     }
 
     return `https://${url}`;
+  }
+
+  private getGitHubPagesUrl(repository: GitHubRepositoryApi): string {
+    const owner = repository.owner.login;
+    const userSiteName = `${owner}.github.io`;
+
+    if (repository.name.toLowerCase() === userSiteName.toLowerCase()) {
+      return `https://${owner}.github.io/`;
+    }
+
+    return `https://${owner}.github.io/${repository.name}/`;
   }
 
   private buildPortfolioData(user: GitHubUser, repositories: ProjectCardData[]): PortfolioData {
