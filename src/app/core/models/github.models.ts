@@ -42,6 +42,8 @@ export interface ProjectCardData {
   description: string;
   htmlUrl: string;
   homepage: string | null;
+  demoUrl: string | null;
+  demoLabel: string;
   createdAt: string;
   updatedAt: string;
   pushedAt: string;

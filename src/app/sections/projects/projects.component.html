@@ -65,10 +65,11 @@
 
         <div class="project-card__footer">
           <div class="actions">
-            @if (repository.homepage) {
-              <a [href]="repository.homepage" target="_blank" rel="noreferrer">Demo</a>
+            @if (repository.demoUrl) {
+              <a [href]="repository.demoUrl" target="_blank" rel="noreferrer">{{ repository.demoLabel }}</a>
+            } @else {
+              <span class="demo-disabled">{{ repository.demoLabel }}</span>
             }
-            <a [href]="repository.htmlUrl" target="_blank" rel="noreferrer">Repositorio</a>
           </div>
         </div>
       </article>

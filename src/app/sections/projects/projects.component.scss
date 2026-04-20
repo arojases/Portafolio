@@ -48,11 +48,15 @@
 
 .sort-controls button,
 .chip,
-.actions a {
+.actions a,
+.demo-disabled {
   border: 1px solid var(--border-color);
   border-radius: 999px;
   background: var(--surface-elevated);
   color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font: inherit;
   padding: 0.7rem 1rem;
   text-decoration: none;
@@ -120,6 +124,11 @@
   background: var(--accent);
   border-color: transparent;
   color: var(--accent-contrast);
+}
+
+.demo-disabled {
+  border-style: dashed;
+  color: var(--text-muted);
 }
 
 .empty-state {

@@ -99,6 +99,7 @@ export class PortfolioDataService {
 
   private mapRepository(repository: GitHubRepositoryApi, languageMap: Record<string, number>): ProjectCardData {
     const languages = this.toLanguageUsage(languageMap).slice(0, 4);
+    const demo = this.resolveDemo(repository);
 
     return {
       id: repository.id,
@@ -108,6 +109,8 @@ export class PortfolioDataService {
         'Repositorio publicado en GitHub sin descripcion adicional disponible.',
       htmlUrl: repository.html_url,
       homepage: repository.homepage,
+      demoUrl: demo.url,
+      demoLabel: demo.label,
       createdAt: repository.created_at,
       updatedAt: repository.updated_at,
       pushedAt: repository.pushed_at,
@@ -118,6 +121,41 @@ export class PortfolioDataService {
       languages,
       primaryLanguage: languages[0]?.name ?? 'Sin datos',
     };
+  }
+
+  private resolveDemo(repository: GitHubRepositoryApi): { url: string | null; label: string } {
+    const homepage = repository.homepage?.trim();
+
+    if (homepage) {
+      return {
+        url: this.normalizeUrl(homepage),
+        label: 'Ver demo',
+      };
+    }
+
+    if (repository.fork) {
+      return {
+        url: null,
+        label: 'Demo no disponible',
+      };
+    }
+
+    const owner = repository.owner.login;
+    const isUserPage = repository.name.toLowerCase() === `${owner.toLowerCase()}.github.io`;
+    const demoUrl = isUserPage ? `https://${owner}.github.io/` : `https://${owner}.github.io/${repository.name}/`;
+
+    return {
+      url: demoUrl,
+      label: 'Ver demo',
+    };
+  }
+
+  private normalizeUrl(url: string): string {
+    if (/^https?:\/\//i.test(url)) {
+      return url;
+    }
+
+    return `https://${url}`;
   }
 
   private buildPortfolioData(user: GitHubUser, repositories: ProjectCardData[]): PortfolioData {

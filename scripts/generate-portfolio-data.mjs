@@ -40,6 +40,7 @@ function toLanguageUsage(languageMap) {
 
 function mapRepository(repository, languageMap) {
   const languages = toLanguageUsage(languageMap).slice(0, 4);
+  const demo = resolveDemo(repository);
 
   return {
     id: repository.id,
@@ -49,6 +50,8 @@ function mapRepository(repository, languageMap) {
       'Repositorio publicado en GitHub sin descripcion adicional disponible.',
     htmlUrl: repository.html_url,
     homepage: repository.homepage,
+    demoUrl: demo.url,
+    demoLabel: demo.label,
     createdAt: repository.created_at,
     updatedAt: repository.updated_at,
     pushedAt: repository.pushed_at,
@@ -59,6 +62,41 @@ function mapRepository(repository, languageMap) {
     languages,
     primaryLanguage: languages[0]?.name ?? 'Sin datos',
   };
+}
+
+function resolveDemo(repository) {
+  const homepage = repository.homepage?.trim();
+
+  if (homepage) {
+    return {
+      url: normalizeUrl(homepage),
+      label: 'Ver demo',
+    };
+  }
+
+  if (repository.fork) {
+    return {
+      url: null,
+      label: 'Demo no disponible',
+    };
+  }
+
+  const owner = repository.owner.login;
+  const isUserPage = repository.name.toLowerCase() === `${owner.toLowerCase()}.github.io`;
+  const demoUrl = isUserPage ? `https://${owner}.github.io/` : `https://${owner}.github.io/${repository.name}/`;
+
+  return {
+    url: demoUrl,
+    label: 'Ver demo',
+  };
+}
+
+function normalizeUrl(url) {
+  if (/^https?:\/\//i.test(url)) {
+    return url;
+  }
+
+  return `https://${url}`;
 }
 
 function aggregateLanguages(repositories) {
