@@ -1,0 +1,578 @@
+{
+  "user": {
+    "login": "arojases",
+    "name": "Ariel Rojas",
+    "bio": "Frontend and software developer focused on building modern, responsive, and user-friendly applications while continuously growing through real-world challenges.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/39892146?v=4",
+    "html_url": "https://github.com/arojases",
+    "blog": "",
+    "location": null,
+    "followers": 0,
+    "following": 2,
+    "public_repos": 16
+  },
+  "repositories": [
+    {
+      "id": 1216264769,
+      "name": "My-Love",
+      "description": "Web privada para enviar mensajes románticos en tiempo real entre dos personas.",
+      "htmlUrl": "https://github.com/arojases/My-Love",
+      "homepage": "",
+      "demoUrl": "https://arojases.github.io/My-Love/",
+      "demoLabel": "Ver demo",
+      "createdAt": "2026-04-20T18:26:07Z",
+      "updatedAt": "2026-04-20T20:25:43Z",
+      "pushedAt": "2026-04-20T20:25:39Z",
+      "stars": 0,
+      "forks": 0,
+      "isFork": false,
+      "topics": [],
+      "languages": [
+        {
+          "name": "TypeScript",
+          "bytes": 36213,
+          "percentage": 66.7
+        },
+        {
+          "name": "CSS",
+          "bytes": 11401,
+          "percentage": 21
+        },
+        {
+          "name": "HTML",
+          "bytes": 6652,
+          "percentage": 12.3
+        }
+      ],
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "id": 1216241405,
+      "name": "Latido",
+      "description": "Latido es una app Angular en tiempo real para mensajería privada entre dos personas, construida con Firebase Authentication, Firestore y Hosting.",
+      "htmlUrl": "https://github.com/arojases/Latido",
+      "homepage": "",
+      "demoUrl": null,
+      "demoLabel": "Explorar demo",
+      "createdAt": "2026-04-20T17:57:05Z",
+      "updatedAt": "2026-04-20T18:07:10Z",
+      "pushedAt": "2026-04-20T18:07:07Z",
+      "stars": 0,
+      "forks": 0,
+      "isFork": false,
+      "topics": [],
+      "languages": [
+        {
+          "name": "TypeScript",
+          "bytes": 25455,
+          "percentage": 56.3
+        },
+        {
+          "name": "SCSS",
+          "bytes": 8945,
+          "percentage": 19.8
+        },
+        {
+          "name": "HTML",
+          "bytes": 7992,
+          "percentage": 17.7
+        },
+        {
+          "name": "JavaScript",
+          "bytes": 2796,
+          "percentage": 6.2
+        }
+      ],
+      "primaryLanguage": "TypeScript"
+    },
+    {
+      "id": 1204394814,
+      "name": "Lovira",
+      "description": "App para parejas que permite enviar gestos de afecto al instante. Con un solo toque, hazle saber a tu persona especial que estás pensando en ella en tiempo real.",
+      "htmlUrl": "https://github.com/arojases/Lovira",
+      "homepage": "",
+      "demoUrl": null,
+      "demoLabel": "Explorar demo",
+      "createdAt": "2026-04-08T01:10:51Z",
+      "updatedAt": "2026-04-08T01:52:42Z",
+      "pushedAt": "2026-04-08T01:52:38Z",
+      "stars": 0,
+      "forks": 0,
+      "isFork": false,
+      "topics": [],
+      "languages": [
+        {
+          "name": "Kotlin",
+          "bytes": 6206,
+          "percentage": 74.2
+        },
+        {
+          "name": "JavaScript",
+          "bytes": 1432,
+          "percentage": 17.1
+        },
+        {
+          "name": "Java",
+          "bytes": 721,
+          "percentage": 8.6
+        }
+      ],
+      "primaryLanguage": "Kotlin"
+    },
+    {
+      "id": 1204350549,
+      "name": "Portafolio",
+      "description": "Portafolio personal desarrollado con Angular, enfocado en mostrar proyectos, experiencia y tecnologías de forma visual y profesional.",
+      "htmlUrl": "https://github.com/arojases/Portafolio",
+      "homepage": "",
+      "demoUrl": "https://arojases.github.io/Portafolio/",
+      "demoLabel": "Ver demo",
+      "createdAt": "2026-04-07T23:43:59Z",
+      "updatedAt": "2026-04-20T18:10:05Z",
+      "pushedAt": "2026-04-20T18:10:02Z",
+      "stars": 0,
+      "forks": 0,
+      "isFork": false,
+      "topics": [],
+      "languages": [
+        {
+          "name": "HTML",
+          "bytes": 342001,
+          "percentage": 53.9
+        },
+        {
+          "name": "CSS",
+          "bytes": 130148,
+          "percentage": 20.5
+        },
+        {
+          "name": "JavaScript",
+          "bytes": 121732,
+          "percentage": 19.2
+        },
+        {
+          "name": "TypeScript",
+          "bytes": 23872,
+          "percentage": 3.8
+        }
+      ],
+      "primaryLanguage": "HTML"
+    },
+    {
+      "id": 1049454014,
+      "name": "Gestion-de-contactos--django---bootstrap---sqlite-",
+      "description": "Aplicación web para gestión de contactos construida con Django, Bootstrap y SQLite, con interfaz clara y manejo básico de registros.",
+      "htmlUrl": "https://github.com/arojases/Gestion-de-contactos--django---bootstrap---sqlite-",
+      "homepage": "",
+      "demoUrl": null,
+      "demoLabel": "Explorar demo",
+      "createdAt": "2025-09-03T02:18:15Z",
+      "updatedAt": "2026-04-08T00:11:57Z",
+      "pushedAt": "2025-09-10T21:03:43Z",
+      "stars": 0,
+      "forks": 0,
+      "isFork": false,
+      "topics": [],
+      "languages": [
+        {
+          "name": "JavaScript",
+          "bytes": 109131,
+          "percentage": 50.5
+        },
+        {
+          "name": "CSS",
+          "bytes": 89700,
+          "percentage": 41.5
+        },
+        {
+          "name": "Python",
+          "bytes": 10565,
+          "percentage": 4.9
+        },
+        {
+          "name": "HTML",
+          "bytes": 6851,
+          "percentage": 3.2
+        }
+      ],
+      "primaryLanguage": "JavaScript"
+    },
+    {
+      "id": 898691876,
+      "name": "50-Projects---HTML-CSS-and-JavaScript",
+      "description": "Colección de proyectos prácticos desarrollados con HTML, CSS y JavaScript para fortalecer habilidades de frontend mediante ejercicios diarios.",
+      "htmlUrl": "https://github.com/arojases/50-Projects---HTML-CSS-and-JavaScript",
+      "homepage": "",
+      "demoUrl": null,
+      "demoLabel": "Explorar demo",
+      "createdAt": "2024-12-04T21:17:54Z",
+      "updatedAt": "2026-04-20T16:23:17Z",
+      "pushedAt": "2025-01-14T01:32:45Z",
+      "stars": 0,
+      "forks": 0,
+      "isFork": false,
+      "topics": [],
+      "languages": [
+        {
+          "name": "HTML",
+          "bytes": 44355,
+          "percentage": 41.7
+        },
+        {
+          "name": "CSS",
+          "bytes": 43816,
+          "percentage": 41.2
+        },
+        {
+          "name": "JavaScript",
+          "bytes": 18169,
+          "percentage": 17.1
+        }
+      ],
+      "primaryLanguage": "HTML"
+    },
+    {
+      "id": 607933813,
+      "name": "Blog-Project",
+      "description": "Proyecto de blog web enfocado en la publicación y visualización de contenido con una estructura simple y funcional.",
+      "htmlUrl": "https://github.com/arojases/Blog-Project",
+      "homepage": "",
+      "demoUrl": "https://arojases.github.io/Blog-Project/",
+      "demoLabel": "Ver demo",
+      "createdAt": "2023-03-01T01:00:39Z",
+      "updatedAt": "2026-04-08T00:12:25Z",
+      "pushedAt": "2023-03-28T12:28:56Z",
+      "stars": 0,
+      "forks": 0,
+      "isFork": false,
+      "topics": [],
+      "languages": [
+        {
+          "name": "JavaScript",
+          "bytes": 26693,
+          "percentage": 87.1
+        },
+        {
+          "name": "CSS",
+          "bytes": 2238,
+          "percentage": 7.3
+        },
+        {
+          "name": "HTML",
+          "bytes": 1727,
+          "percentage": 5.6
+        }
+      ],
+      "primaryLanguage": "JavaScript"
+    },
+    {
+      "id": 595949854,
+      "name": "CSE341-Personal",
+      "description": "Proyecto personal realizado para CSE341, orientado al desarrollo web backend y buenas prácticas de construcción de APIs.",
+      "htmlUrl": "https://github.com/arojases/CSE341-Personal",
+      "homepage": "",
+      "demoUrl": null,
+      "demoLabel": "Explorar demo",
+      "createdAt": "2023-02-01T06:19:16Z",
+      "updatedAt": "2026-04-08T00:12:41Z",
+      "pushedAt": "2023-02-26T00:16:53Z",
+      "stars": 0,
+      "forks": 0,
+      "isFork": false,
+      "topics": [],
+      "languages": [
+        {
+          "name": "JavaScript",
+          "bytes": 10786,
+          "percentage": 100
+        }
+      ],
+      "primaryLanguage": "JavaScript"
+    },
+    {
+      "id": 586097855,
+      "name": "Node.js-Swagger-MongoDB",
+      "description": "API construida con Node.js, documentada con Swagger e integrada con MongoDB para gestionar datos de forma estructurada.",
+      "htmlUrl": "https://github.com/arojases/Node.js-Swagger-MongoDB",
+      "homepage": "",
+      "demoUrl": null,
+      "demoLabel": "Explorar demo",
+      "createdAt": "2023-01-06T23:56:36Z",
+      "updatedAt": "2026-04-08T00:12:54Z",
+      "pushedAt": "2023-01-28T23:18:30Z",
+      "stars": 0,
+      "forks": 0,
+      "isFork": false,
+      "topics": [],
+      "languages": [
+        {
+          "name": "JavaScript",
+          "bytes": 5059,
+          "percentage": 100
+        }
+      ],
+      "primaryLanguage": "JavaScript"
+    },
+    {
+      "id": 574794761,
+      "name": "Gestion-de-autos--PHP",
+      "description": "Sistema de gestión de autos desarrollado en PHP para administrar registros, operaciones y flujo básico de inventario.",
+      "htmlUrl": "https://github.com/arojases/Gestion-de-autos--PHP",
+      "homepage": "",
+      "demoUrl": null,
+      "demoLabel": "Explorar demo",
+      "createdAt": "2022-12-06T04:46:56Z",
+      "updatedAt": "2026-04-08T00:11:38Z",
+      "pushedAt": "2026-04-07T23:51:48Z",
+      "stars": 0,
+      "forks": 0,
+      "isFork": false,
+      "topics": [],
+      "languages": [
+        {
+          "name": "PHP",
+          "bytes": 83060,
+          "percentage": 91.7
+        },
+        {
+          "name": "CSS",
+          "bytes": 4780,
+          "percentage": 5.3
+        },
+        {
+          "name": "JavaScript",
+          "bytes": 1948,
+          "percentage": 2.2
+        },
+        {
+          "name": "Hack",
+          "bytes": 755,
+          "percentage": 0.8
+        }
+      ],
+      "primaryLanguage": "PHP"
+    },
+    {
+      "id": 484629855,
+      "name": "WDD330",
+      "description": "Web Frontend Development II - Repositorio de ejercicios y proyectos del curso WDD330, centrado en desarrollo web con JavaScript y aplicaciones interactivas.",
+      "htmlUrl": "https://github.com/arojases/WDD330",
+      "homepage": "",
+      "demoUrl": "https://arojases.github.io/WDD330/",
+      "demoLabel": "Ver demo",
+      "createdAt": "2022-04-23T02:53:29Z",
+      "updatedAt": "2026-04-08T00:13:10Z",
+      "pushedAt": "2022-07-19T05:07:56Z",
+      "stars": 0,
+      "forks": 0,
+      "isFork": false,
+      "topics": [],
+      "languages": [
+        {
+          "name": "JavaScript",
+          "bytes": 58780,
+          "percentage": 53.6
+        },
+        {
+          "name": "HTML",
+          "bytes": 43551,
+          "percentage": 39.7
+        },
+        {
+          "name": "CSS",
+          "bytes": 7335,
+          "percentage": 6.7
+        }
+      ],
+      "primaryLanguage": "JavaScript"
+    },
+    {
+      "id": 333825988,
+      "name": "HelloFromAriel",
+      "description": "Proyecto introductorio de presentación y práctica, utilizado para pruebas iniciales y estructura base de desarrollo.",
+      "htmlUrl": "https://github.com/arojases/HelloFromAriel",
+      "homepage": "",
+      "demoUrl": null,
+      "demoLabel": "Explorar demo",
+      "createdAt": "2021-01-28T17:00:52Z",
+      "updatedAt": "2026-04-08T00:13:41Z",
+      "pushedAt": "2021-01-29T17:51:50Z",
+      "stars": 0,
+      "forks": 0,
+      "isFork": false,
+      "topics": [],
+      "languages": [
+        {
+          "name": "Java",
+          "bytes": 296,
+          "percentage": 75.3
+        },
+        {
+          "name": "HTML",
+          "bytes": 97,
+          "percentage": 24.7
+        }
+      ],
+      "primaryLanguage": "Java"
+    },
+    {
+      "id": 333512782,
+      "name": "CS246",
+      "description": "Repositorio académico del curso CS246 con ejercicios y proyectos orientados a programación y resolución de problemas.",
+      "htmlUrl": "https://github.com/arojases/CS246",
+      "homepage": "",
+      "demoUrl": null,
+      "demoLabel": "Explorar demo",
+      "createdAt": "2021-01-27T17:51:31Z",
+      "updatedAt": "2026-04-08T00:13:57Z",
+      "pushedAt": "2021-01-27T18:34:25Z",
+      "stars": 0,
+      "forks": 0,
+      "isFork": false,
+      "topics": [],
+      "languages": [],
+      "primaryLanguage": "Sin datos"
+    },
+    {
+      "id": 296005232,
+      "name": "WDD230",
+      "description": "Repositorio del curso WDD230 con prácticas y proyectos de desarrollo web usando HTML, CSS y JavaScript.",
+      "htmlUrl": "https://github.com/arojases/WDD230",
+      "homepage": "",
+      "demoUrl": "https://arojases.github.io/WDD230/",
+      "demoLabel": "Ver demo",
+      "createdAt": "2020-09-16T10:54:56Z",
+      "updatedAt": "2026-04-08T00:14:14Z",
+      "pushedAt": "2020-12-14T13:01:38Z",
+      "stars": 0,
+      "forks": 0,
+      "isFork": false,
+      "topics": [],
+      "languages": [
+        {
+          "name": "HTML",
+          "bytes": 191422,
+          "percentage": 61.8
+        },
+        {
+          "name": "CSS",
+          "bytes": 78681,
+          "percentage": 25.4
+        },
+        {
+          "name": "JavaScript",
+          "bytes": 39632,
+          "percentage": 12.8
+        }
+      ],
+      "primaryLanguage": "HTML"
+    },
+    {
+      "id": 295965224,
+      "name": "BYU-testing",
+      "description": "Repositorio de pruebas y ejercicios académicos utilizado para experimentar con funcionalidades y validar implementaciones.",
+      "htmlUrl": "https://github.com/arojases/BYU-testing",
+      "homepage": "",
+      "demoUrl": null,
+      "demoLabel": "Explorar demo",
+      "createdAt": "2020-09-16T08:03:53Z",
+      "updatedAt": "2026-04-08T00:14:28Z",
+      "pushedAt": "2020-09-16T10:47:22Z",
+      "stars": 0,
+      "forks": 0,
+      "isFork": false,
+      "topics": [],
+      "languages": [
+        {
+          "name": "HTML",
+          "bytes": 3509,
+          "percentage": 87.1
+        },
+        {
+          "name": "CSS",
+          "bytes": 316,
+          "percentage": 7.8
+        },
+        {
+          "name": "JavaScript",
+          "bytes": 205,
+          "percentage": 5.1
+        }
+      ],
+      "primaryLanguage": "HTML"
+    },
+    {
+      "id": 158885932,
+      "name": "appJava",
+      "description": "Aplicación desarrollada en Java orientada a practicar estructura, lógica y construcción de proyectos de escritorio o consola.Ontour Java",
+      "htmlUrl": "https://github.com/arojases/appJava",
+      "homepage": "",
+      "demoUrl": null,
+      "demoLabel": "Explorar demo",
+      "createdAt": "2018-11-23T23:21:16Z",
+      "updatedAt": "2026-04-08T00:14:46Z",
+      "pushedAt": "2018-11-22T22:29:07Z",
+      "stars": 0,
+      "forks": 0,
+      "isFork": false,
+      "topics": [],
+      "languages": [
+        {
+          "name": "Java",
+          "bytes": 85212,
+          "percentage": 100
+        }
+      ],
+      "primaryLanguage": "Java"
+    }
+  ],
+  "languageSummary": [
+    {
+      "name": "HTML",
+      "bytes": 648157,
+      "percentage": 38.3
+    },
+    {
+      "name": "JavaScript",
+      "bytes": 396363,
+      "percentage": 23.4
+    },
+    {
+      "name": "CSS",
+      "bytes": 368415,
+      "percentage": 21.7
+    },
+    {
+      "name": "Java",
+      "bytes": 86229,
+      "percentage": 5.1
+    },
+    {
+      "name": "TypeScript",
+      "bytes": 85540,
+      "percentage": 5
+    },
+    {
+      "name": "PHP",
+      "bytes": 83060,
+      "percentage": 4.9
+    },
+    {
+      "name": "Python",
+      "bytes": 10565,
+      "percentage": 0.6
+    },
+    {
+      "name": "SCSS",
+      "bytes": 8945,
+      "percentage": 0.5
+    }
+  ],
+  "stats": {
+    "totalRepos": 16,
+    "totalStars": 0,
+    "totalForks": 0,
+    "featuredLanguage": "HTML"
+  },
+  "source": "live"
+}
