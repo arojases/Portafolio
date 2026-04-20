@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 4</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+    <div>
+        <header>
+            <h1>Week 4 Notes</h1>
+        </header>
+    </div>
+    <section class="sec">
+        <h2>Accessing Form Elements</h2>
+        <p> The legacy DOM had a useful property called document.forms that returns an HTML collection of all the forms
+            in the document in the order they appear in the markup. Even though there is only one form in our example, a
+            collection will still be returned, so we have to use index notation to return the first (and only) form
+            object, like so:
+            const form = document.forms[0];
+
+            A form object also has a method called elements that returns an HTML collection of all the elements
+            contained in the form. In this case the form contains two controls: an input element and a button element:
+            const [input,button] = form.elements;
+
+            we can use JavaScript to intercept the form before it's sent by adding a submit event listener.
+        </p>
+        <h2>Polymorphism</h2>
+        <p> The concept of polymorphism means that different objects can have the same method, but implement it in
+            different ways. The Object.prototype object has a toString() method that is shared by all objects. This
+            means every object created in JavaScript will have a toString() method. Polymorphism means that objects are
+            able to override this method with a more specific implementation. So although every object has a toString()
+            method, the way it's implemented can vary between different objects. For example, calling it on an array
+            object will return each value in a comma-separated string: 
+        </p>
+
+    </section>
+
+    <section class="ref">
+        <a href="../teamActivity/team_activity3_Tic.html">Team Activity Week 4</a>
+    </section>
+
+    <section class="ref">
+        <a href="../index.html">Back</a>
+    </section>
+
+</body>
+
+</html>

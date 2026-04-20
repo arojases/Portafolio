@@ -1,0 +1,79 @@
+/* 35em is also 560px (if basefont is 16px) */
+@media only screen and (min-width: 35rem) {
+
+
+    main {
+        max-width: 64rem;
+        margin: auto;
+    }
+
+    header img {
+        width: auto;
+    }
+
+    div.forecastDiv {
+        display: block;
+    }
+
+    section.forecast {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    section.forecastDiv div {
+        text-align: center;
+        padding: 0;
+    }
+
+    section.forecastDiv div h4 {
+        background-color: #59B9FF;
+        margin: 0;
+        padding: 1rem 0;
+    }
+
+    .article figure img {
+        display: block;
+        float: right;
+        margin: 5px;
+        width: 400px;
+        height: 300px;
+        margin-left: 2%;
+    }
+
+    .contact img {
+        display: block;
+    }
+
+    div.galleryGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    section div#gridForecast {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    /*-----------------------------Home----------------------------*/
+
+    .cards section {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .cards section:nth-child(2) {
+        flex-direction: row-reverse;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+
+    .cards section img {
+        width: 100%;
+        margin: 1rem;
+    }
+
+    .cards div {
+        width: 100%;
+    }
+}
+
+/* end of media query */

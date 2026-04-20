@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 5</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+    <div>
+        <header>
+            <h1>Week 5 Notes</h1>
+        </header>
+    </div>
+    <section class="sec">
+        <h2>Chapter 10: Testing and Debugging</h2>
+        <p>Tip:
+            A ninja programmer should ensure that the code they write fails loudly in development so any errors can be
+            identified and fixed quickly. In production, a ninja programmer should try to make the code fail gracefully
+            (although not completely silently ― we still need to know there's an error), so the user experience is not
+            affected, if possible. This is achieved by making sure exceptions are caught and dealt with, and code is
+            tested rigorously.
+        </p>
+
+        <h2>Exception Handling</h2>
+        <p>
+            A finally block can be added after a catch block. This will always be executed after the try or catch block,
+            regardless of whether an exception occurred or not. It is useful if you want some code to run in both cases.
+        </p>
+
+        <h2>Error Objects</h2>
+        <p>
+            An error object can be created by the host environment when an exception occurs, or it can be created in the
+            code using a constructor function, like so:
+        </p>
+
+        <p>
+            const error = new Error('Oops, something went wrong');
+            <br>
+            There are seven more error objects used for specific errors:
+        </p>
+
+        <ol>
+            <li>EvalError is not used in the current ECMAScript specification and only retained for backwards
+                compatibility.
+                It was used to identify errors when using the global eval() function.
+            </li>
+
+            <li>
+                RangeError is thrown when a number is outside an allowable range of values.
+            </li>
+
+            <li>
+                ReferenceError is thrown when a reference is made to an item that doesn't exist. For example, calling a
+                function that hasn't been defined.
+            </li>
+
+            <li>
+                SyntaxError is thrown when there's an error in the code's syntax.
+            </li>
+
+            <li>
+                TypeError is thrown when there's an error in the type of value used; for example, a string is used when
+                a
+                number is expected.
+            </li>
+
+            <li>
+                URIError is thrown when there's a problem encoding or decoding the URI.
+            </li>
+
+            <li>
+                InternalError is a non-standard error that is thrown when an error occurs in the JavaScript engine. A
+                common
+                cause of this too much recursion.
+            </li>
+        </ol>
+        <p>
+            These error objects can also be used as constructors to create custom error objects:
+            const error = new TypeError('You need to use numbers in this function');
+        </p>
+
+
+    </section>
+
+    <section class="ref">
+        <a href="../teamActivity/taw5/team_activityw5.html">Team Activity Week 5</a>
+    </section>
+
+    <section class="ref">
+        <a href="../index.html">Back</a>
+    </section>
+
+</body>
+
+</html>

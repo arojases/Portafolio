@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&family=Montserrat&family=Roboto&display=swap');
+
+/* Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.  */
+html {-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;}
+
+/*----------- apply a natural box layout model to all elements --------------*/
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+
+/*----------- BODY --------------*/
+body {
+    font-size: 18px;
+    background-color:#C7EAF2;
+}
+
+.c-body{
+    background-color: #C7EAF2;
+}
+
+.font-hfn{
+    font-family: 'Roboto', sans-serif;
+}
+
+/*----------- HEADER --------------*/
+header {
+    padding: .5rem 2%;
+    background-color: #698DEB;
+    color: #F7FBFF;
+    text-align: center;
+}
+/*header img{float: left; margin-right: 10px; width: 50px;}*/
+header h1 {margin: 0; font-size: 1.3rem;}
+/*header h2 {margin: 0; font-weight: normal; font-size: 1.3rem;}*/
+
+.c-header{
+    background-color: #698DEB;
+}
+/*----------- NAVIGATION --------------*/
+nav {
+    background-color: #59B9FF;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li a {
+    display: block;
+    color: #FFFFFF;
+    padding: .5rem 0;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+nav ul li a:hover {
+    background-color: #C7EAF2;
+    color: #333;
+}
+nav ul li.active a {
+    background-color: #000;
+    color:#FFFFFF;
+}
+
+.c-nav{
+    background-color: #59B9FF;
+}
+
+/*----------- MAIN --------------*/
+main {
+    padding: 0.2%;
+    min-height: 10rem;
+    color:#FFFFFF;
+    background-color: #B1CEF3;
+}
+
+h1{
+    padding: 0.2%;
+}
+
+.f-text{
+    font-family: 'Merriweather', serif;
+}
+
+.f-h{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.table-persona1, .table-persona2{
+    text-align: left;
+}
+
+
+/*----------- FOOTER --------------*/
+footer {
+    background-color: #698DEB;
+    padding: .5rem 2%;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+
+
+/*----- Clearfix: Force an Element not to collapse -----*/
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}

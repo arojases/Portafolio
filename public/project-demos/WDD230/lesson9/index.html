@@ -1,0 +1,84 @@
+c<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Rules</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="css/large.css" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico">
+</head>
+
+<body>
+    <header class="clearfix">
+        <img class="logo" src="img/icono.ico" alt="Logo">
+        <h1>Weather Rules</h1>
+        <h2>Know your weather, control your fun</h2>
+    </header>
+    <nav class="clearfix">
+        <button onclick="toggleMenu()">&#9776; Menu</button>
+        <ul id="primaryNav" class="hide">
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="preston.html">Preston</a></li>
+            <li><a href="#">Soda Springs</a></li>
+            <li><a href="#">Fish Haven</a></li>
+            <li><a href="stormcenter.html">Storm Center</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+    </nav>
+    <main class="preston">
+        <h2>Welcome to Weather Rules</h2>
+        <div>
+            <picture class="img_home">
+                <source media="(max-width: 400px)" srcset="img/preston_img_1.jpg">
+                <source media="(max-width: 700px)" srcset="img/preston_img_1.jpg">
+                <img class="hero" src="img/preston_img_1.jpg" alt="Nature">
+            </picture>
+        </div>
+        <section>
+            <div class="cards"></div>
+        </section>
+        <div>
+            <h2>Purpose</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium dicta ab ullam adipisci fuga
+                voluptates molestiae a, commodi, labore, in placeat dignissimos doloribus illum asperiores delectus
+                mollitia est? Pariatur dolorem alias facere eaque inventore, voluptas atque corporis quos temporibus
+                numquam at mollitia nisi impedit quaerat, minima deleniti corrupti ad consectetur!</p>
+        </div>
+        <section class="contact">
+            <div>
+                <img src="img/map.JPG" alt="Rexburg, Idaho">
+            </div>
+            <div>
+                <h2>Contact Information</h2>
+                <h4>Weather Rules</h4>
+                <span>525 S Center St<br> Rexburg, ID 83460</span>
+                <br><br>
+                <span>☏ (666) 666-7777 </span>
+                <br>
+                <span>✉ contact@weatherrules.net</span>
+                <br><br>
+            </div>
+        </section>
+    </main>
+    <footer>
+        &copy; 2020 &bull; Weather Rules &bull; Ariel Rojas || <span id="currentDate"></span> || <a href="home-wireframes.html">Wireframe</a>
+    </footer>
+    <script src="js/currentDate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script src="js/webFontLoad.js"></script>
+    <script src="js/windchill.js"></script>
+    <script src="js/lazyload.js"></script>
+    <script src="js/infoCards.js"></script>
+
+</body>
+
+</html>

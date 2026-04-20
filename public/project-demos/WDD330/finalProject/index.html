@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>Final Project</title>
+    <link rel="stylesheet" href="weather.css" type="text/css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1>Weather App</h1>
+        </nav>
+        <hr>
+    </header>
+    <div class="container">
+        <h2 id="dateTime"></h2>
+        <div id="loadInfo">
+            <div id="icon"><img src='' alt="image of weather" id="tempIcon"></div>
+            <br>
+            <div id="zipCheck">Zip Code Required</div><br>
+            <div><input type="number" id="zipCode" placeholder="Zip Code" maxlength="5" required></div>
+            <br><br>
+            <div id='output'></div>
+            <div id='forecastOutput'></div>
+            <div id="buttons">
+                <button class="button" id="weather">Weather</button>
+                <button class="button" id="air">Air Quality</button>
+                <button class="button" id="forecast">Forecast</button>
+                <button class="button" id="uv">UV Index</button>
+            </div>
+        </div>
+    </div> <!-- end container -->
+    <div id="weatherAlert">
+
+    </div>
+    <script src="../finalProject/main.js" type="module"></script>
+
+</body>
+
+</html>

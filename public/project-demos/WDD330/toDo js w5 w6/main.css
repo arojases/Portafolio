@@ -1,0 +1,138 @@
+body {
+    background-color: var(--main-body-background);
+}
+
+
+#app {
+    background-color: var(--main-app-background);
+}
+
+#maintitle {
+    text-align: center;
+    background-color: var(--main-color);
+    color: black;
+}
+
+#maintitle * {
+    display: inline;
+}
+
+#maintitle img {
+    width: 1.25em;
+}
+
+#newTaskForm {
+    text-align: center;
+    margin: 20px 0px 0px 0px;
+    height: 42px;
+}
+
+#newTaskForm * {
+    margin: 0;
+    display: inline-block;
+}
+
+#newTask {
+    margin: 0px;
+    width: 78%;
+    height: 38px;
+    padding: 0 15px;
+    border: 1px solid black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+#addButton {
+    font-size: 35px;
+    height: 40px;
+    margin: 0 5px;
+    padding: auto auto;
+    background-color: var(--main-color);
+    vertical-align: top;
+    text-align: center;
+    border: 1px solid black;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    text-align: center;
+}
+
+#addButton.active {
+    outline: none;
+}
+
+#taskBoard {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px auto 0px auto;
+    width: 80%;
+}
+
+#taskBoard .task {
+    border: 1px solid black;
+    padding: 10px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto 88% auto;
+    align-items: center;
+}
+
+#taskBoard .task * {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.task-cb {
+    height: 25px;
+    width: 25px;
+    margin: 0;
+    padding: 0;
+
+}
+
+.task-text {
+    font-size: 20px;
+    padding: 0px 10px;
+}
+
+.task-delete {
+    font-size: 40%;
+}
+
+.task-delete:hover {
+    color: red;
+}
+
+.task-delete:active {
+    font-size: 100%;
+}
+
+#taskFooter {
+    padding: 15px 0px;
+    text-align: center;
+    width: 79.8%;
+    margin: 0px auto;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 30% 20% 20% 20%;
+    column-gap: 1%;
+    font-size: 100%;
+}
+
+#taskFooter * {
+    display: inline-block;
+    padding: 1%;
+}
+
+.selected {
+    border: 1px solid red;
+}
+
+.completed {
+    text-decoration: line-through;
+}
+
+.activeFilter {
+    border: 1px solid black;
+    border-radius: 5px;
+}

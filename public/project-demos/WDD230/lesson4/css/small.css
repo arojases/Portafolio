@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&family=Montserrat&family=Roboto&display=swap');
+
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/*----------- apply a natural box layout model to all elements --------------*/
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 18px;
+    background-color: #C7EAF2;
+}
+
+header {
+    padding: .5rem 2%;
+    background-color: #698DEB;
+    color: #F7FBFF;
+    font-family: 'Montserrat', sans-serif;
+}
+
+header img {
+    float: left;
+    margin-right: 10px;
+    width: 50px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+header h2 {
+    font-size: 1.0rem
+}
+
+nav {
+    background-color: #59B9FF;
+    font-family: 'Roboto', sans-serif;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li a {
+    display: block;
+    padding: .8rem 2%;
+    text-decoration: none;
+    color: #FFFFFF;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    font-size: 1.2rem;
+}
+
+nav ul li.active a {
+    background-color: #000;
+    color: #FFFFFF;
+}
+
+nav ul li:hover a {
+    background-color: #C7EAF2;
+    color: #333;
+}
+
+nav ul.hide {
+    display: none;
+}
+
+nav button {
+    margin: .2rem 2%;
+    background-color: transparent;
+    border: none;
+    font-size: 1.6rem;
+    color: #fff;
+}
+
+main {
+    padding: 0.2%;
+    min-height: 10rem;
+    color: #FFFFFF;
+    background-color: #B1CEF3;
+}
+
+h1 {
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logo {
+    width: 125px;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+footer {
+    background-color: #698DEB;
+    padding: .5rem 2%;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+}
+
+.preston div {
+    border: 3px solid white;
+    padding: 10px;
+    margin: 10px;
+}
+
+
+/*----- Clearfix: Force an Element not to collapse -----*/
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}

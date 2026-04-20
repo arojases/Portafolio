@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    #board {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      width: fit-content;
+      margin: 100px auto;
+    }
+
+    .tile {
+      width: 100px;
+      height: 100px;
+    }
+
+    .tile:nth-child(3n-1) {
+      border-left: 2px solid black;
+      border-right: 2px solid black;
+    }
+
+    .tile:nth-child(4),
+    .tile:nth-child(5),
+    .tile:nth-child(6) {
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+    }
+
+    .tile div {
+      font-size: 80px;
+      text-align: center;
+    }
+
+    #reset {
+      width: 50px;
+      height: 50px;
+      border: 2px solid black;
+      margin: 0 auto;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div id="board">
+      <div id="1" class="tile"></div>
+      <div id="2" class="tile"></div>
+      <div id="3" class="tile"></div>
+      <div id="4" class="tile"></div>
+      <div id="5" class="tile"></div>
+      <div id="6" class="tile"></div>
+      <div id="7" class="tile"></div>
+      <div id="8" class="tile"></div>
+      <div id="9" class="tile"></div>
+    </div>
+    <div id="reset">
+      <p>Reset</p>
+    </div>
+    <script>
+      const tiles = document.querySelectorAll('.tile');
+      const reset = document.getElementById("reset");
+      let i = 0;
+      let player;
+
+      add = function () {
+
+        if (event.target.childNodes.length == 0) {
+          player = "X"
+          if (i % 2 == 0) {
+            player = "O"
+          }
+          let a = document.createElement("div");
+          a.textContent = player;
+          event.target.appendChild(a);
+          i++;
+        } else return;
+        rules();
+      };
+
+      remove = function () {
+        tiles.forEach(tile => {
+          while (tile.firstChild) {
+            tile.firstChild.remove()
+          }
+        })
+      }
+
+      function rules() {
+        const board_filled = document.getElementsByClassName("tile");
+        let tie = false;
+        for (let i = 0; i < board_filled.length; i++) {
+          if (board_filled[i].innerHTML.length == 0) {
+            tie = false;
+            break;
+          } else {
+            tie = true;
+          }
+        }
+        if (tie == true) {
+          alert("It's a tie");
+        }
+      }
+
+      /*let t1 = document.getElementById("1").value;
+      let t2 = document.getElementById("2").value;
+      let t3 = document.getElementById("3").value;
+      let t4 = document.getElementById("4").value;
+      let t5 = document.getElementById("5").value;
+      let t6 = document.getElementById("6").value;
+      let t7 = document.getElementById("7").value;
+      let t8 = document.getElementById("8").value;
+      let t9 = document.getElementById("9").value;
+
+      if (t1 == "X" && t2 == "X" && t3 == "X") {
+        console.log("Player X wins!")
+      } else if (t4 == "X" && t5 == "X" && t6 == "X") {
+        alert("Player X wins!")
+      } else if (t7 == "X" && t8 == "X" && t9 == "X") {
+        alert("Player X wins!")
+      } else if (t1 == "X" && t4 == "X" && t7 == "X") {
+        alert("Player X wins!")
+      } else if (t2 == "X" && t5 == "X" && t8 == "X") {
+        alert("Player X wins!")
+      } else if (t3 == "X" && t6 == "X" && t9 == "X") {
+        alert("Player X wins!")
+      } else if (t1 == "X" && t5 == "X" && t9 == "X") {
+        alert("Player X wins!")
+      } else if (t3 == "X" && t5 == "X" && t7 == "X") {
+        alert("Player X wins!")
+      } else if (t1 == "O" && t2 == "O" && t3 == "O") {
+        alert("Player O wins!")
+      } else if (t4 == "O" && t5 == "O" && t6 == "O") {
+        alert("Player O wins!")
+      } else if (t7 == "O" && t8 == "O" && t9 == "O") {
+        alert("Player O wins!")
+      } else if (t1 == "O" && t4 == "O" && t7 == "O") {
+        alert("Player O wins!")
+      } else if (t2 == "O" && t5 == "O" && t8 == "O") {
+        alert("Player O wins!")
+      } else if (t3 == "O" && t6 == "O" && t9 == "O") {
+        alert("Player O wins!")
+      } else if (t1 == "O" && t5 == "O" && t9 == "O") {
+        alert("Player O wins!")
+      } else if (t3 == "O" && t5 == "O" && t7 == "O") {
+        alert("Player O wins!")
+      } else if (i == 9) {
+        alert("Tie!");
+      }*/
+
+
+      document.addEventListener('click', add)
+
+      reset.addEventListener('click', remove);
+    </script>
+  </main>
+</body>
+
+</html>

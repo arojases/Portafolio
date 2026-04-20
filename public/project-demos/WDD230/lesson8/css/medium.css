@@ -1,0 +1,54 @@
+/* 35em is also 560px (if basefont is 16px) */
+@media only screen and (min-width: 35rem) {
+
+
+    main {
+        max-width: 64rem;
+        margin: auto;
+    }
+
+    header img {
+        width: auto;
+    }
+
+    div.forecastDiv {
+        display: block;
+    }
+
+    section.forecast {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    section.forecast div {
+        text-align: center;
+        border: 1px solid #aaa;
+        padding: 0;
+    }
+
+    section.forecast div h5 {
+        background-color: #B1CEF3;
+        margin: 0;
+        padding: 1rem 0;
+    }
+
+    .article figure img {
+        display: block;
+        float: right;
+        margin: 5px;
+        width: 400px;
+        height: 300px;
+        margin-left: 2%;
+    }
+
+    .contact img {
+        display: block;
+    }
+
+    div.galleryGrid{
+        grid-template-columns: 1fr 1fr;
+   }
+
+}
+
+/* end of media query */

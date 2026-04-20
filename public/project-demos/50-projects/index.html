@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>50 Projects in 50 Days</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #08111f;
+        --surface: rgba(15, 23, 42, 0.9);
+        --surface-2: rgba(30, 41, 59, 0.7);
+        --border: rgba(148, 163, 184, 0.18);
+        --text: #f8fafc;
+        --muted: #94a3b8;
+        --accent: #eb5d1e;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top, rgba(235, 93, 30, 0.18), transparent 24%),
+          linear-gradient(180deg, #0f1b2f, var(--bg));
+      }
+
+      main {
+        width: min(100% - 2rem, 76rem);
+        margin: 0 auto;
+        padding: 3rem 0 4rem;
+      }
+
+      .hero,
+      .card {
+        border: 1px solid var(--border);
+        border-radius: 1.5rem;
+        background: var(--surface);
+        box-shadow: 0 18px 50px rgba(2, 6, 23, 0.35);
+      }
+
+      .hero {
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .eyebrow {
+        margin: 0 0 0.75rem;
+        color: var(--accent);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 1rem;
+        font-size: clamp(2.1rem, 5vw, 4rem);
+        line-height: 0.95;
+      }
+
+      p {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+
+      .card {
+        padding: 1.2rem;
+        background:
+          radial-gradient(circle at top right, rgba(14, 165, 233, 0.12), transparent 30%),
+          var(--surface-2);
+      }
+
+      .card h2 {
+        font-size: 1rem;
+        min-height: 3rem;
+      }
+
+      a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.8rem;
+        padding: 0 1rem;
+        border-radius: 999px;
+        background: var(--accent);
+        color: #fff7ed;
+        text-decoration: none;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Galeria de demos</p>
+        <h1>50 Projects in 50 Days</h1>
+        <p>
+          Este repositorio no contiene una sola demo, sino una coleccion completa de ejercicios
+          HTML, CSS y JavaScript. Cada boton abre una version real servida desde tu portafolio.
+        </p>
+      </section>
+
+      <section class="grid">
+        <article class="card"><h2>Day 1 - Expanding cards</h2><a href="./Day%201%20-%20Expanding%20cards/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 2 - Progress Steps</h2><a href="./Day%202%20-%20Progress%20Steps/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 3 - Rotating Navigation</h2><a href="./Day%203%20%E2%80%93%20Rotating%20Navigation/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 4 - Hidden Search Widget</h2><a href="./Day%204%20%E2%80%93%20Hidden%20Search%20Widget/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 5 - Blurry Loading</h2><a href="./Day%205%20%E2%80%93%20Blurry%20Loading/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 6 - Scroll Animation</h2><a href="./Day%206%20-%20Scroll%20Animation/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 7 - Split Landing Page</h2><a href="./Day%207%20%E2%80%93%20Split%20Landing%20Page/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 8 - Form Wave Animation</h2><a href="./Day%208%20%E2%80%93%20Form%20Wave%20Animation/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 9 - Sound Board</h2><a href="./Day%209%20%E2%80%93%20Sound%20Board/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 10 - Dad Jokes</h2><a href="./Day%2010%20%E2%80%93%20Dad%20Jokes/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 11 - Event KeyCodes</h2><a href="./Day%2011%20%E2%80%93%20Event%20KeyCodes/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 12 - FAQ Collapse</h2><a href="./Day%2012%20%E2%80%93%20FAQ%20Collapse/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 13 - Random Choice Picker</h2><a href="./Day%2013%20-%20Random%20Choice%20Picker/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 14 - Animated Navigation</h2><a href="./Day%2014%20%E2%80%93%20Animated%20Navigation/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 15 - Incrementing Counter</h2><a href="./Day%2015%20%E2%80%93%20Incrementing%20Counter/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 16 - Drink Water</h2><a href="./Day%2016%20%E2%80%93%20Drink%20Water/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 17 - Movie App</h2><a href="./Day%2017%20%E2%80%93%20Movie%20App/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 18 - Background Slider</h2><a href="./Day%2018%20%E2%80%93%20Background%20Slider/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 19 - Theme Clock</h2><a href="./Day%2019%20%E2%80%93%20Theme%20Clock/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 20 - Button Ripple Effect</h2><a href="./Day%2020%20%E2%80%93%20Button%20Ripple%20Effect/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 21 - Drag N Drop</h2><a href="./Day%2021%20%E2%80%93%20Drag%20N%20Drop/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 22 - Drawing App</h2><a href="./Day%2022%20%E2%80%93%20Drawing%20App/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 23 - Kinetic CSS Loader</h2><a href="./Day%2023%20%E2%80%93%20Kinetic%20CSS%20Loader/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 24 - Content Placeholder</h2><a href="./Day%2024%20%E2%80%93%20Content%20Placeholder/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 25 - Sticky Navbar</h2><a href="./Day%2025%20%E2%80%93%20Sticky%20Navbar/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 26 - Double Vertical Slider</h2><a href="./Day%2026%20%E2%80%93%20Double%20Vertical%20Slider/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 27 - Toast Notification</h2><a href="./Day%2027%20%E2%80%93%20Toast%20Notification/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 28 - GitHub Profiles</h2><a href="./Day%2028%20%E2%80%93%20GitHub%20Profiles/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 29 - Double Heart Click</h2><a href="./Day%2029%20%E2%80%93%20Double%20Heart%20Click/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 30 - Auto Text Effect</h2><a href="./Day%2030%20%E2%80%93%20Auto%20Text%20Effect/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 31 - Password Generator</h2><a href="./Day%2031%20%E2%80%93%20Password%20Generator/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 32 - Good, Cheap, Fast Checkboxes</h2><a href="./Day%2032%20%E2%80%93%20Good,%20Cheap,%20Fast%20Checkboxes/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 33 - Notes App</h2><a href="./Day%2033%20%E2%80%93%20Notes%20App/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 34 - Animated Countdown</h2><a href="./Day%2034%20%E2%80%93%20Animated%20Countdown/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 35 - Image Carousel</h2><a href="./Day%2035%20%E2%80%93%20Image%20Carousel/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 36 - Hoverboard</h2><a href="./Day%2036%20%E2%80%93%20Hoverboard/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 37 - Pokedex</h2><a href="./Day%2037%20%E2%80%93%20Pokedex/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 38 - Mobile Tab Navigation</h2><a href="./Day%2038%20%E2%80%93%20Mobile%20Tab%20Navigation/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 39 - Password Strength Background</h2><a href="./Day%2039%20%E2%80%93%20Password%20Strength%20Background/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 40 - 3D Background Boxes</h2><a href="./Day%2040%20%E2%80%93%203D%20Background%20Boxes/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 41 - Verify Account UI</h2><a href="./Day%2041%20%E2%80%93%20Verify%20Account%20UI/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 42 - Live User Filter</h2><a href="./Day%2042%20%E2%80%93%20Live%20User%20Filter/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 43 - Feedback UI Design</h2><a href="./Day%2043%20%E2%80%93%20Feedback%20UI%20Design/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 44 - Custom Range Slider</h2><a href="./Day%2044%20%E2%80%93%20Custom%20Range%20Slider/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 45 - Netflix Navigation</h2><a href="./Day%2045%20%E2%80%93%20Netflix%20Navigation/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 46 - Quiz App</h2><a href="./Day%2046%20%E2%80%93%20Quiz%20App/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 47 - Testimonial Box Switcher</h2><a href="./Day%2047%20%E2%80%93%20Testimonial%20Box%20Switcher/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 48 - Random Image Feed</h2><a href="./Day%2048%20%E2%80%93%20Random%20Image%20Feed/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 49 - Todo List</h2><a href="./Day%2049%20%E2%80%93%20Todo%20List/index.html">Abrir demo</a></article>
+        <article class="card"><h2>Day 50 - Todo List</h2><a href="./Day%2050%20%E2%80%93%20Todo%20List/index.html">Abrir demo</a></article>
+      </section>
+    </main>
+  </body>
+</html>

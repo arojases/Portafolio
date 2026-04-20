@@ -1,0 +1,42 @@
+/* 64em is also 1028px (if basefont is 16px) */
+@media only screen and (min-width: 64rem) {
+
+
+    main,
+    div,
+    footer,
+    nav,
+    header {
+        max-width: 64rem;
+        margin: auto;
+    }
+
+    nav button {
+        display: none;
+    }
+
+    nav ul li a {
+        border: none;
+        margin: 0px;
+        padding: 10px;
+    }
+
+    nav ul.hide {
+        display: block;
+    }
+
+    nav ul li {
+        float: left;
+        align-items: center;
+    }
+
+    .preston section, div {
+        background-color: #C7EAF2;
+        color: black;
+    }
+
+
+
+}
+
+/* end of media query */

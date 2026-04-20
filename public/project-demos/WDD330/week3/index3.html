@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 3</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+    <div>
+        <header>
+            <h1>Week 3 Notes</h1>
+        </header>
+    </div>
+    <section class="sec">
+        <h2>Resumen</h2>
+        <h3>nodeType property</h3>
+        <p>
+            For example, we can use the nodeType property to find out what type of node it is:
+        </p>
+        <p>
+            body.nodeType; 1
+        </p>
+        <p>
+            All nodes have a numerical code to signify what type they are. These are summmarized in the table below.
+            Code Type
+        </p>
+        <ul>
+            <li>
+                1 element
+            </li>
+            <li>
+                2 attribute
+            </li>
+            <li>
+                3 text
+            </li>
+            <li>
+                8 comment
+            </li>
+            <li>
+                9 body
+            </li>
+        </ul>
+        <p>
+            There are other types not covered in the table, but these aren't used in HTML documents. As we can see from
+            the table, a code of 1 confirms that body is an element node. We can also use the nodeName property to find
+            the name of the element: body.nodeName; "BODY"
+        </p>
+        <p>
+            Not Actually Arrays Node lists are array-like objects, but they are not arrays. You can access each item
+            using index notation. For example, document.images[0] will return the first image in the node list of all
+            the images in the document. They also have a length property, which can be used to iterate through every
+            element using a for loop, like so:
+            for (let i=0 ; i document.images.length ; i++) {
+            // do something with each image using document.images[i] }
+        </p>
+        <p>
+            Node lists don't have any other array methods such as slice, splice and join. ES6 makes it very easy to turn
+            a node list into an array, however. You can either use the Array.from() method:
+        </p>
+
+        <p>const imageArray = Array.from(document.images);</p>
+
+        <p>Or you can use the spread operator:</p>
+
+        <p>const imageArray = [...document.images];</p>
+
+        <p>Once the node list has been turned into an array, you can use all the array methods on it.
+
+            some attribute names such as class and for are reserved keywords in JavaScript, so we need to use className
+            and htmlFor instead.</p>
+
+    </section>
+
+    <section class="ref">
+        <a href="../teamActivity/team_activity2_arrayCardio1.html">Team Activity Week 3</a>
+    </section>
+
+    <section class="ref">
+        <a href="../index.html">Back</a>
+    </section>
+
+</body>
+
+</html>

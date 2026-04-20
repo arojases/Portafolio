@@ -1,0 +1,374 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&family=Montserrat&family=Roboto&display=swap');*/
+
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/*----------- apply a natural box layout model to all elements --------------*/
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 18px;
+    background-color: #C7EAF2;
+}
+
+header {
+    padding: .5rem 2%;
+    background-color: #698DEB;
+    color: #F7FBFF;
+    font-family: 'Montserrat', sans-serif;
+}
+
+header img {
+    float: left;
+    margin-right: 10px;
+    width: 50px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+header h2 {
+    font-size: 1.0rem
+}
+
+/*------------------------NAV---------------------------*/
+nav {
+    background-color: #59B9FF;
+    font-family: 'Roboto', sans-serif;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li a {
+    display: block;
+    padding: .8rem 2%;
+    text-decoration: none;
+    color: #FFFFFF;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    font-size: 1.2rem;
+}
+
+nav ul li.active a {
+    background-color: #000;
+    color: #FFFFFF;
+}
+
+nav ul li:hover a {
+    background-color: #C7EAF2;
+    color: #333;
+}
+
+nav ul.hide {
+    display: none;
+}
+
+nav button {
+    margin: .2rem 2%;
+    background-color: transparent;
+    border: none;
+    font-size: 1.6rem;
+    color: #fff;
+}
+
+/*------------------------Main---------------------------*/
+
+main {
+    padding: 0.2%;
+    min-height: 10rem;
+    color: #FFFFFF;
+    background-color: #B1CEF3;
+}
+
+h1 {
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logo {
+    width: 125px;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.preston div,
+section {
+    padding: 10px;
+    margin: 10px;
+}
+
+.preston h1,
+h3 {
+    text-align: center;
+}
+
+.hero {
+    width: 100%;
+}
+
+.heroImg {
+    width: 100%;
+}
+
+.heroDiv {
+    position: relative;
+}
+
+.weathersummary {
+    position: absolute;
+    top: 40px;
+    margin-left: 3rem;
+    background: radial-gradient(#eee, #4567aa);
+    padding: 1.5rem;
+    border: 1px solid #000;
+    border-radius: 8px;
+    box-shadow: 0 0 30px #111;
+    opacity: .8;
+}
+
+/*div.forecastDiv {
+    display: none;
+}*/
+
+section div#gridForecast {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    margin: 0 30px 30px 30px;
+}
+
+section.forecastDiv div h4 {
+    background-color: #59B9FF;
+    color: white;
+    margin: 0;
+    padding: 1rem 0;
+}
+
+.forecastDiv section {
+    text-align: center;
+    border: 1px solid #698DEB;
+}
+
+.article figure img {
+    width: 100%;
+}
+
+.article figure {
+    width: 100%;
+    margin: 0;
+}
+
+.article img {
+    width: 300px;
+    margin-top: 10px;
+    box-shadow: lightslategrey 10px 10px 10px;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #B1CEF3;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.contact img {
+    width: 100%;
+    margin: 0;
+    width: 300px;
+    margin-top: 10px;
+    display: none;
+}
+
+div#message {
+    background-color: #59B9FF;
+    text-align: center;
+}
+
+div.showme {
+    display: block;
+}
+
+div.hideme {
+    display: none;
+}
+
+div.galleryTittle {
+    text-align: center;
+}
+
+div.galleryGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    width: 94%;
+}
+
+div.galleryGrid figure:hover {
+    box-shadow: 10px 5px 5px #59B9FF;
+}
+
+div.galleryGrid figure img {
+    width: 100%;
+    margin: auto;
+}
+
+.caption {
+    display: none;
+    margin: auto;
+}
+
+/*------------------------FORM----------------------------*/
+form fieldset {
+    margin: 2rem 0;
+    border: 1px solid #445ba9;
+    border-radius: 10px;
+    padding: .5rem 2%;
+}
+
+form legend {
+    color: #445ba9;
+    margin: 0 1rem;
+    padding: 0 .5rem;
+}
+
+form label.top,
+form p,
+form label.sbs {
+    display: block;
+    padding-top: 1rem;
+    font-size: .9rem;
+    color: #445ba9;
+}
+
+#severityValue {
+    margin: 0 15px;
+}
+
+form label.top input,
+form label.top select {
+    -webkit-appearance: none;
+    display: block;
+    font-size: 1rem;
+    border: solid 1px #999;
+    border-radius: 4px;
+    padding: .75rem;
+    width: 100%;
+    max-width: 20rem;
+    background-color: #C7EAF2;
+}
+
+form textarea {
+    background-color: #C7EAF2;
+    display: block;
+}
+
+form label.sbs {
+    display: block;
+    padding: .50rem 0;
+}
+
+form input.submitBtn {
+    border: none;
+    background-color: #131c9c;
+    color: white;
+    border-radius: 1rem;
+    padding: .75rem 1.5rem;
+    margin: 0 0 2rem 2%;
+    width: 96%;
+    max-width: 20rem;
+}
+
+form label.top input:required {
+    border-left: red solid 6px;
+}
+
+form label.top input:required:valid {
+    border-left: green solid 6px;
+}
+
+/*------------------------Home-----------------------------*/
+.img_home {
+    display: flex;
+    justify-content: center;
+}
+
+.cards section {
+    text-align: center;
+    padding-bottom: 2rem;
+    background-color: #B1CEF3;
+    border: 0.15rem solid cornflowerblue;
+    border-radius: 0.7rem;
+    margin: 1rem;
+    box-shadow: 1px 1px 1px;
+}
+
+.cards h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 1.9rem;
+    color: #005198;
+    text-shadow: 1px 2px #B1CEF3;
+}
+
+.cards h4 {
+    color: #001f43;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-top: 0px;
+}
+
+main h2 {
+    text-align: center;
+}
+
+.cards img {
+    width: 100%;
+}
+
+.wireframe {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    color: white;
+}
+
+
+/*------------------------Footer---------------------------*/
+
+footer {
+    background-color: #698DEB;
+    padding: .5rem 2%;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+
+/*----- Clearfix: Force an Element not to collapse -----*/
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}

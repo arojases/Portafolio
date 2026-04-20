@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDo List</title>
+  <link rel="shortcut icon" href="./res/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div id="app">
+    <div id="maintitle">
+      <h1>ToDo List</h1>
+    </div>
+    <ul id="taskBoard">
+    </ul>
+    <div id="taskFooter">
+      <div><span id="taskCounter">0</span> tasks left</div>
+      <div id="taskAll" class="filter activeFilter">All</div>
+      <div id="taskActive" class="filter">Active</div>
+      <div id="taskCompleted" class="filter">Completed</div>
+    </div>
+    <div id="newTaskForm">
+      <input type="text" name="newTask" id="newTask" /><button input type="button" id="addButton"><i
+          class="fa fa-plus"></i></i></button>
+    </div>
+  </div>
+  <script src="app.js" type="module"></script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 10</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+    <div>
+        <header>
+            <h1>Week 10 Notes</h1>
+        </header>
+    </div>
+    <section class="sec">
+        <h2>Notes</h2>
+        <p>The Constraint validation API makes the following properties available on the above elements. <br> <br>
+
+            <br> <br> <b> validationMessage: </b> Returns a localized message describing the validation constraints that
+            the control doesn't satisfy (if any). If the control is not a candidate for constraint validation
+            (willValidate is false) or the element's value satisfies its constraints (is valid), this will return an
+            empty string.
+            <br> <br> <b> validity: </b> Returns a ValidityState object that contains several properties describing the
+            validity state of the element. You can find full details of all the available properties in the
+            ValidityState reference page; below is listed a few of the more common ones:
+            <br> <br> <b> patternMismatch: </b> Returns true if the value does not match the specified pattern, and
+            false if it does match. If true, the element matches the :invalid CSS pseudo-class.
+            <br> <br> <b> tooLong: </b> Returns true if the value is longer than the maximum length specified by the
+            maxlength attribute, or false if it is shorter than or equal to the maximum. If true, the element matches
+            the :invalid CSS pseudo-class.
+            <br> <br> <b> tooShort: </b> Returns true if the value is shorter than the minimum length specified by the
+            minlength attribute, or false if it is greater than or equal to the minimum. If true, the element matches
+            the :invalid CSS pseudo-class.
+            <br> <br> <b> rangeOverflow: </b> Returns true if the value is greater than the maximum specified by the max
+            attribute, or false if it is less than or equal to the maximum. If true, the element matches the :invalid
+            and :out-of-range CSS pseudo-classes.
+            <br> <br> <b> rangeUnderflow: </b> Returns true if the value is less than the minimum specified by the min
+            attribute, or false if it is greater than or equal to the minimum. If true, the element matches the :invalid
+            and :out-of-range CSS pseudo-classes.
+            <br> <br> <b> typeMismatch: </b> Returns true if the value is not in the required syntax (when type is email
+            or url), or false if the syntax is correct. If true, the element matches the :invalid CSS pseudo-class.
+            <br> <br> <b> valid: </b> Returns true if the element meets all its validation constraints, and is therefore
+            considered to be valid, or false if it fails any constraint. If true, the element matches the :valid CSS
+            pseudo-class; the :invalid CSS pseudo-class otherwise.
+            <br> <br> <b> valueMissing: </b> Returns true if the element has a required attribute, but no value, or
+            false otherwise. If true, the element matches the :invalid CSS pseudo-class.
+            <br> <br> <b> willValidate: </b> Returns true if the element will be validated when the form is submitted;
+            false otherwise.
+            <br> <br> <b> The Constraint </b> Validation API also makes the following methods available on the above
+            elements.
+            <br> <br>
+            <br> <br> <b> checkValidity():</b> Returns true if the element's value has no validity problems; false
+            otherwise. If the element is invalid, this method also fires an invalid event on the element.
+            <br> <br> <b> setCustomValidity(message):</b> Adds a custom error message to the element; if you set a
+            custom error message, the element is considered to be invalid, and the specified error is displayed. This
+            lets you use JavaScript code to establish a validation failure other than those offered by the standard
+            HTML5 validation constraints. The message is shown to the user when reporting the problem.
+        </p>
+        <br>
+        <p><ul><li> Both then and async/await can be used for fetch as both methods are used to work with promises</ul></li> </p>
+
+    </section>
+
+    <section class="ref">
+        <a href="../teamActivity/taw10/quake.html">Team Activity week 10</a>
+    </section>
+
+    <section class="ref">
+        <a href="../index.html">Back</a>
+    </section>
+
+</body>
+
+</html>

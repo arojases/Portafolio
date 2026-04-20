@@ -1,0 +1,16 @@
+{
+    "rentals": [
+     
+        { "name":"metro", "reservation":[ "20", "30" ], "walk-in":["25", "35"]},
+     
+        { "name":"dio", "reservation":[ "30", "40" ], "walk-in":["35", "45"]},
+
+        { "name":"pcx", "reservation":[ "40", "50" ], "walk-in":["45", "55"]},
+
+        { "name":"pioneer", "reservation":[ "50", "70" ], "walk-in":["60", "80"]},
+
+        { "name":"wrangler-4", "reservation":[ "70", "100" ], "walk-in":["85", "125"]},
+
+        { "name":"wrangler-2", "reservation":[ "60", "85" ], "walk-in":["70", "90"]}
+    ]
+ }

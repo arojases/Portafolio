@@ -1,0 +1,319 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&family=Montserrat&family=Roboto&display=swap');*/
+
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/*----------- apply a natural box layout model to all elements --------------*/
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Yeon Sung', cursive;
+    font-size: 20px;
+    background-color: #04BFBF;
+}
+
+header {
+    padding: .5rem 2%;
+    background-color: #027373;
+    color: #F7FBFF;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+header img {
+    float: left;
+    margin-right: 10px;
+    width: 50px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+header h2 {
+    font-size: 1.0rem
+}
+
+/*------------------------NAV---------------------------*/
+nav {
+    background-color: #658C0F;
+    font-family: 'Yeon Sung', cursive;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li a {
+    display: block;
+    padding: .8rem 2%;
+    text-decoration: none;
+    color: #FFFFFF;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    font-size: 1.2rem;
+}
+
+nav ul li.active a {
+    background-color: #000;
+    color: #FFFFFF;
+}
+
+nav ul li:hover a {
+    background-color: #C7EAF2;
+    color: #333;
+}
+
+nav ul.hide {
+    display: none;
+}
+
+nav button {
+    margin: .2rem 2%;
+    background-color: transparent;
+    border: none;
+    font-size: 1.6rem;
+    color: #fff;
+}
+
+/*------------------------Main---------------------------*/
+
+main {
+    padding: 0.2%;
+    min-height: 10rem;
+    color: #FFFFFF;
+    background-color: #04ADBF;
+}
+
+h1, h2, h3 {
+    padding: 10px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.logo {
+    width: 125px;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.preston div,
+section {
+    padding: 10px;
+    margin: 10px;
+}
+
+.preston h1,
+h3 {
+    text-align: center;
+}
+
+.hero {
+    width: 100%;
+}
+
+.heroImg {
+    width: 100%;
+}
+
+.heroDiv {
+    position: relative;
+}
+
+.weathersummary {
+    position: absolute;
+    top: 40px;
+    right: 3rem;
+    background: radial-gradient(#eee, #4567aa);
+    padding: 1.5rem;
+    border: 1px solid #000;
+    border-radius: 8px;
+    box-shadow: 0 0 30px #111;
+    opacity: .8;
+}
+
+/*div.forecastDiv {
+    display: none;
+}*/
+
+section div#gridForecast {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    margin: 0 30px 30px 30px;
+}
+
+section.forecastDiv div h4 {
+    background-color: #59B9FF;
+    color: white;
+    margin: 0;
+    padding: 1rem 0;
+}
+
+.forecastDiv section {
+    text-align: center;
+    border: 1px solid #698DEB;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #B1CEF3;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+img{
+    width: 100%;
+}
+
+.tour{
+    width: 50%;
+    margin: auto;
+    display: block;
+}
+
+.contact .img {
+    width: 100%;
+    margin: 0;
+    width: 300px;
+    margin-top: 10px;
+    display: none;
+}
+
+div#message {
+    background-color: #59B9FF;
+    text-align: center;
+}
+
+div.showme {
+    display: block;
+}
+
+div.hideme {
+    display: none;
+}
+
+.caption {
+    display: none;
+    margin: auto;
+}
+
+table {
+    margin-bottom: 2rem;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: separate;
+}
+
+th,
+td {
+    padding: 15px;
+}
+
+/*------------------------FORM----------------------------*/
+form fieldset {
+    margin: 2rem 0;
+    border: 1px solid #658C0F;
+    border-radius: 10px;
+    padding: .5rem 2%;
+}
+
+form legend {
+    color: white;
+    margin: 0 1rem;
+    padding: 0 .5rem;
+}
+
+form label.top,
+form p,
+form label.sbs {
+    display: block;
+    padding-top: 1rem;
+    font-size: .9rem;
+    color: white;
+}
+
+#severityValue {
+    margin: 0 15px;
+}
+
+form label.top input,
+form label.top select {
+    -webkit-appearance: none;
+    display: block;
+    font-size: 1rem;
+    border: solid 1px #999;
+    border-radius: 4px;
+    padding: .75rem;
+    width: 100%;
+    max-width: 20rem;
+    background-color: #C7EAF2;
+}
+
+form textarea {
+    background-color: #C7EAF2;
+    display: block;
+}
+
+form label.sbs {
+    display: block;
+    padding: .50rem 0;
+}
+
+form input.submitBtn {
+    border: none;
+    background-color: #F2E3D5;
+    color: #027373;
+    border-radius: 1rem;
+    padding: .75rem 1.5rem;
+    margin: 0 0 2rem 2%;
+    width: 96%;
+    max-width: 20rem;
+}
+
+form label.top input:required {
+    border-left: red solid 6px;
+}
+
+form label.top input:required:valid {
+    border-left: green solid 6px;
+}
+
+main h2 {
+    text-align: center;
+}
+
+.social img{
+    width: 50px;
+}
+
+/*------------------------Footer---------------------------*/
+
+footer {
+    background-color: #027373;
+    padding: .5rem 2%;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+
+
+/*----- Clearfix: Force an Element not to collapse -----*/
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}

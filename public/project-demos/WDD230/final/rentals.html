@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoots</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="css/large.css" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico">
+</head>
+
+<body>
+    <div id="message">
+        <br>
+        Saturday = Preston Pancakes in the Park!
+        <br><br>
+        9:00 a.m. Saturday at the city park pavilion
+        <br>
+    </div>
+    <header class="clearfix">
+        <img class="logo" src="images/scoots-logo1.png" alt="Logo">
+        <h1>Scoots</h1>
+        <h2>Be ready for the adventure</h2>
+    </header>
+    <nav class="clearfix">
+        <button onclick="toggleMenu()">&#9776; Menu</button>
+        <ul id="primaryNav" class="hide">
+            <li><a href="index.html">Home</a></li>
+            <li class="active"><a href="rentals.html">Rentals</a></li>
+            <li><a href="reservations.html">Reservations</a></li>
+            <li><a href="tour.html">Tour</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <main class="preston">
+        
+            <h1>Rentals</h1>
+
+            <table>
+                <tr>
+                    <th colspan="7">Max. Persons and Price Chart (includes Tax)</th>
+                </tr>
+                <tr>
+                    <th colspan="3"></th>
+                    <th colspan="2">Reservation</th>
+                    <th colspan="2">Walk-In</th>
+                </tr>
+                <tr>
+                    <th>Preview</th>
+                    <th>Rental Type</th>
+                    <th>Max. Persons</th>
+                    <th>Half Day (3 hrs)</th>
+                    <th>Full Day</th>
+                    <th>Half Day (3 hrs)</th>
+                    <th>Full Day</th>
+                </tr>
+                <tr id="rental-table">
+                    <td><img src="images/honda-metro.jpg" alt="Honda Metro scooter"></td>
+                    <td>~Honda Metro Scooter</td>
+                    <td>1</td>
+                    <td>$20</td>
+                    <td>$30</td>
+                    <td>$25</td>
+                    <td>$35</td>
+                </tr>
+                <tr>
+                    <td><img src="images/honda-dio.jpg" alt="Honda Dio scooter"></td>
+                    <td>~Honda Dio Scooter</td>
+                    <td>2</td>
+                    <td>$30</td>
+                    <td>$40</td>
+                    <td>$35</td>
+                    <td>$45</td>
+                </tr>
+                <tr>
+                    <td><img src="images/honda-pcx.jpg" alt="Honda PCX150 scooter"></td>
+                    <td>~Honda PCX150 Scooter</td>
+                    <td>2</td>
+                    <td>$40</td>
+                    <td>$50</td>
+                    <td>$45</td>
+                    <td>$55</td>
+                </tr>
+                <tr>
+                    <td><img src="images/honda-pioneer.jpg" alt="Honda Pioneer ATV"></td>
+                    <td>Honda Pioneer ATV</td>
+                    <td>4</td>
+                    <td>$50</td>
+                    <td>$70</td>
+                    <td>$60</td>
+                    <td>$80</td>
+                </tr>
+                <tr>
+                    <td><img src="images/wrangler-4.jpg" alt="Jeep Wrangler 4-door"></td>
+                    <td>Jeep Wrangler - 4 door with a/c</td>
+                    <td>5</td>
+                    <td>$70</td>
+                    <td>$100</td>
+                    <td>$85</td>
+                    <td>$125</td>
+                </tr>
+                <tr>
+                    <td><img src="images/wrangler-2.jpg" alt="Jeep Wrangler 2-door"></td>
+                    <td>Jeep Wrangler - 2 door</td>
+                    <td>4</td>
+                    <td>$60</td>
+                    <td>$85</td>
+                    <td>$70</td>
+                    <td>$90</td>
+                </tr>
+            </table>
+
+        
+    </main>
+    <footer>
+        &copy; 2020 &bull; Scoots &bull; Ariel Rojas || <span id="currentDate"></span>
+    </footer>
+    <script src="js/currentDate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script src="js/webFontLoad.js"></script>
+    <!--<script src="js/windchill.js"></script>-->
+    <script src="js/lazyload.js"></script>
+    <script src="js/forecast.js"></script>
+    <script src="data/rentals.json"></script>
+
+</body>
+
+</html>

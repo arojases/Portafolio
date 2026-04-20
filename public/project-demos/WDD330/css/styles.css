@@ -1,0 +1,21 @@
+body {
+    background-color: lightskyblue;
+    text-align: center;
+}
+
+header {
+    font-size: 28px;
+}
+
+.sec {
+    font-size: 24px;
+}
+
+p {
+    width: 50%;
+    margin: auto;
+}
+
+.ref {
+    margin-top: 25px;
+}
