@@ -1,18 +1,12 @@
-export interface DemoVariant {
-  label: string;
-  description: string;
-  url?: string;
-}
-
 export interface ProjectDemoEntry {
   overview: string;
-  variants?: DemoVariant[];
+  primaryUrl?: string;
+  primaryLabel?: string;
 }
 
 export const projectDemoConfig: Record<string, ProjectDemoEntry> = {
   'Gestion-de-autos---PHP': {
     overview:
-      'Este proyecto no tiene una sola demo principal. Reune varias pantallas y flujos HTML/PHP, por eso necesita una pagina intermedia antes de abrir una vista concreta.',
-    variants: [],
+      'Este proyecto todavia no tiene una demo web conectada al portafolio. Cuando agreguemos un HTML real dentro de public/project-demos, el boton abrira esa vista directamente.',
   },
 };

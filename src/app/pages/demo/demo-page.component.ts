@@ -35,20 +35,18 @@ export class DemoPageComponent {
       }
 
       const demoEntry = projectDemoConfig[repository.name];
-      const variants = demoEntry?.variants ?? [];
-      const hasMultipleDemos = variants.length > 1 || (!!demoEntry && !repository.demoUrl);
 
       return {
         status: 'ready' as const,
         repository,
         user: data.user,
+        primaryUrl: demoEntry?.primaryUrl ?? repository.demoUrl ?? undefined,
+        primaryLabel: demoEntry?.primaryLabel ?? 'Abrir demo',
         overview:
           demoEntry?.overview ??
           (repository.demoUrl
             ? 'Este proyecto tiene una demo principal publicada y puedes abrirla desde aqui.'
             : 'Este proyecto todavia no tiene una demo publica unica conectada al portafolio.'),
-        variants,
-        hasMultipleDemos,
       };
     }),
   );

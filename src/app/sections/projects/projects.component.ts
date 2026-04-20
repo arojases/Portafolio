@@ -1,7 +1,7 @@
 import { CommonModule, DatePipe } from '@angular/common';
 import { Component, Input, computed, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
+import { projectDemoConfig } from '../../core/config/project-demos.config';
 import { ProjectCardData } from '../../core/models/github.models';
 import { fadeInUp, staggerReveal } from '../../shared/animations/fade.animation';
 
@@ -9,7 +9,7 @@ type SortMode = 'created' | 'name';
 
 @Component({
   selector: 'app-projects',
-  imports: [CommonModule, DatePipe, RouterLink],
+  imports: [CommonModule, DatePipe],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
   animations: [fadeInUp, staggerReveal],
@@ -52,6 +52,25 @@ export class ProjectsComponent {
         return new Date(right.createdAt).getTime() - new Date(left.createdAt).getTime();
       });
   });
+
+  protected getDemoHref(repository: ProjectCardData): string {
+    const demoEntry = projectDemoConfig[repository.name];
+
+    if (demoEntry?.primaryUrl) {
+      return demoEntry.primaryUrl;
+    }
+
+    if (repository.demoUrl) {
+      return repository.demoUrl;
+    }
+
+    return `/demo/${encodeURIComponent(repository.name)}`;
+  }
+
+  protected shouldOpenDemoInNewTab(repository: ProjectCardData): boolean {
+    const href = this.getDemoHref(repository);
+    return /^https?:\/\//i.test(href) || href.startsWith('/project-demos/');
+  }
 
   protected selectLanguage(language: string): void {
     this.selectedLanguage.set(language);

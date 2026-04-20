@@ -65,7 +65,13 @@
 
         <div class="project-card__footer">
           <div class="actions">
-            <a [routerLink]="['/demo', repository.name]">{{ repository.demoLabel }}</a>
+            <a
+              [href]="getDemoHref(repository)"
+              [attr.target]="shouldOpenDemoInNewTab(repository) ? '_blank' : null"
+              [attr.rel]="shouldOpenDemoInNewTab(repository) ? 'noreferrer' : null"
+            >
+              Abrir demo
+            </a>
           </div>
         </div>
       </article>
