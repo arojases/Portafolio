@@ -6,6 +6,9 @@
     "start": "ng serve --port 4300",
     "build": "ng build",
     "build:pages": "ng build --base-href /Portafolio/",
+    "demo:contactos": "powershell -ExecutionPolicy Bypass -File scripts/start-django-demo.ps1",
+    "demo:autos": "powershell -ExecutionPolicy Bypass -File scripts/start-php-demo.ps1",
+    "demo:backends": "powershell -ExecutionPolicy Bypass -File scripts/start-project-demos.ps1",
     "sync:github": "node scripts/generate-portfolio-data.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

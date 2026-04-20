@@ -1,5 +1,6 @@
 import { CommonModule, DatePipe } from '@angular/common';
-import { Component, Input, computed, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Input, computed, inject, signal } from '@angular/core';
 
 import { projectDemoConfig } from '../../core/config/project-demos.config';
 import { ProjectCardData } from '../../core/models/github.models';
@@ -15,6 +16,8 @@ type SortMode = 'created' | 'name';
   animations: [fadeInUp, staggerReveal],
 })
 export class ProjectsComponent {
+  private readonly document = inject(DOCUMENT);
+
   @Input({ required: true }) set repositories(value: ProjectCardData[]) {
     this._repositories.set(value);
   }
@@ -57,19 +60,27 @@ export class ProjectsComponent {
     const demoEntry = projectDemoConfig[repository.name];
 
     if (demoEntry?.primaryUrl) {
-      return demoEntry.primaryUrl;
+      return this.resolveUrl(demoEntry.primaryUrl);
     }
 
     if (repository.demoUrl) {
       return repository.demoUrl;
     }
 
-    return `/demo/${encodeURIComponent(repository.name)}`;
+    return this.resolveUrl(`demo/${encodeURIComponent(repository.name)}`);
   }
 
   protected shouldOpenDemoInNewTab(repository: ProjectCardData): boolean {
     const href = this.getDemoHref(repository);
-    return /^https?:\/\//i.test(href) || href.startsWith('/project-demos/');
+    return /^https?:\/\//i.test(href) || href.includes('/project-demos/');
+  }
+
+  private resolveUrl(path: string): string {
+    if (/^https?:\/\//i.test(path)) {
+      return path;
+    }
+
+    return new URL(path, this.document.baseURI).toString();
   }
 
   protected selectLanguage(language: string): void {

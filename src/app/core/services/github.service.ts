@@ -14,7 +14,7 @@ interface PortfolioCache {
 export class GitHubService {
   private readonly http = inject(HttpClient);
   private readonly apiUrl = 'https://api.github.com';
-  private readonly cacheKey = 'portfolio-github-cache-v2';
+  private readonly cacheKey = 'portfolio-github-cache-v3';
   private readonly cacheMaxAgeMs = 1000 * 60 * 30;
   private readonly username = portfolioConfig.githubUsername;
 

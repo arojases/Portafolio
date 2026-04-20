@@ -1,4 +1,4 @@
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, DOCUMENT } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { combineLatest, map } from 'rxjs';
@@ -15,6 +15,7 @@ import { NavbarComponent } from '../../sections/navbar/navbar.component';
   styleUrl: './demo-page.component.scss',
 })
 export class DemoPageComponent {
+  private readonly document = inject(DOCUMENT);
   private readonly route = inject(ActivatedRoute);
   private readonly portfolioDataService = inject(PortfolioDataService);
 
@@ -36,12 +37,12 @@ export class DemoPageComponent {
 
       const demoEntry = projectDemoConfig[repository.name];
 
-      return {
-        status: 'ready' as const,
-        repository,
-        user: data.user,
-        primaryUrl: demoEntry?.primaryUrl ?? repository.demoUrl ?? undefined,
-        primaryLabel: demoEntry?.primaryLabel ?? 'Abrir demo',
+        return {
+          status: 'ready' as const,
+          repository,
+          user: data.user,
+          primaryUrl: this.resolveUrl(demoEntry?.primaryUrl ?? repository.demoUrl ?? undefined),
+          primaryLabel: demoEntry?.primaryLabel ?? 'Abrir demo',
         overview:
           demoEntry?.overview ??
           (repository.demoUrl
@@ -50,4 +51,16 @@ export class DemoPageComponent {
       };
     }),
   );
+
+  private resolveUrl(path?: string | null): string | undefined {
+    if (!path) {
+      return undefined;
+    }
+
+    if (/^https?:\/\//i.test(path)) {
+      return path;
+    }
+
+    return new URL(path, this.document.baseURI).toString();
+  }
 }
