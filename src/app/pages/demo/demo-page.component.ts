@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { combineLatest, map } from 'rxjs';
 
-import { projectDemoConfig } from '../../core/config/project-demos.config';
+import { getProjectDemoEntry } from '../../core/config/project-demos.config';
 import { PortfolioDataService } from '../../core/services/portfolio-data.service';
 import { FooterComponent } from '../../sections/footer/footer.component';
 import { NavbarComponent } from '../../sections/navbar/navbar.component';
@@ -35,7 +35,7 @@ export class DemoPageComponent {
         };
       }
 
-      const demoEntry = projectDemoConfig[repository.name];
+      const demoEntry = getProjectDemoEntry(repository.id);
 
       return {
         status: 'ready' as const,

@@ -2,7 +2,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { DOCUMENT } from '@angular/common';
 import { Component, Input, computed, inject, signal } from '@angular/core';
 
-import { projectDemoConfig } from '../../core/config/project-demos.config';
+import { getProjectDemoEntry } from '../../core/config/project-demos.config';
 import { ProjectCardData } from '../../core/models/github.models';
 import { fadeInUp, staggerReveal } from '../../shared/animations/fade.animation';
 
@@ -57,7 +57,7 @@ export class ProjectsComponent {
   });
 
   protected getDemoHref(repository: ProjectCardData): string {
-    const demoEntry = projectDemoConfig[repository.name];
+    const demoEntry = getProjectDemoEntry(repository.id);
 
     if (demoEntry?.primaryUrl) {
       return this.resolveUrl(demoEntry.primaryUrl);
