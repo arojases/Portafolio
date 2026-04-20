@@ -1,5 +1,6 @@
 import { CommonModule, DatePipe } from '@angular/common';
 import { Component, Input, computed, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import { ProjectCardData } from '../../core/models/github.models';
 import { fadeInUp, staggerReveal } from '../../shared/animations/fade.animation';
@@ -8,7 +9,7 @@ type SortMode = 'created' | 'name';
 
 @Component({
   selector: 'app-projects',
-  imports: [CommonModule, DatePipe],
+  imports: [CommonModule, DatePipe, RouterLink],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
   animations: [fadeInUp, staggerReveal],

@@ -1,0 +1,82 @@
+@let vm = vm$ | async;
+
+@if (vm) {
+  <div class="page-shell">
+    <app-navbar />
+
+    <main class="demo-page">
+      @if (vm.status === 'ready') {
+        <section class="hero-card">
+          <p class="eyebrow">Demo del proyecto</p>
+          <h1>{{ vm.repository.name }}</h1>
+          <p class="lead">{{ vm.repository.description }}</p>
+          <p>{{ vm.overview }}</p>
+
+          <div class="action-row">
+            <a class="button secondary" routerLink="/" fragment="projects">Volver a proyectos</a>
+            @if (vm.repository.demoUrl && !vm.hasMultipleDemos) {
+              <a class="button primary" [href]="vm.repository.demoUrl" target="_blank" rel="noreferrer">
+                Abrir demo
+              </a>
+            }
+          </div>
+        </section>
+
+        @if (vm.hasMultipleDemos) {
+          <section class="demo-panel">
+            <h2>Este proyecto muestra varias vistas</h2>
+            <p>
+              No hay una sola pagina HTML que represente todo el proyecto. Aqui puedes centralizar
+              distintas pantallas, flujos o modulos cuando los vayas definiendo.
+            </p>
+
+            @if (vm.variants.length) {
+              <div class="demo-grid">
+                @for (variant of vm.variants; track variant.label) {
+                  <article class="demo-card">
+                    <h3>{{ variant.label }}</h3>
+                    <p>{{ variant.description }}</p>
+                    @if (variant.url) {
+                      <a class="button primary" [href]="variant.url" target="_blank" rel="noreferrer">
+                        Abrir vista
+                      </a>
+                    }
+                  </article>
+                }
+              </div>
+            } @else {
+              <article class="demo-card placeholder">
+                <h3>Multiples demos pendientes de conectar</h3>
+                <p>
+                  El portafolio ya reconoce que este repositorio necesita una pagina intermedia.
+                  Cuando quieras, aqui podemos agregar botones para cada HTML o flujo individual.
+                </p>
+              </article>
+            }
+          </section>
+        } @else if (!vm.repository.demoUrl) {
+          <section class="demo-panel">
+            <h2>Demo aun no publicada</h2>
+            <p>
+              Este repositorio aparece en tu portafolio, pero todavia no tiene una URL de demo
+              cargada en GitHub ni una vista interna configurada.
+            </p>
+          </section>
+        }
+      } @else {
+        <section class="hero-card">
+          <p class="eyebrow">Demo del proyecto</p>
+          <h1>Proyecto no encontrado</h1>
+          <p class="lead">
+            No pude encontrar una tarjeta asociada a <strong>{{ vm.repositoryName }}</strong>.
+          </p>
+          <div class="action-row">
+            <a class="button primary" routerLink="/">Volver al inicio</a>
+          </div>
+        </section>
+      }
+    </main>
+
+    <app-footer [user]="vm.user" />
+  </div>
+}

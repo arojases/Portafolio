@@ -74,20 +74,9 @@ function resolveDemo(repository) {
     };
   }
 
-  if (repository.fork) {
-    return {
-      url: null,
-      label: 'Demo no disponible',
-    };
-  }
-
-  const owner = repository.owner.login;
-  const isUserPage = repository.name.toLowerCase() === `${owner.toLowerCase()}.github.io`;
-  const demoUrl = isUserPage ? `https://${owner}.github.io/` : `https://${owner}.github.io/${repository.name}/`;
-
   return {
-    url: demoUrl,
-    label: 'Ver demo',
+    url: null,
+    label: repository.fork ? 'Demo no disponible' : 'Explorar demo',
   };
 }
 

@@ -48,8 +48,7 @@
 
 .sort-controls button,
 .chip,
-.actions a,
-.demo-disabled {
+.actions a {
   border: 1px solid var(--border-color);
   border-radius: 999px;
   background: var(--surface-elevated);
@@ -124,11 +123,6 @@
   background: var(--accent);
   border-color: transparent;
   color: var(--accent-contrast);
-}
-
-.demo-disabled {
-  border-style: dashed;
-  color: var(--text-muted);
 }
 
 .empty-state {

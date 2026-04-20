@@ -65,11 +65,7 @@
 
         <div class="project-card__footer">
           <div class="actions">
-            @if (repository.demoUrl) {
-              <a [href]="repository.demoUrl" target="_blank" rel="noreferrer">{{ repository.demoLabel }}</a>
-            } @else {
-              <span class="demo-disabled">{{ repository.demoLabel }}</span>
-            }
+            <a [routerLink]="['/demo', repository.name]">{{ repository.demoLabel }}</a>
           </div>
         </div>
       </article>
