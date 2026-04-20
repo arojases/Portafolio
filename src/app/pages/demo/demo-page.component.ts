@@ -37,12 +37,12 @@ export class DemoPageComponent {
 
       const demoEntry = projectDemoConfig[repository.name];
 
-        return {
-          status: 'ready' as const,
-          repository,
-          user: data.user,
-          primaryUrl: this.resolveUrl(demoEntry?.primaryUrl ?? repository.demoUrl ?? undefined),
-          primaryLabel: demoEntry?.primaryLabel ?? 'Abrir demo',
+      return {
+        status: 'ready' as const,
+        repository,
+        user: data.user,
+        primaryUrl: this.resolveUrl(demoEntry?.primaryUrl ?? repository.demoUrl ?? undefined),
+        primaryLabel: demoEntry?.primaryLabel ?? 'Abrir demo',
         overview:
           demoEntry?.overview ??
           (repository.demoUrl

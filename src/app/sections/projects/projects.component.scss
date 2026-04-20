@@ -125,6 +125,16 @@
   color: var(--accent-contrast);
 }
 
+.demo-note {
+  margin: 1rem 0 0;
+  padding: 0.95rem 1.1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  background: var(--surface-muted);
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
 .empty-state {
   align-items: flex-start;
 }

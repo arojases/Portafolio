@@ -29,7 +29,7 @@ npm start
 
 ## Integracion con GitHub API
 
-El servicio `src/app/core/services/github.service.ts` consulta:
+El servicio `src/app/core/services/portfolio-data.service.ts` consulta:
 
 - `GET /users/arojases` para datos del perfil
 - `GET /users/arojases/repos` para repositorios publicos
