@@ -1,5 +1,5 @@
-import { CommonModule, DatePipe } from '@angular/common';
 import { DOCUMENT } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { Component, Input, computed, inject, signal } from '@angular/core';
 
 import { getProjectDemoEntry } from '../../core/config/project-demos.config';
@@ -10,7 +10,7 @@ type SortMode = 'created' | 'name';
 
 @Component({
   selector: 'app-projects',
-  imports: [CommonModule, DatePipe],
+  imports: [DatePipe],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
   animations: [fadeInUp, staggerReveal],
@@ -71,8 +71,7 @@ export class ProjectsComponent {
   }
 
   protected shouldOpenDemoInNewTab(repository: ProjectCardData): boolean {
-    const href = this.getDemoHref(repository);
-    return /^https?:\/\//i.test(href) || href.includes('/project-demos/');
+    return this.getDemoHref(repository).includes('/project-demos/') || !!repository.demoUrl;
   }
 
   private resolveUrl(path: string): string {

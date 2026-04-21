@@ -8,13 +8,11 @@ export interface GitHubUser {
   location: string | null;
   followers: number;
   following: number;
-  public_repos: number;
 }
 
 export interface GitHubRepositoryApi {
   id: number;
   name: string;
-  full_name: string;
   description: string | null;
   html_url: string;
   homepage: string | null;
@@ -41,26 +39,19 @@ export interface ProjectCardData {
   id: number;
   name: string;
   description: string;
-  htmlUrl: string;
-  homepage: string | null;
   demoUrl: string | null;
-  demoLabel: string;
   createdAt: string;
   updatedAt: string;
-  pushedAt: string;
   stars: number;
   forks: number;
   isFork: boolean;
   topics: string[];
   languages: LanguageUsage[];
-  primaryLanguage: string;
 }
 
 export interface PortfolioStats {
   totalRepos: number;
   totalStars: number;
-  totalForks: number;
-  featuredLanguage: string;
 }
 
 export interface PortfolioData {

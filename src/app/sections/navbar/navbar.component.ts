@@ -1,5 +1,5 @@
-import { CommonModule, ViewportScroller } from '@angular/common';
-import { AfterViewInit, Component, HostListener, inject, signal } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import { AfterViewInit, Component, HostListener, inject, OnDestroy, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { portfolioConfig } from '../../core/config/portfolio.config';
@@ -11,11 +11,11 @@ interface NavItem {
 
 @Component({
   selector: 'app-navbar',
-  imports: [CommonModule, RouterLink],
+  imports: [RouterLink],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
-export class NavbarComponent implements AfterViewInit {
+export class NavbarComponent implements AfterViewInit, OnDestroy {
   protected readonly items: NavItem[] = [
     { id: 'hero', label: 'Inicio' },
     { id: 'projects', label: 'Proyectos' },
@@ -53,6 +53,10 @@ export class NavbarComponent implements AfterViewInit {
     );
 
     sections.forEach((section) => this.observer?.observe(section));
+  }
+
+  ngOnDestroy(): void {
+    this.observer?.disconnect();
   }
 
   @HostListener('window:resize')

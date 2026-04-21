@@ -99,7 +99,6 @@ export class PortfolioDataService {
 
   private mapRepository(repository: GitHubRepositoryApi, languageMap: Record<string, number>): ProjectCardData {
     const languages = this.toLanguageUsage(languageMap).slice(0, 4);
-    const demo = this.resolveDemo(repository);
 
     return {
       id: repository.id,
@@ -107,43 +106,29 @@ export class PortfolioDataService {
       description:
         repository.description?.trim() ||
         'Repositorio publicado en GitHub sin descripcion adicional disponible.',
-      htmlUrl: repository.html_url,
-      homepage: repository.homepage,
-      demoUrl: demo.url,
-      demoLabel: demo.label,
+      demoUrl: this.resolveDemo(repository),
       createdAt: repository.created_at,
       updatedAt: repository.updated_at,
-      pushedAt: repository.pushed_at,
       stars: repository.stargazers_count,
       forks: repository.forks_count,
       isFork: repository.fork,
       topics: repository.topics ?? [],
       languages,
-      primaryLanguage: languages[0]?.name ?? 'Sin datos',
     };
   }
 
-  private resolveDemo(repository: GitHubRepositoryApi): { url: string | null; label: string } {
+  private resolveDemo(repository: GitHubRepositoryApi): string | null {
     const homepage = repository.homepage?.trim();
 
     if (homepage) {
-      return {
-        url: this.normalizeUrl(homepage),
-        label: 'Ver demo',
-      };
+      return this.normalizeUrl(homepage);
     }
 
     if (repository.has_pages) {
-      return {
-        url: this.getGitHubPagesUrl(repository),
-        label: 'Ver demo',
-      };
+      return this.getGitHubPagesUrl(repository);
     }
 
-    return {
-      url: null,
-      label: repository.fork ? 'Demo no disponible' : 'Explorar demo',
-    };
+    return null;
   }
 
   private normalizeUrl(url: string): string {
@@ -168,7 +153,6 @@ export class PortfolioDataService {
   private buildPortfolioData(user: GitHubUser, repositories: ProjectCardData[]): PortfolioData {
     const languageSummary = this.aggregateLanguages(repositories);
     const totalStars = repositories.reduce((sum, repository) => sum + repository.stars, 0);
-    const totalForks = repositories.reduce((sum, repository) => sum + repository.forks, 0);
 
     return {
       user,
@@ -179,8 +163,6 @@ export class PortfolioDataService {
       stats: {
         totalRepos: repositories.length,
         totalStars,
-        totalForks,
-        featuredLanguage: languageSummary[0]?.name ?? 'TypeScript',
       },
       source: 'live',
     };

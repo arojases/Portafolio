@@ -9,8 +9,7 @@
 }
 
 .hero-card,
-.demo-panel,
-.demo-card {
+.demo-panel {
   border: 1px solid var(--border-color);
   border-radius: 2rem;
   background: var(--surface-elevated);
@@ -60,8 +59,7 @@ p {
   color: var(--text-muted);
 }
 
-.action-row,
-.demo-grid {
+.action-row {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -69,21 +67,6 @@ p {
 
 .action-row {
   margin-top: 2rem;
-}
-
-.demo-grid {
-  margin-top: 1.5rem;
-}
-
-.demo-card {
-  flex: 1 1 18rem;
-  padding: 1.4rem;
-}
-
-.demo-card.placeholder {
-  background:
-    radial-gradient(circle at top right, rgba(15, 118, 110, 0.14), transparent 32%),
-    var(--surface-elevated);
 }
 
 .button {
@@ -112,9 +95,5 @@ p {
 @media (max-width: 820px) {
   .demo-page {
     padding-top: 7rem;
-  }
-
-  .demo-grid {
-    flex-direction: column;
   }
 }
