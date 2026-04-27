@@ -12,6 +12,8 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.languageAria': 'Cambiar idioma a ingles',
     'hero.role': 'Desarrollador Full Stack',
     'hero.headline': 'Portafolio conectado en tiempo real con GitHub.',
+    'hero.bio':
+      'Desarrollador frontend y de software enfocado en crear aplicaciones modernas, responsivas y faciles de usar, creciendo continuamente a traves de desafios reales.',
     'hero.summary':
       'Diseño y construyo experiencias web modernas, accesibles y mantenibles. Este portafolio se actualiza automaticamente con mis repositorios publicos para mostrar trabajo real y tecnologia utilizada.',
     'hero.avatarAlt': 'Avatar de Ariel Rojas',
@@ -68,6 +70,8 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.languageAria': 'Change language to Spanish',
     'hero.role': 'Full Stack Developer',
     'hero.headline': 'Portfolio connected to GitHub in real time.',
+    'hero.bio':
+      'Frontend and software developer focused on building modern, responsive, and user-friendly applications while continuously growing through real-world challenges.',
     'hero.summary':
       'I design and build modern, accessible, maintainable web experiences. This portfolio updates automatically with my public repositories to show real work and the technology behind it.',
     'hero.avatarAlt': 'Avatar of Ariel Rojas',

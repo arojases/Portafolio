@@ -4,7 +4,7 @@
     <h1>{{ getDisplayName() }}</h1>
     <p class="role">{{ i18n.t('hero.role') }}</p>
     <p class="headline">{{ i18n.t('hero.headline') }}</p>
-    <p class="summary">{{ user.bio || i18n.t('hero.summary') }}</p>
+    <p class="summary">{{ getBio() }}</p>
   </div>
 
   <aside class="hero-card">

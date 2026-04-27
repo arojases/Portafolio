@@ -21,4 +21,12 @@ export class HeroComponent {
   getDisplayName(): string {
     return this.user.name || this.user.login;
   }
+
+  getBio(): string {
+    if (this.i18n.language() === 'en') {
+      return this.i18n.t('hero.bio');
+    }
+
+    return this.user.bio || this.i18n.t('hero.summary');
+  }
 }
