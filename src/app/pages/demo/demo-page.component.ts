@@ -9,6 +9,40 @@ import { PortfolioDataService } from '../../core/services/portfolio-data.service
 import { FooterComponent } from '../../sections/footer/footer.component';
 import { NavbarComponent } from '../../sections/navbar/navbar.component';
 
+const repositoryDescriptionsEn: Record<number, string> = {
+  1216264769: 'Private web app for sending romantic messages in real time between two people.',
+  1216241405:
+    'Latido is a real-time Angular app for private messaging between two people, built with Firebase Authentication, Firestore, and Hosting.',
+  1204394814:
+    'Couples app that lets you send instant gestures of affection. With one tap, let your special person know you are thinking of them in real time.',
+  1204350549:
+    'Personal portfolio built with Angular, focused on showcasing projects, experience, and technologies in a visual and professional way.',
+  1049454014:
+    'Web application for contact management built with Django, Bootstrap, and SQLite, featuring a clean interface and basic record handling.',
+  898691876:
+    'Collection of practical projects built with HTML, CSS, and JavaScript to strengthen frontend skills through daily exercises.',
+  607933813:
+    'Web blog project focused on publishing and displaying content with a simple, functional structure.',
+  595949854:
+    'Personal project created for CSE341, focused on backend web development and good API-building practices.',
+  586097855:
+    'API built with Node.js, documented with Swagger, and integrated with MongoDB to manage structured data.',
+  574794761:
+    'Car management system developed in PHP to manage records, operations, and a basic inventory flow.',
+  484629855:
+    'Web Frontend Development II repository with exercises and course projects for WDD330, focused on JavaScript and interactive applications.',
+  333825988:
+    'Introductory presentation and practice project used for initial tests and basic development structure.',
+  333512782:
+    'Academic repository for the CS246 course with exercises and projects focused on programming and problem solving.',
+  296005232:
+    'WDD230 course repository with web development practices and projects using HTML, CSS, and JavaScript.',
+  295965224:
+    'Testing and academic exercises repository used to experiment with features and validate implementations.',
+  158885932:
+    'Java application focused on practicing project structure, logic, and desktop or console development.',
+};
+
 @Component({
   selector: 'app-demo-page',
   imports: [AsyncPipe, RouterLink, NavbarComponent, FooterComponent],
@@ -77,6 +111,14 @@ export class DemoPageComponent {
     }
 
     return this.i18n.t(overviewKey);
+  }
+
+  protected getRepositoryDescription(repository: { id: number; description: string }): string {
+    if (this.i18n.language() === 'en') {
+      return repositoryDescriptionsEn[repository.id] ?? repository.description;
+    }
+
+    return repository.description;
   }
 
   private resolveUrl(path?: string | null): string | undefined {

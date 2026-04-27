@@ -9,7 +9,7 @@
         <section class="hero-card">
           <p class="eyebrow">{{ i18n.t('demo.eyebrow') }}</p>
           <h1>{{ vm.repository.name }}</h1>
-          <p class="lead">{{ vm.repository.description }}</p>
+          <p class="lead">{{ getRepositoryDescription(vm.repository) }}</p>
           <p>{{ getOverview(vm.overview, vm.overviewKey) }}</p>
 
           <div class="action-row">
