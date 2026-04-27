@@ -5,7 +5,7 @@
       <h2>Repositorios publicos renderizados automaticamente</h2>
       <p>
         Cada tarjeta se construye con datos de la API de GitHub: descripcion, lenguajes, stars,
-        forks y ultima actualizacion.
+        forks y fecha de creacion.
       </p>
     </div>
 
@@ -51,7 +51,7 @@
             <p>{{ repository.description }}</p>
           </div>
 
-          <span class="date">Actualizado {{ repository.updatedAt | date: 'MMM y' }}</span>
+          <span class="date">Creado {{ repository.createdAt | date: 'MMM y' }}</span>
         </div>
 
         <div class="language-list">
