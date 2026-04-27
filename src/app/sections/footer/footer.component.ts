@@ -12,6 +12,6 @@ import { LanguageService } from '../../core/services/language.service';
 export class FooterComponent {
   @Input({ required: true }) user!: GitHubUser;
 
-  protected readonly config = portfolioConfig;
-  protected readonly i18n = inject(LanguageService);
+  readonly config = portfolioConfig;
+  readonly i18n = inject(LanguageService);
 }

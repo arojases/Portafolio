@@ -17,11 +17,11 @@ interface NavItem {
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent implements AfterViewInit, OnDestroy {
-  protected readonly i18n = inject(LanguageService);
-  protected readonly config = portfolioConfig;
-  protected readonly activeSection = signal('hero');
-  protected readonly menuOpen = signal(false);
-  protected readonly items = computed<NavItem[]>(() => [
+  readonly i18n = inject(LanguageService);
+  readonly config = portfolioConfig;
+  readonly activeSection = signal('hero');
+  readonly menuOpen = signal(false);
+  readonly items = computed<NavItem[]>(() => [
     { id: 'hero', label: this.i18n.t('nav.home') },
     { id: 'projects', label: this.i18n.t('nav.projects') },
     { id: 'contact', label: this.i18n.t('nav.contact') },
@@ -67,17 +67,17 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  protected scrollTo(id: string): void {
+  scrollTo(id: string): void {
     this.menuOpen.set(false);
     this.activeSection.set(id);
     this.viewportScroller.scrollToAnchor(id);
   }
 
-  protected toggleMenu(): void {
+  toggleMenu(): void {
     this.menuOpen.update((current) => !current);
   }
 
-  protected toggleLanguage(): void {
+  toggleLanguage(): void {
     this.i18n.toggleLanguage();
     this.menuOpen.set(false);
   }

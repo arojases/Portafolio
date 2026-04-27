@@ -52,19 +52,19 @@ const repositoryDescriptionsEn: Record<number, string> = {
 })
 export class ProjectsComponent {
   private readonly document = inject(DOCUMENT);
-  protected readonly i18n = inject(LanguageService);
+  readonly i18n = inject(LanguageService);
 
   @Input({ required: true }) set repositories(value: ProjectCardData[]) {
     this._repositories.set(value);
   }
 
-  protected readonly selectedLanguage = signal('all');
-  protected readonly sortMode = signal<SortMode>('created');
-  protected readonly filtersOpen = signal(false);
+  readonly selectedLanguage = signal('all');
+  readonly sortMode = signal<SortMode>('created');
+  readonly filtersOpen = signal(false);
 
   private readonly _repositories = signal<ProjectCardData[]>([]);
 
-  protected readonly technologies = computed(() => {
+  readonly technologies = computed(() => {
     const values = new Set<string>();
 
     this._repositories().forEach((repository) => {
@@ -74,7 +74,7 @@ export class ProjectsComponent {
     return ['all', ...Array.from(values).sort((left, right) => left.localeCompare(right))];
   });
 
-  protected readonly filteredRepositories = computed(() => {
+  readonly filteredRepositories = computed(() => {
     const selectedLanguage = this.selectedLanguage();
     const sortMode = this.sortMode();
 
@@ -93,7 +93,7 @@ export class ProjectsComponent {
       });
   });
 
-  protected getDemoHref(repository: ProjectCardData): string {
+  getDemoHref(repository: ProjectCardData): string {
     const demoEntry = getProjectDemoEntry(repository.id);
 
     if (demoEntry?.primaryUrl) {
@@ -107,11 +107,11 @@ export class ProjectsComponent {
     return this.resolveUrl(`demo/${encodeURIComponent(repository.name)}`);
   }
 
-  protected shouldOpenDemoInNewTab(repository: ProjectCardData): boolean {
+  shouldOpenDemoInNewTab(repository: ProjectCardData): boolean {
     return this.getDemoHref(repository).includes('/project-demos/') || !!repository.demoUrl;
   }
 
-  protected getRepositoryDescription(repository: ProjectCardData): string {
+  getRepositoryDescription(repository: ProjectCardData): string {
     if (this.i18n.language() === 'en') {
       return repositoryDescriptionsEn[repository.id] ?? repository.description;
     }
@@ -127,16 +127,16 @@ export class ProjectsComponent {
     return new URL(path, this.document.baseURI).toString();
   }
 
-  protected selectLanguage(language: string): void {
+  selectLanguage(language: string): void {
     this.selectedLanguage.set(language);
     this.filtersOpen.set(false);
   }
 
-  protected setSortMode(mode: SortMode): void {
+  setSortMode(mode: SortMode): void {
     this.sortMode.set(mode);
   }
 
-  protected toggleFilters(): void {
+  toggleFilters(): void {
     this.filtersOpen.update((isOpen) => !isOpen);
   }
 }

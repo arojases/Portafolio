@@ -11,6 +11,12 @@ import { HeroComponent } from '../../sections/hero/hero.component';
 import { NavbarComponent } from '../../sections/navbar/navbar.component';
 import { ProjectsComponent } from '../../sections/projects/projects.component';
 
+type HomeViewModel = {
+  status: 'success' | 'loading' | 'error';
+  data: PortfolioData | null;
+  message: string;
+};
+
 @Component({
   selector: 'app-home-page',
   imports: [AsyncPipe, FooterComponent, HeroComponent, NavbarComponent, ProjectsComponent],
@@ -20,17 +26,18 @@ import { ProjectsComponent } from '../../sections/projects/projects.component';
 export class HomePageComponent {
   private readonly portfolioDataService = inject(PortfolioDataService);
 
-  protected readonly i18n = inject(LanguageService);
-  protected readonly config = portfolioConfig;
+  readonly i18n = inject(LanguageService);
+  readonly config = portfolioConfig;
 
-  protected readonly vm$ = this.portfolioDataService.getPortfolioData().pipe(
-    map((data: PortfolioData) => ({ status: 'success', data }) as const),
-    startWith({ status: 'loading' } as const),
+  readonly vm$ = this.portfolioDataService.getPortfolioData().pipe(
+    map((data: PortfolioData): HomeViewModel => ({ status: 'success', data, message: '' })),
+    startWith({ status: 'loading', data: null, message: '' } satisfies HomeViewModel),
     catchError((error: Error) =>
       of({
         status: 'error',
+        data: null,
         message: error.message,
-      } as const),
+      } satisfies HomeViewModel),
     ),
   );
 }

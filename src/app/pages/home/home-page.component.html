@@ -3,8 +3,7 @@
 <div class="page-shell">
   <app-navbar />
 
-  @if (vm?.status === 'success') {
-    @let data = $any(vm).data;
+  @if (vm?.data; as data) {
     <main>
       <app-hero [user]="data.user" [stats]="data.stats" />
 
@@ -25,7 +24,7 @@
       <section class="message-card">
         <p class="eyebrow">GitHub API</p>
         <h1>{{ i18n.t('home.errorTitle') }}</h1>
-        <p>{{ $any(vm).message }}</p>
+        <p>{{ vm?.message }}</p>
         <div class="actions">
           <a class="button primary" [href]="config.ctaSecondary.url" target="_blank" rel="noreferrer">
             {{ i18n.t('home.githubProfile') }}

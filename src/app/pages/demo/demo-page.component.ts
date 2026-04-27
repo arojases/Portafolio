@@ -53,9 +53,9 @@ export class DemoPageComponent {
   private readonly document = inject(DOCUMENT);
   private readonly route = inject(ActivatedRoute);
   private readonly portfolioDataService = inject(PortfolioDataService);
-  protected readonly i18n = inject(LanguageService);
+  readonly i18n = inject(LanguageService);
 
-  protected readonly vm$ = combineLatest([
+  readonly vm$ = combineLatest([
     this.route.paramMap,
     this.portfolioDataService.getPortfolioData(),
   ]).pipe(
@@ -85,7 +85,7 @@ export class DemoPageComponent {
     }),
   );
 
-  protected getPrimaryLabel(label?: string): string {
+  getPrimaryLabel(label?: string): string {
     if (!label || label === 'Abrir demo') {
       return this.i18n.t('demo.openDemo');
     }
@@ -105,7 +105,7 @@ export class DemoPageComponent {
     return label;
   }
 
-  protected getOverview(overview: string | undefined, overviewKey: string): string {
+  getOverview(overview: string | undefined, overviewKey: string): string {
     if (overview && this.i18n.language() === 'es') {
       return overview;
     }
@@ -113,7 +113,7 @@ export class DemoPageComponent {
     return this.i18n.t(overviewKey);
   }
 
-  protected getRepositoryDescription(repository: { id: number; description: string }): string {
+  getRepositoryDescription(repository: { id: number; description: string }): string {
     if (this.i18n.language() === 'en') {
       return repositoryDescriptionsEn[repository.id] ?? repository.description;
     }

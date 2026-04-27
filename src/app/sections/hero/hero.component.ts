@@ -15,10 +15,10 @@ export class HeroComponent {
   @Input({ required: true }) user!: GitHubUser;
   @Input({ required: true }) stats!: PortfolioStats;
 
-  protected readonly config = portfolioConfig;
-  protected readonly i18n = inject(LanguageService);
+  readonly config = portfolioConfig;
+  readonly i18n = inject(LanguageService);
 
-  protected getDisplayName(): string {
+  getDisplayName(): string {
     return this.user.name || this.user.login;
   }
 }
