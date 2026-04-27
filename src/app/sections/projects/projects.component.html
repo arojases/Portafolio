@@ -1,17 +1,14 @@
 ﻿<section id="projects" data-section class="projects" @fadeInUp>
   <div class="section-heading">
     <div>
-      <p class="eyebrow">Proyectos</p>
-      <h2>Repositorios publicos renderizados automaticamente</h2>
-      <p>
-        Cada tarjeta se construye con datos de la API de GitHub: descripcion, lenguajes, stars,
-        forks y fecha de creacion.
-      </p>
+      <p class="eyebrow">{{ i18n.t('projects.eyebrow') }}</p>
+      <h2>{{ i18n.t('projects.title') }}</h2>
+      <p>{{ i18n.t('projects.description') }}</p>
     </div>
 
     <div class="sort-controls">
       <button type="button" [class.active]="sortMode() === 'created'" (click)="setSortMode('created')">
-        Nuevos
+        {{ i18n.t('projects.sortNewest') }}
       </button>
       <button type="button" [class.active]="sortMode() === 'name'" (click)="setSortMode('name')">
         A-Z
@@ -19,22 +16,40 @@
     </div>
   </div>
 
-  <div class="filter-row">
-    @for (technology of technologies(); track technology) {
-      <button
-        type="button"
-        class="chip"
-        [class.active]="selectedLanguage() === technology"
-        (click)="selectLanguage(technology)"
-      >
-        {{ technology === 'all' ? 'Todas' : technology }}
-      </button>
+  <div class="filter-menu">
+    <button
+      type="button"
+      class="filter-toggle"
+      [class.active]="filtersOpen()"
+      [attr.aria-expanded]="filtersOpen()"
+      aria-controls="language-filter-list"
+      (click)="toggleFilters()"
+    >
+      <span>{{ i18n.t('projects.languages') }}</span>
+      <span class="filter-toggle__value">
+        {{ selectedLanguage() === 'all' ? i18n.t('projects.all') : selectedLanguage() }}
+      </span>
+      <span class="filter-toggle__icon" aria-hidden="true"></span>
+    </button>
+
+    @if (filtersOpen()) {
+      <div id="language-filter-list" class="filter-row">
+        @for (technology of technologies(); track technology) {
+          <button
+            type="button"
+            class="chip"
+            [class.active]="selectedLanguage() === technology"
+            (click)="selectLanguage(technology)"
+          >
+            {{ technology === 'all' ? i18n.t('projects.all') : technology }}
+          </button>
+        }
+      </div>
     }
   </div>
 
   <p class="demo-note">
-    Las demos son una referencia visual y funcional para hacerse una idea del proyecto. No siempre
-    representan al 100% como se ve o se comporta al descargar y ejecutar el proyecto completo.
+    {{ i18n.t('projects.demoNote') }}
   </p>
 
   <div class="project-grid" @staggerReveal>
@@ -48,10 +63,10 @@
                 <span class="badge">Fork</span>
               }
             </div>
-            <p>{{ repository.description }}</p>
+            <p>{{ getRepositoryDescription(repository) }}</p>
           </div>
 
-          <span class="date">Creado {{ repository.createdAt | date: 'MMM y' }}</span>
+          <span class="date">{{ i18n.t('projects.created') }} {{ repository.createdAt | date: 'MMM y' }}</span>
         </div>
 
         <div class="language-list">
@@ -75,15 +90,15 @@
               [attr.target]="shouldOpenDemoInNewTab(repository) ? '_blank' : null"
               [attr.rel]="shouldOpenDemoInNewTab(repository) ? 'noreferrer' : null"
             >
-              Abrir demo
+              {{ i18n.t('projects.openDemo') }}
             </a>
           </div>
         </div>
       </article>
     } @empty {
       <article class="empty-state">
-        <h3>No hay proyectos para este filtro</h3>
-        <p>Prueba con otra tecnologia o vuelve a la vista general.</p>
+        <h3>{{ i18n.t('projects.emptyTitle') }}</h3>
+        <p>{{ i18n.t('projects.emptyText') }}</p>
       </article>
     }
   </div>

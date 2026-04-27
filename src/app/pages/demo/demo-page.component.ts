@@ -4,6 +4,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { combineLatest, map } from 'rxjs';
 
 import { getProjectDemoEntry } from '../../core/config/project-demos.config';
+import { LanguageService } from '../../core/services/language.service';
 import { PortfolioDataService } from '../../core/services/portfolio-data.service';
 import { FooterComponent } from '../../sections/footer/footer.component';
 import { NavbarComponent } from '../../sections/navbar/navbar.component';
@@ -18,6 +19,7 @@ export class DemoPageComponent {
   private readonly document = inject(DOCUMENT);
   private readonly route = inject(ActivatedRoute);
   private readonly portfolioDataService = inject(PortfolioDataService);
+  protected readonly i18n = inject(LanguageService);
 
   protected readonly vm$ = combineLatest([
     this.route.paramMap,
@@ -42,15 +44,40 @@ export class DemoPageComponent {
         repository,
         user: data.user,
         primaryUrl: this.resolveUrl(demoEntry?.primaryUrl ?? repository.demoUrl ?? undefined),
-        primaryLabel: demoEntry?.primaryLabel ?? 'Abrir demo',
-        overview:
-          demoEntry?.overview ??
-          (repository.demoUrl
-            ? 'Este proyecto tiene una demo principal publicada y puedes abrirla desde aqui.'
-            : 'Este proyecto todavia no tiene una demo publica unica conectada al portafolio.'),
+        primaryLabel: demoEntry?.primaryLabel,
+        overview: demoEntry?.overview,
+        overviewKey: repository.demoUrl ? 'demo.publishedOverview' : 'demo.unpublishedOverview',
       };
     }),
   );
+
+  protected getPrimaryLabel(label?: string): string {
+    if (!label || label === 'Abrir demo') {
+      return this.i18n.t('demo.openDemo');
+    }
+
+    if (this.i18n.language() === 'en') {
+      const labels: Record<string, string> = {
+        'Abrir Latido': 'Open Latido',
+        'Abrir galeria': 'Open gallery',
+        'Abrir demo Django': 'Open Django demo',
+        'Abrir Scoots': 'Open Scoots',
+        'Abrir Weather App': 'Open Weather App',
+      };
+
+      return labels[label] ?? label;
+    }
+
+    return label;
+  }
+
+  protected getOverview(overview: string | undefined, overviewKey: string): string {
+    if (overview && this.i18n.language() === 'es') {
+      return overview;
+    }
+
+    return this.i18n.t(overviewKey);
+  }
 
   private resolveUrl(path?: string | null): string | undefined {
     if (!path) {

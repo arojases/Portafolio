@@ -24,25 +24,22 @@
     <main class="status-panel">
       <section class="message-card">
         <p class="eyebrow">GitHub API</p>
-        <h1>No pude cargar tu portafolio en este momento</h1>
+        <h1>{{ i18n.t('home.errorTitle') }}</h1>
         <p>{{ $any(vm).message }}</p>
         <div class="actions">
           <a class="button primary" [href]="config.ctaSecondary.url" target="_blank" rel="noreferrer">
-            Ver perfil de GitHub
+            {{ i18n.t('home.githubProfile') }}
           </a>
-          <a class="button secondary" href="">Reintentar</a>
+          <a class="button secondary" href="">{{ i18n.t('home.retry') }}</a>
         </div>
       </section>
     </main>
   } @else {
     <main class="status-panel">
       <section class="message-card">
-        <p class="eyebrow">Cargando</p>
-        <h1>Sincronizando proyectos y lenguajes desde GitHub</h1>
-        <p>
-          Estoy consultando tu perfil, repositorios y metricas de lenguajes para armar el portafolio
-          en tiempo real.
-        </p>
+        <p class="eyebrow">{{ i18n.t('home.loadingEyebrow') }}</p>
+        <h1>{{ i18n.t('home.loadingTitle') }}</h1>
+        <p>{{ i18n.t('home.loadingText') }}</p>
         <div class="loading-grid">
           <div class="section-skeleton card"></div>
           <div class="section-skeleton card"></div>

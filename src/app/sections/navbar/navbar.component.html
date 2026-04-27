@@ -1,6 +1,6 @@
 <header class="navbar">
   <div class="brand">
-    <a routerLink="/" aria-label="Ir al inicio">{{ config.githubUsername }}</a>
+    <a routerLink="/" [attr.aria-label]="i18n.t('nav.homeAria')">{{ config.githubUsername }}</a>
   </div>
 
   <button
@@ -8,14 +8,14 @@
     type="button"
     (click)="toggleMenu()"
     [attr.aria-expanded]="menuOpen()"
-    aria-label="Abrir menu"
+    [attr.aria-label]="i18n.t('nav.menuAria')"
   >
     <span></span>
     <span></span>
   </button>
 
   <nav class="nav-links" [class.open]="menuOpen()">
-    @for (item of items; track item.id) {
+    @for (item of items(); track item.id) {
       <button
         type="button"
         class="nav-link"
@@ -29,5 +29,13 @@
     <a class="github-link" [href]="config.ctaSecondary.url" target="_blank" rel="noreferrer">
       GitHub
     </a>
+    <button
+      type="button"
+      class="language-toggle"
+      [attr.aria-label]="i18n.t('nav.languageAria')"
+      (click)="toggleLanguage()"
+    >
+      {{ i18n.language() === 'es' ? 'EN' : 'ES' }}
+    </button>
   </nav>
 </header>

@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 
 import { portfolioConfig } from '../../core/config/portfolio.config';
 import { GitHubUser, PortfolioStats } from '../../core/models/github.models';
+import { LanguageService } from '../../core/services/language.service';
 import { fadeInUp } from '../../shared/animations/fade.animation';
 
 @Component({
@@ -15,4 +16,9 @@ export class HeroComponent {
   @Input({ required: true }) stats!: PortfolioStats;
 
   protected readonly config = portfolioConfig;
+  protected readonly i18n = inject(LanguageService);
+
+  protected getDisplayName(): string {
+    return this.user.name || this.user.login;
+  }
 }

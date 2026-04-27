@@ -15,7 +15,7 @@ export class PortfolioDataService {
   private readonly http = inject(HttpClient);
   private readonly apiUrl = 'https://api.github.com';
   private readonly assetUrl = 'data/portfolio-data.json';
-  private readonly cacheKey = 'portfolio-github-cache-v4';
+  private readonly cacheKey = 'portfolio-github-cache-v5';
   private readonly cacheMaxAgeMs = 1000 * 60 * 30;
   private readonly username = portfolioConfig.githubUsername;
 
@@ -30,8 +30,7 @@ export class PortfolioDataService {
     .pipe(shareReplay(1));
 
   private readonly assetPortfolio$ = this.http.get<PortfolioData>(this.assetUrl).pipe(
-    map((data) => ({ ...data, source: 'live' as const })),
-    map((data) => this.storeCache(data)),
+    map((data) => ({ ...data, source: 'cache' as const })),
     shareReplay(1),
   );
 
@@ -76,8 +75,8 @@ export class PortfolioDataService {
     shareReplay(1),
   );
 
-  private readonly portfolio$ = this.assetPortfolio$.pipe(
-    catchError(() => this.livePortfolio$),
+  private readonly portfolio$ = this.livePortfolio$.pipe(
+    catchError(() => this.assetPortfolio$),
     shareReplay(1),
   );
 

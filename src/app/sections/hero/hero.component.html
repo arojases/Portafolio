@@ -1,30 +1,30 @@
 <section id="hero" data-section class="hero" @fadeInUp>
   <div class="hero-copy">
     <p class="eyebrow">Angular + GitHub API</p>
-    <h1>{{ config.fullName }}</h1>
-    <p class="role">{{ config.role }}</p>
-    <p class="headline">{{ config.headline }}</p>
-    <p class="summary">{{ user.bio || config.summary }}</p>
+    <h1>{{ getDisplayName() }}</h1>
+    <p class="role">{{ i18n.t('hero.role') }}</p>
+    <p class="headline">{{ i18n.t('hero.headline') }}</p>
+    <p class="summary">{{ user.bio || i18n.t('hero.summary') }}</p>
   </div>
 
   <aside class="hero-card">
-    <img [src]="user.avatar_url" [alt]="'Avatar de ' + config.fullName" loading="lazy" />
+    <img [src]="user.avatar_url" [alt]="'Avatar de ' + getDisplayName()" loading="lazy" />
     <div class="hero-card__content">
-      <p class="hero-card__label">Resumen profesional</p>
-      <h2>{{ config.fullName }}</h2>
-      <p>{{ user.location || 'Trabajo remoto y proyectos web escalables.' }}</p>
+      <p class="hero-card__label">{{ i18n.t('hero.cardLabel') }}</p>
+      <h2>{{ getDisplayName() }}</h2>
+      <p>{{ user.location || i18n.t('hero.remoteWork') }}</p>
 
       <dl>
         <div>
-          <dt>Seguidores</dt>
+          <dt>{{ i18n.t('hero.followers') }}</dt>
           <dd>{{ user.followers }}</dd>
         </div>
         <div>
-          <dt>Siguiendo</dt>
+          <dt>{{ i18n.t('hero.following') }}</dt>
           <dd>{{ user.following }}</dd>
         </div>
         <div>
-          <dt>Repositorios</dt>
+          <dt>{{ i18n.t('hero.repositories') }}</dt>
           <dd>{{ stats.totalRepos }}</dd>
         </div>
       </dl>

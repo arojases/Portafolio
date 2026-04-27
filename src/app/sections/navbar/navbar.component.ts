@@ -1,8 +1,9 @@
 import { ViewportScroller } from '@angular/common';
-import { AfterViewInit, Component, HostListener, inject, OnDestroy, signal } from '@angular/core';
+import { AfterViewInit, Component, HostListener, computed, inject, OnDestroy, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { portfolioConfig } from '../../core/config/portfolio.config';
+import { LanguageService } from '../../core/services/language.service';
 
 interface NavItem {
   id: string;
@@ -16,15 +17,15 @@ interface NavItem {
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent implements AfterViewInit, OnDestroy {
-  protected readonly items: NavItem[] = [
-    { id: 'hero', label: 'Inicio' },
-    { id: 'projects', label: 'Proyectos' },
-    { id: 'contact', label: 'Contacto' },
-  ];
-
+  protected readonly i18n = inject(LanguageService);
   protected readonly config = portfolioConfig;
   protected readonly activeSection = signal('hero');
   protected readonly menuOpen = signal(false);
+  protected readonly items = computed<NavItem[]>(() => [
+    { id: 'hero', label: this.i18n.t('nav.home') },
+    { id: 'projects', label: this.i18n.t('nav.projects') },
+    { id: 'contact', label: this.i18n.t('nav.contact') },
+  ]);
 
   private observer?: IntersectionObserver;
   private readonly viewportScroller = inject(ViewportScroller);
@@ -74,5 +75,10 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
 
   protected toggleMenu(): void {
     this.menuOpen.update((current) => !current);
+  }
+
+  protected toggleLanguage(): void {
+    this.i18n.toggleLanguage();
+    this.menuOpen.set(false);
   }
 }

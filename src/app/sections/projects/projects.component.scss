@@ -36,7 +36,6 @@
 }
 
 .sort-controls,
-.filter-row,
 .language-list,
 .topics,
 .project-card__footer,
@@ -47,6 +46,7 @@
 }
 
 .sort-controls button,
+.filter-toggle,
 .chip,
 .actions a {
   border: 1px solid var(--border-color);
@@ -63,10 +63,53 @@
 }
 
 .sort-controls button.active,
+.filter-toggle.active,
 .chip.active {
   border-color: transparent;
   background: var(--accent);
   color: var(--accent-contrast);
+}
+
+.filter-menu {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.filter-toggle {
+  gap: 0.7rem;
+}
+
+.filter-toggle__value {
+  color: var(--text-muted);
+}
+
+.filter-toggle.active .filter-toggle__value {
+  color: inherit;
+}
+
+.filter-toggle__icon {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-0.15rem);
+  transition: transform 180ms ease;
+}
+
+.filter-toggle.active .filter-toggle__icon {
+  transform: rotate(225deg) translate(-0.15rem, -0.05rem);
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  padding: 0.9rem;
+  border: 1px solid var(--border-color);
+  border-radius: 1.25rem;
+  background: var(--surface-elevated);
+  box-shadow: var(--shadow-soft);
 }
 
 .project-grid {

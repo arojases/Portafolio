@@ -19,6 +19,7 @@
 .brand a,
 .github-link,
 .nav-link,
+.language-toggle,
 .menu-toggle {
   color: var(--text-primary);
   text-decoration: none;
@@ -40,7 +41,8 @@
 }
 
 .nav-link,
-.github-link {
+.github-link,
+.language-toggle {
   border: 0;
   background: transparent;
   border-radius: 999px;
@@ -51,13 +53,20 @@
 
 .nav-link.active,
 .nav-link:hover,
-.github-link:hover {
+.github-link:hover,
+.language-toggle:hover {
   background: var(--surface-muted);
 }
 
 .github-link {
   background: var(--accent);
   color: var(--accent-contrast);
+}
+
+.language-toggle {
+  border: 1px solid var(--border-color);
+  min-width: 3rem;
+  cursor: pointer;
 }
 
 .menu-toggle {

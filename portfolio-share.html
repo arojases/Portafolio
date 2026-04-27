@@ -204,6 +204,21 @@
         background: rgba(255, 255, 255, 0.02);
       }
 
+      .button.icon-button {
+        width: 46px;
+        padding: 0;
+      }
+
+      .button.icon-button svg {
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2;
+      }
+
       .meta {
         display: flex;
         flex-wrap: wrap;
@@ -672,25 +687,49 @@
           <article class="contact-card">
             <h3>Perfil profesional</h3>
             <p>
-              Puedes compartir este archivo directamente o usarlo como version ligera de
-              presentacion para clientes, postulaciones o contactos.
+              Contacto directo desde mi CV para clientes, postulaciones o colaboraciones.
             </p>
             <div class="contact-links">
-              <a class="button primary" href="https://github.com/arojases" target="_blank" rel="noreferrer">
-                GitHub
+              <a
+                class="button primary icon-button"
+                href="mailto:arielalejandrorojas@gmail.com"
+                aria-label="Enviar correo"
+                title="Enviar correo"
+              >
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M4 6h16v12H4z" />
+                  <path d="m4 7 8 6 8-6" />
+                </svg>
               </a>
             </div>
           </article>
 
           <article class="contact-card">
-            <h3>Personalizacion rapida</h3>
+            <h3>Redes y telefono</h3>
             <p>
-              Si me compartes tu correo, LinkedIn o los proyectos exactos que quieres mostrar, te
-              lo dejo aun mas listo para enviar sin texto de ejemplo.
+              Tambien puedes escribirme por LinkedIn o contactarme directamente por telefono.
             </p>
             <div class="contact-links">
+              <a
+                class="button secondary"
+                href="https://www.linkedin.com/in/arielrojasescudero"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn
+              </a>
               <a class="button secondary" href="https://github.com/arojases" target="_blank" rel="noreferrer">
-                Perfil publico
+                GitHub
+              </a>
+              <a
+                class="button secondary icon-button"
+                href="tel:+56987367565"
+                aria-label="Llamar por telefono"
+                title="Llamar por telefono"
+              >
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.35 1.9.66 2.81a2 2 0 0 1-.45 2.11L8.05 9.91a16 16 0 0 0 6.04 6.04l1.27-1.27a2 2 0 0 1 2.11-.45c.91.31 1.85.53 2.81.66A2 2 0 0 1 22 16.92z" />
+                </svg>
               </a>
             </div>
           </article>

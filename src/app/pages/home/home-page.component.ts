@@ -4,6 +4,7 @@ import { catchError, map, of, startWith } from 'rxjs';
 
 import { portfolioConfig } from '../../core/config/portfolio.config';
 import { PortfolioData } from '../../core/models/github.models';
+import { LanguageService } from '../../core/services/language.service';
 import { PortfolioDataService } from '../../core/services/portfolio-data.service';
 import { FooterComponent } from '../../sections/footer/footer.component';
 import { HeroComponent } from '../../sections/hero/hero.component';
@@ -19,6 +20,7 @@ import { ProjectsComponent } from '../../sections/projects/projects.component';
 export class HomePageComponent {
   private readonly portfolioDataService = inject(PortfolioDataService);
 
+  protected readonly i18n = inject(LanguageService);
   protected readonly config = portfolioConfig;
 
   protected readonly vm$ = this.portfolioDataService.getPortfolioData().pipe(

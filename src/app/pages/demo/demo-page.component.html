@@ -7,13 +7,13 @@
     <main class="demo-page">
       @if (vm.status === 'ready') {
         <section class="hero-card">
-          <p class="eyebrow">Demo del proyecto</p>
+          <p class="eyebrow">{{ i18n.t('demo.eyebrow') }}</p>
           <h1>{{ vm.repository.name }}</h1>
           <p class="lead">{{ vm.repository.description }}</p>
-          <p>{{ vm.overview }}</p>
+          <p>{{ getOverview(vm.overview, vm.overviewKey) }}</p>
 
           <div class="action-row">
-            <a class="button secondary" routerLink="/" fragment="projects">Volver a proyectos</a>
+            <a class="button secondary" routerLink="/" fragment="projects">{{ i18n.t('demo.backProjects') }}</a>
             @if (vm.primaryUrl) {
               <a
                 class="button primary"
@@ -21,29 +21,26 @@
                 [attr.target]="vm.primaryUrl.startsWith('http') ? '_blank' : null"
                 [attr.rel]="vm.primaryUrl.startsWith('http') ? 'noreferrer' : null"
               >
-                {{ vm.primaryLabel }}
+                {{ getPrimaryLabel(vm.primaryLabel) }}
               </a>
             }
           </div>
         </section>
         @if (!vm.primaryUrl) {
           <section class="demo-panel">
-            <h2>Demo aun no publicada</h2>
-            <p>
-              Este repositorio aparece en tu portafolio, pero todavia no tiene un HTML real o una
-              URL de demo configurada para abrir directamente desde el boton.
-            </p>
+            <h2>{{ i18n.t('demo.unpublishedTitle') }}</h2>
+            <p>{{ i18n.t('demo.unpublishedText') }}</p>
           </section>
         }
       } @else {
         <section class="hero-card">
-          <p class="eyebrow">Demo del proyecto</p>
-          <h1>Proyecto no encontrado</h1>
+          <p class="eyebrow">{{ i18n.t('demo.eyebrow') }}</p>
+          <h1>{{ i18n.t('demo.missingTitle') }}</h1>
           <p class="lead">
-            No pude encontrar una tarjeta asociada a <strong>{{ vm.repositoryName }}</strong>.
+            {{ i18n.t('demo.missingText') }} <strong>{{ vm.repositoryName }}</strong>.
           </p>
           <div class="action-row">
-            <a class="button primary" routerLink="/">Volver al inicio</a>
+            <a class="button primary" routerLink="/">{{ i18n.t('demo.backHome') }}</a>
           </div>
         </section>
       }
