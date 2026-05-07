@@ -387,53 +387,6 @@
       "primaryLanguage": "JavaScript"
     },
     {
-      "id": 333825988,
-      "name": "HelloFromAriel",
-      "description": "Proyecto introductorio de presentación y práctica, utilizado para pruebas iniciales y estructura base de desarrollo.",
-      "htmlUrl": "https://github.com/arojases/HelloFromAriel",
-      "homepage": "",
-      "demoUrl": null,
-      "demoLabel": "Explorar demo",
-      "createdAt": "2021-01-28T17:00:52Z",
-      "updatedAt": "2026-04-08T00:13:41Z",
-      "pushedAt": "2021-01-29T17:51:50Z",
-      "stars": 0,
-      "forks": 0,
-      "isFork": false,
-      "topics": [],
-      "languages": [
-        {
-          "name": "Java",
-          "bytes": 296,
-          "percentage": 75.3
-        },
-        {
-          "name": "HTML",
-          "bytes": 97,
-          "percentage": 24.7
-        }
-      ],
-      "primaryLanguage": "Java"
-    },
-    {
-      "id": 333512782,
-      "name": "CS246",
-      "description": "Repositorio académico del curso CS246 con ejercicios y proyectos orientados a programación y resolución de problemas.",
-      "htmlUrl": "https://github.com/arojases/CS246",
-      "homepage": "",
-      "demoUrl": null,
-      "demoLabel": "Explorar demo",
-      "createdAt": "2021-01-27T17:51:31Z",
-      "updatedAt": "2026-04-08T00:13:57Z",
-      "pushedAt": "2021-01-27T18:34:25Z",
-      "stars": 0,
-      "forks": 0,
-      "isFork": false,
-      "topics": [],
-      "languages": [],
-      "primaryLanguage": "Sin datos"
-    },
-    {
       "id": 296005232,
       "name": "WDD230",
       "description": "Repositorio del curso WDD230 con prácticas y proyectos de desarrollo web usando HTML, CSS y JavaScript.",
@@ -529,7 +482,7 @@
   "languageSummary": [
     {
       "name": "HTML",
-      "bytes": 648157,
+      "bytes": 648060,
       "percentage": 38.3
     },
     {
@@ -540,17 +493,17 @@
     {
       "name": "CSS",
       "bytes": 368415,
-      "percentage": 21.7
+      "percentage": 21.8
     },
     {
       "name": "Java",
-      "bytes": 86229,
+      "bytes": 85933,
       "percentage": 5.1
     },
     {
       "name": "TypeScript",
       "bytes": 85540,
-      "percentage": 5
+      "percentage": 5.1
     },
     {
       "name": "PHP",
@@ -569,7 +522,7 @@
     }
   ],
   "stats": {
-    "totalRepos": 16,
+    "totalRepos": 14,
     "totalStars": 0,
     "totalForks": 0,
     "featuredLanguage": "HTML"
