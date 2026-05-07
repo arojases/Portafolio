@@ -95,6 +95,7 @@ export class DemoPageComponent {
         'Abrir Latido': 'Open Latido',
         'Abrir galeria': 'Open gallery',
         'Abrir demo Django': 'Open Django demo',
+        'Abrir Blog': 'Open Blog',
         'Abrir PHP Motors': 'Open PHP Motors',
         'Abrir CSE341 demo': 'Open CSE341 demo',
         'Abrir API demo': 'Open API demo',

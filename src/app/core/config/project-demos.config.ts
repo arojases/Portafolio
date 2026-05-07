@@ -37,6 +37,13 @@ export const projectDemoConfigByRepositoryId: Record<number, ProjectDemoEntry> =
     primaryUrl: 'http://127.0.0.1:8101/',
     primaryLabel: 'Abrir demo Django',
   },
+  607933813: {
+    overview:
+      'Blog web publicado en GitHub Pages. El boton abre directamente la demo real para revisar la estructura de publicaciones y la experiencia navegable.',
+    primaryUrl: 'https://arojases.github.io/Blog-Project/',
+    primaryLabel: 'Abrir Blog',
+    openInNewTab: false,
+  },
   595949854: {
     overview:
       'Demo navegable para CSE341-Personal. Explica la API de usuarios y tickets, el flujo con Express, MongoDB, validaciones, autenticacion con Google y documentacion Swagger en una vista simple para evaluadores externos.',
