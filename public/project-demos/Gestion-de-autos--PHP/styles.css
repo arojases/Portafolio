@@ -1,0 +1,312 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #20242a;
+  background: #d8e4ee url("images/site/checkerboard.jpg");
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: #0f638f;
+}
+
+.shell {
+  width: min(1120px, calc(100% - 24px));
+  margin: 18px auto;
+  background: #fff;
+  border: 5px solid #4c96d7;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(24, 40, 55, 0.18);
+}
+
+.topbar {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px 0;
+}
+
+.brand img {
+  width: 190px;
+  max-width: 48vw;
+  display: block;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.nav {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  background: #2f3338;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 18px;
+  font-weight: 700;
+  min-height: 48px;
+}
+
+.nav a:hover,
+.nav a.active {
+  background: #4c96d7;
+}
+
+main {
+  padding: 24px;
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(240px, 340px) 1fr;
+  align-items: center;
+  min-height: 360px;
+  gap: 16px;
+}
+
+.hero-copy {
+  z-index: 1;
+  color: #1371a0;
+}
+
+.hero-copy h1,
+.page-title {
+  margin: 0 0 16px;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.05;
+}
+
+.hero-copy p {
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.hero-image {
+  width: 100%;
+  max-height: 360px;
+  object-fit: contain;
+}
+
+.button,
+button,
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 16px;
+  border: 1px solid #185f86;
+  background: #20d9e8;
+  color: #1d2932;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 12px;
+}
+
+.panel h2 {
+  margin-top: 0;
+}
+
+.upgrade-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 14px;
+}
+
+.upgrade {
+  text-align: center;
+}
+
+.upgrade-image {
+  min-height: 92px;
+  display: grid;
+  place-items: center;
+  background: #4c96d7;
+}
+
+.upgrade img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.vehicle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.vehicle-card {
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  display: grid;
+  grid-template-rows: 170px auto;
+}
+
+.vehicle-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: contain;
+  padding: 12px;
+  background: #f2f6f9;
+}
+
+.vehicle-card-body {
+  padding: 14px;
+}
+
+.vehicle-card h2 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+
+.price {
+  font-weight: 800;
+  color: #1f6f45;
+}
+
+.detail {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(280px, 0.9fr);
+  gap: 28px;
+}
+
+.detail img {
+  width: 100%;
+  object-fit: contain;
+  background: #f2f6f9;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.meta {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.notice {
+  border-left: 4px solid #4c96d7;
+  background: #edf7ff;
+  padding: 12px 14px;
+}
+
+.form-grid {
+  display: grid;
+  max-width: 460px;
+  gap: 10px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  min-height: 42px;
+  padding: 10px;
+  border: 1px solid #b8c1ca;
+  border-radius: 4px;
+  font: inherit;
+}
+
+textarea {
+  min-height: 96px;
+}
+
+.admin-layout {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.35fr) 1fr;
+  gap: 24px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #d0d7de;
+}
+
+th {
+  background: #f2f6f9;
+}
+
+.footer {
+  text-align: center;
+  border-top: 3px solid #3a3a3a;
+  padding: 16px;
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    grid-template-columns: 1fr auto;
+    padding: 12px;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    border-radius: 4px;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .nav a {
+    width: 50%;
+    padding-inline: 12px;
+  }
+
+  main {
+    padding: 18px;
+  }
+
+  .hero,
+  .home-grid,
+  .detail,
+  .admin-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: 0;
+  }
+
+  .home-grid {
+    gap: 10px;
+  }
+}

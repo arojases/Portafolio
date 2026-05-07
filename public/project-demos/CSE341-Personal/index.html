@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSE341 Personal API | Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <strong>CSE341 Personal API</strong>
+    <nav>
+      <a href="#resumen">Resumen</a>
+      <a href="#arquitectura">Arquitectura</a>
+      <a href="#endpoints">Endpoints</a>
+      <a href="#demo">Demo</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="resumen">
+      <div class="hero-copy">
+        <p class="eyebrow">Demo navegable para portafolio</p>
+        <h1>API backend para usuarios y tickets de viaje.</h1>
+        <p class="lead">
+          Esta vista explica el proyecto CSE341-Personal para alguien externo: que hace la API,
+          que partes tecnicas se implementaron y como se ve una respuesta real sin abrir Postman.
+        </p>
+        <div class="actions">
+          <a class="button" href="#demo">Explorar demo</a>
+          <a class="button secondary" href="https://github.com/arojases/CSE341-Personal" target="_blank" rel="noreferrer">Ver repositorio</a>
+        </div>
+      </div>
+
+      <aside class="terminal-card" aria-label="Vista previa de API">
+        <div class="terminal-bar">
+          <span></span><span></span><span></span>
+        </div>
+        <pre><code>GET /tickets
+200 OK
+
+{
+  "data": [
+    {
+      "origin": "Santiago",
+      "destination": "Tokyo",
+      "departure": "2026-06-12"
+    }
+  ]
+}</code></pre>
+      </aside>
+    </section>
+
+    <section class="section" id="arquitectura">
+      <p class="eyebrow">Que se hizo</p>
+      <h2>Partes principales del proyecto</h2>
+      <div class="feature-grid">
+        <article>
+          <span>01</span>
+          <h3>Servidor Express</h3>
+          <p>El servidor recibe solicitudes HTTP, usa middleware global y conecta rutas separadas para usuarios, tickets, Swagger y autenticacion.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Rutas REST</h3>
+          <p>Las rutas organizan operaciones CRUD para listar, crear, actualizar y eliminar datos usando URLs claras.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Controladores</h3>
+          <p>Los controladores contienen la logica que consulta MongoDB y devuelve respuestas JSON con codigos HTTP adecuados.</p>
+        </article>
+        <article>
+          <span>04</span>
+          <h3>Modelos Mongoose</h3>
+          <p>Los modelos definen la forma de los documentos de usuarios y tickets dentro de MongoDB.</p>
+        </article>
+        <article>
+          <span>05</span>
+          <h3>Validaciones</h3>
+          <p>Antes de guardar informacion, se validan campos requeridos como origen, destino, fechas, email y datos personales.</p>
+        </article>
+        <article>
+          <span>06</span>
+          <h3>OAuth y Swagger</h3>
+          <p>Passport Google OAuth protege las rutas reales y Swagger documenta la API para pruebas tecnicas.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="endpoints">
+      <p class="eyebrow">Mapa de API</p>
+      <h2>Endpoints que se pueden revisar</h2>
+      <div class="endpoint-layout">
+        <article class="panel">
+          <h3>Usuarios</h3>
+          <p>Gestiona datos de personas registradas en el sistema.</p>
+          <div class="endpoint-list">
+            <button class="endpoint active" type="button" data-key="GET /users"><span class="method get">GET</span><code>/users</code></button>
+            <button class="endpoint" type="button" data-key="POST /users"><span class="method post">POST</span><code>/users</code></button>
+            <button class="endpoint" type="button" data-key="PUT /users/:id"><span class="method put">PUT</span><code>/users/:id</code></button>
+            <button class="endpoint" type="button" data-key="DELETE /users/:id"><span class="method delete">DELETE</span><code>/users/:id</code></button>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h3>Tickets</h3>
+          <p>Gestiona tickets de viaje con origen, destino, salida y retorno.</p>
+          <div class="endpoint-list">
+            <button class="endpoint" type="button" data-key="GET /tickets"><span class="method get">GET</span><code>/tickets</code></button>
+            <button class="endpoint" type="button" data-key="GET /tickets/:id"><span class="method get">GET</span><code>/tickets/:id</code></button>
+            <button class="endpoint" type="button" data-key="POST /tickets"><span class="method post">POST</span><code>/tickets</code></button>
+            <button class="endpoint" type="button" data-key="PUT /tickets/:id"><span class="method put">PUT</span><code>/tickets/:id</code></button>
+            <button class="endpoint" type="button" data-key="DELETE /tickets/:id"><span class="method delete">DELETE</span><code>/tickets/:id</code></button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section demo-grid" id="demo">
+      <article class="panel detail-panel">
+        <p class="eyebrow">Preview interactivo</p>
+        <h2 id="endpointTitle">Listar usuarios</h2>
+        <p id="endpointDescription">Devuelve todos los usuarios guardados en MongoDB.</p>
+        <div class="request-line">
+          <span id="methodBadge" class="method get">GET</span>
+          <code id="pathText">/users</code>
+        </div>
+        <pre><code id="payload"></code></pre>
+      </article>
+
+      <article class="panel explanation-panel">
+        <p class="eyebrow">Como leerlo</p>
+        <h2>Lo que esta demostrando</h2>
+        <ul>
+          <li>Separacion entre rutas, controladores, modelos y validadores.</li>
+          <li>Persistencia de datos con MongoDB y Mongoose.</li>
+          <li>Uso de respuestas JSON y codigos HTTP comunes.</li>
+          <li>Documentacion tecnica disponible mediante Swagger.</li>
+          <li>Login Google preparado para proteger las rutas reales.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

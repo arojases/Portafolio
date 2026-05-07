@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacts API | Swagger Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Node.js - Express - MongoDB</p>
+        <h1>Contacts API</h1>
+        <p class="lead">
+          API REST para gestionar contactos con documentacion Swagger y endpoints CRUD.
+        </p>
+      </div>
+    </section>
+
+    <section class="status-panel">
+      <strong>Vista para portafolio</strong>
+      <p>
+        Esta demo resume la documentacion Swagger y el flujo CRUD de la API sin depender de un servidor activo.
+        El proyecto original funciona con Node.js, Express, MongoDB y una documentacion interactiva generada con Swagger.
+      </p>
+    </section>
+
+    <section class="grid">
+      <article class="panel endpoints">
+        <div class="panel-head">
+          <p class="eyebrow">Endpoints</p>
+          <h2>CRUD de contactos</h2>
+        </div>
+
+        <div class="endpoint-list">
+          <button class="endpoint active" type="button" data-method="GET" data-path="/contacts" data-title="Listar contactos">
+            <span class="method get">GET</span>
+            <span>/contacts</span>
+          </button>
+          <button class="endpoint" type="button" data-method="GET" data-path="/contacts/{id}" data-title="Obtener contacto">
+            <span class="method get">GET</span>
+            <span>/contacts/{id}</span>
+          </button>
+          <button class="endpoint" type="button" data-method="POST" data-path="/contacts" data-title="Crear contacto">
+            <span class="method post">POST</span>
+            <span>/contacts</span>
+          </button>
+          <button class="endpoint" type="button" data-method="PUT" data-path="/contacts/{id}" data-title="Actualizar contacto">
+            <span class="method put">PUT</span>
+            <span>/contacts/{id}</span>
+          </button>
+          <button class="endpoint" type="button" data-method="DELETE" data-path="/contacts/{id}" data-title="Eliminar contacto">
+            <span class="method delete">DELETE</span>
+            <span>/contacts/{id}</span>
+          </button>
+        </div>
+      </article>
+
+      <article class="panel detail">
+        <div class="panel-head">
+          <p class="eyebrow">Preview</p>
+          <h2 id="endpointTitle">Listar contactos</h2>
+        </div>
+        <div class="request-line">
+          <span id="methodBadge" class="method get">GET</span>
+          <code id="pathText">/contacts</code>
+        </div>
+        <p id="description">
+          Devuelve todos los contactos guardados en MongoDB.
+        </p>
+        <pre><code id="payload">[
+  {
+    "firstName": "Pedro",
+    "lastName": "Herrera",
+    "email": "pedro@example.com",
+    "favoriteColor": "blue",
+    "birthday": "10/20/1990"
+  }
+]</code></pre>
+      </article>
+    </section>
+
+    <section class="panel model-panel">
+      <div class="panel-head">
+        <p class="eyebrow">Modelo</p>
+        <h2>Contact</h2>
+      </div>
+      <div class="model-grid">
+        <span>firstName</span>
+        <span>string</span>
+        <span>lastName</span>
+        <span>string</span>
+        <span>email</span>
+        <span>string</span>
+        <span>favoriteColor</span>
+        <span>string</span>
+        <span>birthday</span>
+        <span>string</span>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

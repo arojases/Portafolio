@@ -25,13 +25,27 @@ export const projectDemoConfigByRepositoryId: Record<number, ProjectDemoEntry> =
   },
   574794761: {
     overview:
-      'El proyecto necesita PHP para correr en localhost. Te deje el arranque preparado, pero en esta maquina todavia no existe php.exe, por eso la card sigue usando el fallback.',
+      'Demo navegable de PHP Motors creada para portafolio. Recrea el inicio, categorias de vehiculos, detalle, cuenta de usuario y flujo de resenas sin requerir PHP ni base de datos.',
+    primaryUrl: 'project-demos/Gestion-de-autos--PHP/index.html',
+    primaryLabel: 'Abrir PHP Motors',
   },
   1049454014: {
     overview:
       'Este proyecto Django se puede levantar en localhost con SQLite y abrirse como demo real desde la card.',
     primaryUrl: 'http://127.0.0.1:8101/',
     primaryLabel: 'Abrir demo Django',
+  },
+  595949854: {
+    overview:
+      'Demo navegable para CSE341-Personal. Explica la API de usuarios y tickets, el flujo con Express, MongoDB, validaciones, autenticacion con Google y documentacion Swagger en una vista simple para evaluadores externos.',
+    primaryUrl: 'project-demos/CSE341-Personal/index.html',
+    primaryLabel: 'Abrir CSE341 demo',
+  },
+  586097855: {
+    overview:
+      'API REST de contactos construida con Node.js, Express y MongoDB. La demo estatica muestra endpoints, modelo de datos y acceso al Swagger vivo sin depender de que Render despierte primero.',
+    primaryUrl: 'project-demos/Node.js-Swagger-MongoDB/index.html',
+    primaryLabel: 'Abrir API demo',
   },
   296005232: {
     overview:
