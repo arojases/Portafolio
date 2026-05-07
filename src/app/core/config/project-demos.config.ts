@@ -39,8 +39,8 @@ export const projectDemoConfigByRepositoryId: Record<number, ProjectDemoEntry> =
   },
   607933813: {
     overview:
-      'Blog web publicado en GitHub Pages. El boton abre directamente la demo real para revisar la estructura de publicaciones y la experiencia navegable.',
-    primaryUrl: 'https://arojases.github.io/Blog-Project/',
+      'Demo navegable de Blog Project creada para portafolio. Muestra publicaciones, categorias, busqueda, lectura de articulos y una vista de administracion sin depender de GitHub Pages.',
+    primaryUrl: 'project-demos/Blog-Project/index.html',
     primaryLabel: 'Abrir Blog',
     openInNewTab: false,
   },

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog Project | Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Inicio">
+      <span class="brand-mark">B</span>
+      <span>Blog Project</span>
+    </a>
+    <nav aria-label="Navegacion principal">
+      <a href="#home">Inicio</a>
+      <a href="#posts">Posts</a>
+      <a href="#admin">Admin</a>
+      <a class="back-link" href="../../#projects">Portafolio</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">Demo navegable</p>
+        <h1>Blog web con publicaciones y administracion visual</h1>
+        <p>
+          Vista preparada para portafolio: muestra articulos, categorias, busqueda y un flujo
+          de gestion sin depender de GitHub Pages ni de un backend activo.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#posts">Explorar posts</a>
+          <a class="button secondary" href="#admin">Ver admin</a>
+        </div>
+      </div>
+
+      <article class="featured-card" id="featuredPost"></article>
+    </section>
+
+    <section class="toolbar" aria-label="Filtros de blog">
+      <label>
+        <span>Buscar</span>
+        <input id="searchInput" type="search" placeholder="Titulo, categoria o resumen">
+      </label>
+      <div class="category-tabs" id="categoryTabs"></div>
+    </section>
+
+    <section class="layout" id="posts">
+      <div>
+        <div class="section-heading">
+          <p class="eyebrow">Publicaciones</p>
+          <h2>Ultimos articulos</h2>
+        </div>
+        <div class="post-grid" id="postGrid"></div>
+      </div>
+
+      <aside class="reader-panel" id="readerPanel" aria-live="polite"></aside>
+    </section>
+
+    <section class="admin-panel" id="admin">
+      <div class="section-heading">
+        <p class="eyebrow">Admin</p>
+        <h2>Gestion de contenido</h2>
+      </div>
+      <div class="admin-grid">
+        <article>
+          <span>12</span>
+          <p>posts publicados</p>
+        </article>
+        <article>
+          <span>4</span>
+          <p>categorias activas</p>
+        </article>
+        <article>
+          <span>3</span>
+          <p>borradores listos</p>
+        </article>
+      </div>
+
+      <form class="editor-preview">
+        <label>
+          Titulo
+          <input type="text" value="Nueva entrada del blog">
+        </label>
+        <label>
+          Extracto
+          <textarea>Resumen breve para presentar la publicacion antes de abrir el detalle.</textarea>
+        </label>
+        <button type="button">Guardar borrador</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
