@@ -12,6 +12,13 @@ export const projectDemoConfigByRepositoryId: Record<number, ProjectDemoEntry> =
     primaryUrl: 'project-demos/Latido/index.html',
     primaryLabel: 'Abrir Latido',
   },
+  1204394814: {
+    overview:
+      'Demo visual de Lovira para portafolio. Recrea el flujo principal de la app Android para parejas, con gestos afectivos, estado en tiempo real y notificaciones push sin requerir emulador externo.',
+    primaryUrl: 'project-demos/Lovira/index.html',
+    primaryLabel: 'Abrir Lovira',
+    openInNewTab: false,
+  },
   898691876: {
     overview:
       'Este repositorio contiene decenas de mini proyectos independientes. La card abre una galeria local para elegir una demo real del conjunto.',
