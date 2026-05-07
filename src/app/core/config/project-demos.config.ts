@@ -2,6 +2,7 @@ export interface ProjectDemoEntry {
   overview: string;
   primaryUrl?: string;
   primaryLabel?: string;
+  openInNewTab?: boolean;
 }
 
 export const projectDemoConfigByRepositoryId: Record<number, ProjectDemoEntry> = {
@@ -28,6 +29,7 @@ export const projectDemoConfigByRepositoryId: Record<number, ProjectDemoEntry> =
       'Demo navegable de PHP Motors creada para portafolio. Recrea el inicio, categorias de vehiculos, detalle, cuenta de usuario y flujo de resenas sin requerir PHP ni base de datos.',
     primaryUrl: 'project-demos/Gestion-de-autos--PHP/index.html',
     primaryLabel: 'Abrir PHP Motors',
+    openInNewTab: false,
   },
   1049454014: {
     overview:

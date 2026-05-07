@@ -108,6 +108,12 @@ export class ProjectsComponent {
   }
 
   shouldOpenDemoInNewTab(repository: ProjectCardData): boolean {
+    const demoEntry = getProjectDemoEntry(repository.id);
+
+    if (demoEntry?.openInNewTab !== undefined) {
+      return demoEntry.openInNewTab;
+    }
+
     return this.getDemoHref(repository).includes('/project-demos/') || !!repository.demoUrl;
   }
 
