@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OnTour | Demo de portafolio</title>
+  <style>
+    :root {
+      --brand: #58b957;
+      --ink: #1e2428;
+      --muted: #68747c;
+      --line: #d9e1e5;
+      --panel: #ffffff;
+      --surface: #f5f7f6;
+      --accent: #2563eb;
+      --warn: #f59e0b;
+      --danger: #dc2626;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--surface);
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+    }
+
+    .sidebar {
+      background: #172026;
+      color: #fff;
+      padding: 28px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+      background: var(--brand);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 1.2rem;
+    }
+
+    .brand span {
+      color: #b9c5cc;
+      font-size: .84rem;
+    }
+
+    .login-panel {
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 8px;
+      padding: 16px;
+      background: rgba(255, 255, 255, .05);
+    }
+
+    .login-panel label {
+      display: block;
+      color: #cbd5da;
+      font-size: .8rem;
+      margin-bottom: 7px;
+    }
+
+    .login-panel input {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, .18);
+      background: #0f171b;
+      color: #fff;
+      border-radius: 6px;
+      padding: 10px 11px;
+      margin-bottom: 12px;
+    }
+
+    .primary {
+      width: 100%;
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      padding: 11px 12px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .nav {
+      display: grid;
+      gap: 8px;
+    }
+
+    .nav button {
+      border: 0;
+      border-radius: 6px;
+      color: #dce5e9;
+      background: transparent;
+      padding: 11px 12px;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .nav button.active,
+    .nav button:hover {
+      background: rgba(88, 185, 87, .18);
+      color: #fff;
+    }
+
+    .main {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 0 28px;
+      background: var(--panel);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar h1 {
+      margin: 0;
+      font-size: 1.35rem;
+      letter-spacing: 0;
+    }
+
+    .topbar p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: #25613a;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--brand);
+    }
+
+    .content {
+      padding: 26px 28px 34px;
+      display: grid;
+      gap: 22px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(150px, 1fr));
+      gap: 14px;
+    }
+
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 1.55rem;
+    }
+
+    .workspace {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .workspace-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .workspace-head h2 {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .ghost {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 9px 11px;
+      cursor: pointer;
+    }
+
+    .ghost.active {
+      border-color: var(--brand);
+      color: #236c35;
+      background: #edf8ee;
+    }
+
+    .view {
+      display: none;
+      padding: 20px;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--line);
+      padding: 13px 12px;
+      text-align: left;
+      font-size: .92rem;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      background: #f8faf9;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: .8rem;
+      font-weight: 700;
+      background: #eaf7ed;
+      color: #28743b;
+    }
+
+    .badge.off {
+      background: #f3f4f6;
+      color: #6b7280;
+    }
+
+    .actions {
+      color: var(--accent);
+      white-space: nowrap;
+      font-weight: 700;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(160px, 1fr));
+      gap: 16px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 700;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 11px 12px;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .form-actions .primary {
+      width: auto;
+      min-width: 150px;
+    }
+
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(190px, 1fr));
+      gap: 14px;
+    }
+
+    .package {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      background: #fbfcfc;
+    }
+
+    .package strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .package span {
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.45;
+    }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      background: #172026;
+      color: #fff;
+      border-radius: 8px;
+      padding: 13px 15px;
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: .18s ease;
+      max-width: 310px;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .shell {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        padding: 20px;
+      }
+
+      .nav {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .metrics,
+      .form-grid,
+      .packages {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .topbar,
+      .workspace-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .content {
+        padding: 18px;
+      }
+
+      .metrics,
+      .form-grid,
+      .packages,
+      .nav {
+        grid-template-columns: 1fr;
+      }
+
+      .status {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand" aria-label="OnTour">
+        <div class="brand-mark">OT</div>
+        <div>
+          <strong>OnTour</strong>
+          <span>Panel de administracion</span>
+        </div>
+      </div>
+
+      <section class="login-panel" aria-label="Acceso demo">
+        <label for="user">Usuario</label>
+        <input id="user" value="luis" autocomplete="username">
+        <label for="pass">Clave</label>
+        <input id="pass" value="123" type="password" autocomplete="current-password">
+        <button class="primary" id="loginBtn">Iniciar sesion</button>
+      </section>
+
+      <nav class="nav" aria-label="Modulos">
+        <button class="active" data-view="usuarios">Usuarios</button>
+        <button data-view="nuevo">Agregar usuario</button>
+        <button data-view="paquetes">Paquetes de viajes</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1>Gestion interna OnTour</h1>
+          <p>Demo navegable basada en la aplicacion Java Swing original.</p>
+        </div>
+        <div class="status"><span class="dot"></span>Sesion activa como administrador</div>
+      </header>
+
+      <section class="content">
+        <div class="metrics">
+          <article class="metric"><span>Usuarios registrados</span><strong>5</strong></article>
+          <article class="metric"><span>Usuarios activos</span><strong>4</strong></article>
+          <article class="metric"><span>Clientes modelados</span><strong>DTO</strong></article>
+          <article class="metric"><span>Base de datos</span><strong>Oracle</strong></article>
+        </div>
+
+        <section class="workspace">
+          <div class="workspace-head">
+            <h2 id="sectionTitle">Usuarios | Listado</h2>
+            <div class="toolbar">
+              <button class="ghost active" data-view="usuarios">Listado</button>
+              <button class="ghost" data-view="nuevo">Nuevo</button>
+              <button class="ghost" data-view="paquetes">Viajes</button>
+            </div>
+          </div>
+
+          <div class="view active" id="usuarios">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>RUT</th>
+                    <th>Email</th>
+                    <th>Estado</th>
+                    <th>Opciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Diego Cifuentes</td>
+                    <td>18.123.456-7</td>
+                    <td>di.fuentes@alumnos.duoc.cl</td>
+                    <td><span class="badge">Activo</span></td>
+                    <td class="actions">Editar | Ver detalle | Eliminar</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Ariel Rojas</td>
+                    <td>18.654.321-0</td>
+                    <td>a.rojase@alumnos.duoc.cl</td>
+                    <td><span class="badge">Activo</span></td>
+                    <td class="actions">Editar | Ver detalle | Eliminar</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Fabian Villalobos</td>
+                    <td>18.060.890-9</td>
+                    <td>fab.vi@alumnos.duoc.cl</td>
+                    <td><span class="badge">Activo</span></td>
+                    <td class="actions">Editar | Ver detalle | Eliminar</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Javier Sanchez</td>
+                    <td>24.112.420-1</td>
+                    <td>jav.san@alumnos.duoc.cl</td>
+                    <td><span class="badge">Activo</span></td>
+                    <td class="actions">Editar | Ver detalle | Eliminar</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>Luis Ponce</td>
+                    <td>17.120.464-K</td>
+                    <td>l.ponces@alumnos.duoc.cl</td>
+                    <td><span class="badge off">Inactivo</span></td>
+                    <td class="actions">Ver detalle</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="view" id="nuevo">
+            <form id="userForm">
+              <div class="form-grid">
+                <div class="field">
+                  <label for="nombreUsuario">Usuario</label>
+                  <input id="nombreUsuario" value="arojas">
+                </div>
+                <div class="field">
+                  <label for="clave">Clave</label>
+                  <input id="clave" type="password" value="123456">
+                </div>
+                <div class="field">
+                  <label for="tipo">Tipo de usuario</label>
+                  <select id="tipo">
+                    <option>Administrador</option>
+                    <option>Empleado</option>
+                    <option>Cliente</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="nombre">Nombre</label>
+                  <input id="nombre" value="Ariel">
+                </div>
+                <div class="field">
+                  <label for="paterno">Apellido paterno</label>
+                  <input id="paterno" value="Rojas">
+                </div>
+                <div class="field">
+                  <label for="materno">Apellido materno</label>
+                  <input id="materno" value="Escobar">
+                </div>
+                <div class="field">
+                  <label for="rut">RUT</label>
+                  <input id="rut" value="18.654.321-0">
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input id="email" value="a.rojase@alumnos.duoc.cl">
+                </div>
+                <div class="field">
+                  <label for="telefono">Telefono</label>
+                  <input id="telefono" value="+56 9 1234 5678">
+                </div>
+                <div class="field">
+                  <label for="fecha">Fecha nacimiento</label>
+                  <input id="fecha" value="1995-08-12">
+                </div>
+                <div class="field">
+                  <label for="direccion">Direccion</label>
+                  <input id="direccion" value="Santiago, Chile">
+                </div>
+                <div class="field">
+                  <label for="estado">Estado</label>
+                  <select id="estado">
+                    <option>Activo</option>
+                    <option>Inactivo</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button class="ghost" type="reset">Limpiar</button>
+                <button class="primary" type="submit">Registrar usuario</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="view" id="paquetes">
+            <div class="packages">
+              <article class="package">
+                <strong>Modulo planificado</strong>
+                <span>El menu original considera paquetes de viajes como una extension del sistema administrativo.</span>
+              </article>
+              <article class="package">
+                <strong>Arquitectura lista</strong>
+                <span>La separacion por capas permite sumar DTO, DAL, controlador y vistas para nuevos modulos.</span>
+              </article>
+              <article class="package">
+                <strong>Integracion Oracle</strong>
+                <span>La persistencia esta pensada para trabajar con JDBC y procedimientos almacenados.</span>
+              </article>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const titles = {
+      usuarios: 'Usuarios | Listado',
+      nuevo: 'Usuarios | Nuevo registro',
+      paquetes: 'Paquetes de viajes | Vista demo'
+    };
+
+    const showToast = (message) => {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    };
+
+    const setView = (name) => {
+      document.querySelectorAll('.view').forEach((view) => {
+        view.classList.toggle('active', view.id === name);
+      });
+      document.querySelectorAll('[data-view]').forEach((button) => {
+        button.classList.toggle('active', button.dataset.view === name);
+      });
+      document.getElementById('sectionTitle').textContent = titles[name];
+    };
+
+    document.querySelectorAll('[data-view]').forEach((button) => {
+      button.addEventListener('click', () => setView(button.dataset.view));
+    });
+
+    document.getElementById('loginBtn').addEventListener('click', () => {
+      const user = document.getElementById('user').value.trim();
+      const pass = document.getElementById('pass').value.trim();
+      if (user === 'luis' && pass === '123') {
+        showToast('Credenciales demo aceptadas. Panel disponible.');
+      } else {
+        showToast('Credenciales demo: luis / 123');
+      }
+    });
+
+    document.getElementById('userForm').addEventListener('submit', (event) => {
+      event.preventDefault();
+      showToast('Usuario validado en la demo. En Java se enviaria al DAL.');
+      setView('usuarios');
+    });
+  </script>
+</body>
+</html>

@@ -97,6 +97,7 @@ export class DemoPageComponent {
         'Abrir demo Django': 'Open Django demo',
         'Abrir Scoots': 'Open Scoots',
         'Abrir Weather App': 'Open Weather App',
+        'Abrir OnTour': 'Open OnTour',
       };
 
       return labels[label] ?? label;

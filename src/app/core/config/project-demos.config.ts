@@ -45,6 +45,12 @@ export const projectDemoConfigByRepositoryId: Record<number, ProjectDemoEntry> =
     primaryUrl: 'project-demos/WDD330/finalProject/index.html',
     primaryLabel: 'Abrir Weather App',
   },
+  158885932: {
+    overview:
+      'OnTour es una aplicacion Java Swing de escritorio. La demo web recrea el panel administrativo, listado de usuarios y formulario principal para mostrar el flujo sin ejecutar Java ni Oracle.',
+    primaryUrl: 'project-demos/appJava/ontour/index.html',
+    primaryLabel: 'Abrir OnTour',
+  },
 };
 
 export function getProjectDemoEntry(repositoryId: number): ProjectDemoEntry | undefined {
