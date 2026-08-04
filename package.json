@@ -10,6 +10,7 @@
     "demo:autos": "powershell -ExecutionPolicy Bypass -File scripts/start-php-demo.ps1",
     "demo:backends": "powershell -ExecutionPolicy Bypass -File scripts/start-project-demos.ps1",
     "sync:github": "node scripts/generate-portfolio-data.mjs",
+    "sync:50-projects": "node scripts/sync-50-projects.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

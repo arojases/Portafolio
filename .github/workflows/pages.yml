@@ -40,6 +40,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_PORTFOLIO_USERNAME: arojases
 
+      - name: Sync 50 Projects demos
+        run: npm run sync:50-projects
+
       - name: Build for GitHub Pages
         run: npm run build:pages
 

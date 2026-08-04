@@ -27,6 +27,18 @@ npm start
 
 3. Abre `http://localhost:4200`.
 
+## Actualizar las demos de 50 Projects
+
+La galeria conserva una copia local de las demos para que funcionen dentro del portafolio. Para
+sincronizarla con el repositorio original, ejecuta:
+
+```bash
+npm run sync:50-projects
+```
+
+El despliegue de GitHub Pages también ejecuta esta sincronización automáticamente antes de cada
+compilación, incluyendo el despliegue programado cada seis horas.
+
 ## Integracion con GitHub API
 
 El servicio `src/app/core/services/portfolio-data.service.ts` consulta:
