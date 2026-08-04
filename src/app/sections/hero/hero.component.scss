@@ -1,11 +1,16 @@
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.8fr);
-  gap: 2rem;
+  grid-template-columns: minmax(0, 620px) minmax(220px, 270px);
+  justify-content: space-between;
+  gap: clamp(1.25rem, 3vw, 2.25rem);
   align-items: center;
-  width: min(100% - 2rem, 78rem);
-  margin: 2rem auto 0;
-  padding: clamp(2rem, 5vw, 4rem) 0 3rem;
+  width: min(100% - 2rem, 62rem);
+  margin: 1.25rem auto 0;
+  padding: clamp(1.5rem, 4vw, 2.75rem) 0 2rem;
+}
+
+.hero-copy {
+  max-width: 620px;
 }
 
 .eyebrow,
@@ -21,29 +26,29 @@
 h1 {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(3.2rem, 8vw, 6.4rem);
-  line-height: 0.9;
+  font-size: clamp(2.5rem, 6vw, 4.8rem);
+  line-height: 0.95;
 }
 
 .role {
   margin: 1rem 0 0;
   color: var(--text-secondary);
-  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
   font-weight: 700;
 }
 
 .headline {
   margin: 1rem 0 0;
-  font-size: clamp(1.3rem, 2.3vw, 2rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.55rem);
   line-height: 1.15;
 }
 
 .summary {
-  max-width: 56rem;
-  margin: 1.5rem 0 0;
+  max-width: 580px;
+  margin: 1.1rem 0 0;
   color: var(--text-muted);
-  font-size: clamp(1.18rem, 1.7vw, 1.38rem);
-  line-height: 1.85;
+  font-size: clamp(1rem, 1.35vw, 1.14rem);
+  line-height: 1.7;
   overflow-wrap: anywhere;
 }
 
@@ -56,16 +61,28 @@ h1 {
     radial-gradient(circle at top left, rgba(235, 93, 30, 0.22), transparent 38%),
     linear-gradient(160deg, var(--surface-elevated), color-mix(in srgb, var(--surface-elevated) 55%, var(--surface-muted)));
   box-shadow: var(--shadow-soft);
+  width: 100%;
+  max-width: 270px;
+  justify-self: end;
 }
 
 .hero-card img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: clamp(210px, 24vw, 280px);
   object-fit: cover;
+  object-position: center top;
 }
 
 .hero-card__content {
-  padding: 1.5rem;
+  padding: 1.15rem;
+}
+
+.hero-card__content h2 {
+  font-size: 1.2rem;
+}
+
+.hero-card__content p {
+  font-size: 0.9rem;
 }
 
 .hero-card__content h2,
@@ -78,26 +95,13 @@ h1 {
   overflow-wrap: anywhere;
 }
 
-dl {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem;
-  margin: 1.5rem 0 0;
-}
-
-dt {
-  color: var(--text-muted);
-  font-size: 0.82rem;
-}
-
-dd {
-  margin: 0.3rem 0 0;
-  font-size: 1.35rem;
-  font-weight: 800;
-}
-
 @media (max-width: 960px) {
   .hero {
     grid-template-columns: 1fr;
+  }
+
+  .hero-card {
+    width: min(100%, 280px);
+    justify-self: start;
   }
 }

@@ -1,5 +1,5 @@
-<section id="hero" data-section class="hero" @fadeInUp>
-  <div class="hero-copy">
+<section id="hero" data-section class="hero">
+  <div class="hero-copy" appScrollReveal="left">
     <p class="eyebrow">Angular + GitHub API</p>
     <h1>{{ getDisplayName() }}</h1>
     <p class="role">{{ i18n.t('hero.role') }}</p>
@@ -7,27 +7,12 @@
     <p class="summary">{{ getBio() }}</p>
   </div>
 
-  <aside class="hero-card">
+  <aside class="hero-card" appScrollReveal="right" [revealDelay]="140">
     <img [src]="user.avatar_url" [alt]="'Avatar de ' + getDisplayName()" loading="lazy" />
     <div class="hero-card__content">
       <p class="hero-card__label">{{ i18n.t('hero.cardLabel') }}</p>
       <h2>{{ getDisplayName() }}</h2>
       <p>{{ user.location || i18n.t('hero.remoteWork') }}</p>
-
-      <dl>
-        <div>
-          <dt>{{ i18n.t('hero.followers') }}</dt>
-          <dd>{{ user.followers }}</dd>
-        </div>
-        <div>
-          <dt>{{ i18n.t('hero.following') }}</dt>
-          <dd>{{ user.following }}</dd>
-        </div>
-        <div>
-          <dt>{{ i18n.t('hero.repositories') }}</dt>
-          <dd>{{ stats.totalRepos }}</dd>
-        </div>
-      </dl>
     </div>
   </aside>
 </section>

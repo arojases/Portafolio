@@ -1,6 +1,5 @@
 import { ViewportScroller } from '@angular/common';
 import { AfterViewInit, Component, HostListener, computed, inject, OnDestroy, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 import { portfolioConfig } from '../../core/config/portfolio.config';
 import { LanguageService } from '../../core/services/language.service';
@@ -12,7 +11,6 @@ interface NavItem {
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })

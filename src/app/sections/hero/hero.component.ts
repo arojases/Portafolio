@@ -3,13 +3,13 @@ import { Component, Input, inject } from '@angular/core';
 import { portfolioConfig } from '../../core/config/portfolio.config';
 import { GitHubUser, PortfolioStats } from '../../core/models/github.models';
 import { LanguageService } from '../../core/services/language.service';
-import { fadeInUp } from '../../shared/animations/fade.animation';
+import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-hero',
+  imports: [ScrollRevealDirective],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',
-  animations: [fadeInUp],
 })
 export class HeroComponent {
   @Input({ required: true }) user!: GitHubUser;

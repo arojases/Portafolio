@@ -1,5 +1,5 @@
 ﻿<section id="projects" data-section class="projects" @fadeInUp>
-  <div class="section-heading">
+  <div class="section-heading" appScrollReveal="left">
     <div>
       <p class="eyebrow">{{ i18n.t('projects.eyebrow') }}</p>
       <h2>{{ i18n.t('projects.title') }}</h2>
@@ -16,7 +16,7 @@
     </div>
   </div>
 
-  <div class="filter-menu">
+  <div class="filter-menu" appScrollReveal="right" [revealDelay]="120">
     <button
       type="button"
       class="filter-toggle"
@@ -48,13 +48,13 @@
     }
   </div>
 
-  <p class="demo-note">
+  <p class="demo-note" appScrollReveal="up" [revealDelay]="140">
     {{ i18n.t('projects.demoNote') }}
   </p>
 
-  <div class="project-grid" @staggerReveal>
+  <div class="project-grid">
     @for (repository of filteredRepositories(); track repository.id) {
-      <article class="project-card">
+      <article class="project-card" appScrollReveal="zoom" [revealDelay]="($index % 3) * 140">
         <div class="project-card__header">
           <div>
             <div class="project-card__title">

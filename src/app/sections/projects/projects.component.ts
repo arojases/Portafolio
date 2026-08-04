@@ -5,7 +5,8 @@ import { Component, Input, computed, inject, signal } from '@angular/core';
 import { getProjectDemoEntry } from '../../core/config/project-demos.config';
 import { ProjectCardData } from '../../core/models/github.models';
 import { LanguageService } from '../../core/services/language.service';
-import { fadeInUp, staggerReveal } from '../../shared/animations/fade.animation';
+import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
+import { fadeInUp } from '../../shared/animations/fade.animation';
 
 type SortMode = 'created' | 'name';
 
@@ -45,10 +46,10 @@ const repositoryDescriptionsEn: Record<number, string> = {
 
 @Component({
   selector: 'app-projects',
-  imports: [DatePipe],
+  imports: [DatePipe, ScrollRevealDirective],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
-  animations: [fadeInUp, staggerReveal],
+  animations: [fadeInUp],
 })
 export class ProjectsComponent {
   private readonly document = inject(DOCUMENT);
