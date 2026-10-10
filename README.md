@@ -2,6 +2,10 @@
 
 Portafolio personal moderno construido con Angular 21, TypeScript, SCSS y RxJS. El sitio consume la API publica de GitHub en tiempo real para obtener repositorios, lenguajes usados y metricas del perfil.
 
+## Demo
+
+[Ver portafolio](https://arojases.github.io/Portafolio/)
+
 ## Stack
 
 - Angular 21 con standalone components y routing
@@ -25,7 +29,7 @@ npm install
 npm start
 ```
 
-3. Abre `http://localhost:4200`.
+3. Abre `http://localhost:4300`.
 
 ## Actualizar las demos de 50 Projects
 
@@ -104,3 +108,7 @@ src/
 - La API publica de GitHub tiene limites de rate limit para peticiones no autenticadas.
 - No se expone ningun token sensible.
 - Si quieres agregar formulario de contacto real, conviene conectarlo a Formspree, Resend o un backend propio.
+
+## Reportar problemas y colaborar
+
+Abre un issue con los pasos para reproducir el problema, el resultado esperado y el resultado obtenido. Incluye navegador o versión del entorno cuando sea relevante y evita publicar datos personales o credenciales. Para proponer una mejora, explica el caso de uso y el alcance antes de enviar un pull request.
