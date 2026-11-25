@@ -1,8 +1,8 @@
 import { DOCUMENT, ViewportScroller } from '@angular/common';
 import { Component, effect, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { Meta, Title } from '@angular/platform-browser';
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet, Scroll } from '@angular/router';
 import { filter } from 'rxjs';
 import { portfolio } from './core/config/portfolio.config';
 import { LanguageService } from './core/services/language.service';
@@ -26,10 +26,24 @@ export class App {
   );
 
   constructor() {
-    inject(ViewportScroller).setOffset(() => [
-      0,
-      (this.document.querySelector('app-navbar header')?.getBoundingClientRect().height ?? 72) + 16,
-    ]);
+    const viewport = inject(ViewportScroller);
+    viewport.setHistoryScrollRestoration('manual');
+    this.router.events.pipe(takeUntilDestroyed()).subscribe((event) => {
+      if (!(event instanceof Scroll) || event.scrollBehavior === 'manual') return;
+
+      if (event.position) {
+        viewport.scrollToPosition(event.position, { behavior: 'instant' });
+      } else if (event.anchor) {
+        const target = this.document.getElementById(event.anchor);
+        const reducedMotion = this.document.defaultView?.matchMedia(
+          '(prefers-reduced-motion: reduce)',
+        ).matches;
+        target?.scrollIntoView({ block: 'start', behavior: reducedMotion ? 'instant' : 'smooth' });
+        target?.focus({ preventScroll: true });
+      } else {
+        viewport.scrollToPosition([0, 0], { behavior: 'instant' });
+      }
+    });
     effect(() => {
       const navigation = this.navigation();
       const project = this.router.routerState.snapshot.root.firstChild?.data['project'] as
