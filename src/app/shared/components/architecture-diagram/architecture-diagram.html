@@ -1,0 +1,13 @@
+<ol
+  class="diagram"
+  [class.systems]="systems()"
+  [class.with-flow]="showFlow()"
+  [attr.aria-label]="lang.t('architecture')"
+>
+  @for (stage of stages(); track stage.title.en) {
+    <li class="panel">
+      <h3>{{ lang.text(stage.title) }}</h3>
+      <p>{{ lang.text(stage.detail) }}</p>
+    </li>
+  }
+</ol>

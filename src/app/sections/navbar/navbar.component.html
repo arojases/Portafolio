@@ -1,37 +1,52 @@
-<header class="navbar">
-  <button
-    class="menu-toggle"
-    type="button"
-    (click)="toggleMenu()"
-    [attr.aria-expanded]="menuOpen()"
-    [attr.aria-label]="i18n.t('nav.menuAria')"
-  >
-    <span></span>
-    <span></span>
-  </button>
-
-  <nav class="nav-links" [class.open]="menuOpen()">
-    @for (item of items(); track item.id) {
+<header>
+  <div class="shell header-inner">
+    <a class="brand" routerLink="/" fragment="home">{{ name }}<span aria-hidden="true">.</span></a>
+    <nav id="main-nav" [attr.aria-label]="lang.t('navigation')" [class.open]="open()">
+      @for (item of nav; track item) {
+        <a
+          routerLink="/"
+          [fragment]="item"
+          (click)="open.set(false)"
+          [class.active]="
+            (isHome() && current() === item) || (projectPage() && item === 'projects')
+          "
+          [attr.aria-current]="isHome() && current() === item ? 'location' : null"
+          >{{ lang.t(item) }}</a
+        >
+      }
+    </nav>
+    <div class="header-actions">
+      <div class="language-picker" role="group" [attr.aria-label]="lang.t('language')">
+        <button
+          type="button"
+          [attr.aria-pressed]="lang.language() === 'en'"
+          (click)="lang.set('en')"
+          aria-label="EN · English"
+          lang="en"
+        >
+          EN
+        </button>
+        <button
+          type="button"
+          [attr.aria-pressed]="lang.language() === 'es'"
+          (click)="lang.set('es')"
+          aria-label="ES · Español"
+          lang="es"
+        >
+          ES
+        </button>
+      </div>
       <button
+        #menuButton
         type="button"
-        class="nav-link"
-        [class.active]="activeSection() === item.id"
-        (click)="scrollTo(item.id)"
+        class="menu-toggle"
+        aria-controls="main-nav"
+        [attr.aria-expanded]="open()"
+        [attr.aria-label]="lang.t('menu')"
+        (click)="open.set(!open())"
       >
-        {{ item.label }}
+        <app-icon [name]="open() ? 'close' : 'menu'" />
       </button>
-    }
-
-    <a class="github-link" [href]="config.ctaSecondary.url" target="_blank" rel="noreferrer">
-      GitHub
-    </a>
-    <button
-      type="button"
-      class="language-toggle"
-      [attr.aria-label]="i18n.t('nav.languageAria')"
-      (click)="toggleLanguage()"
-    >
-      {{ i18n.language() === 'es' ? 'EN' : 'ES' }}
-    </button>
-  </nav>
+    </div>
+  </div>
 </header>

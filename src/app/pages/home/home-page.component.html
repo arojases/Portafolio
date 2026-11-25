@@ -1,50 +1,161 @@
-﻿@let vm = vm$ | async;
-
-<div class="page-shell">
-  <app-navbar />
-
-  @if (vm?.data; as data) {
-    <main>
-      <app-hero [user]="data.user" [stats]="data.stats" />
-
-      @defer (on viewport) {
-        <app-projects [repositories]="data.repositories" />
-      } @placeholder {
-        <section id="projects" class="placeholder-section cards">
-          <div class="section-skeleton card"></div>
-          <div class="section-skeleton card"></div>
-          <div class="section-skeleton card"></div>
-        </section>
+<app-hero />
+<section class="band" id="about" aria-labelledby="about-heading">
+  <div class="section shell about-content" appScrollReveal>
+    <div class="section-heading about-heading">
+      <h2 id="about-heading">
+        {{ lang.t('aboutTitle') }} <span>{{ lang.t('aboutTitleAccent') }}</span>
+      </h2>
+    </div>
+    <div class="about-copy">
+      <p>{{ lang.t('aboutBackground') }}</p>
+      <p>{{ lang.t('aboutExperience') }}</p>
+    </div>
+    <ul class="about-cards">
+      @for (card of aboutCards; track card.title) {
+        <li class="panel about-card">
+          <app-icon class="tile-icon" [name]="card.icon" />
+          <h3>{{ lang.t(card.title) }}</h3>
+          <p>{{ lang.t(card.detail) }}</p>
+        </li>
       }
-    </main>
-
-    <app-footer [user]="data.user" />
-  } @else if (vm?.status === 'error') {
-    <main class="status-panel">
-      <section class="message-card">
-        <p class="eyebrow">GitHub API</p>
-        <h1>{{ i18n.t('home.errorTitle') }}</h1>
-        <p>{{ vm?.message }}</p>
-        <div class="actions">
-          <a class="button primary" [href]="config.ctaSecondary.url" target="_blank" rel="noreferrer">
-            {{ i18n.t('home.githubProfile') }}
-          </a>
-          <a class="button secondary" href="">{{ i18n.t('home.retry') }}</a>
+    </ul>
+  </div>
+</section>
+<app-technical-skills />
+<section class="band" id="experience" aria-labelledby="experience-heading">
+  <div class="section shell">
+    <div class="section-heading centered-heading">
+      <h2 id="experience-heading">
+        {{ lang.t('experienceTitlePrefix') }} <span>{{ lang.t('experienceTitleAccent') }}</span>
+      </h2>
+    </div>
+    <div class="experience-groups" appScrollReveal>
+      <section aria-labelledby="software-experience-heading">
+        <h3 class="experience-group-title" id="software-experience-heading">
+          {{ lang.t('softwareExperience') }}
+        </h3>
+        <article class="panel independent-role">
+          <div>
+            <h4>{{ lang.text(independent.title) }}</h4>
+            <p class="independent-subtitle">{{ lang.text(independent.subtitle) }}</p>
+            <p>{{ lang.text(independent.description) }}</p>
+            <a class="button button-primary" routerLink="/" fragment="projects">{{
+              lang.t('exploreProjects')
+            }}</a>
+          </div>
+          <ul class="tags experience-areas">
+            @for (area of independent.areas; track area.en) {
+              <li>{{ lang.text(area) }}</li>
+            }
+          </ul>
+        </article>
+      </section>
+      <section aria-labelledby="professional-experience-heading">
+        <h3 class="experience-group-title" id="professional-experience-heading">
+          {{ lang.t('professionalExperience') }}
+        </h3>
+        <div class="professional-roles">
+          @for (item of experience; track item.title.en) {
+            <article class="panel experience-role">
+              <h4>{{ lang.text(item.title) }}</h4>
+              <p class="role-company">{{ item.company }}</p>
+              <p class="profile-meta">{{ lang.text(item.period) }}</p>
+              <ul class="responsibilities">
+                @for (responsibility of item.responsibilities; track responsibility.en) {
+                  <li>{{ lang.text(responsibility) }}</li>
+                }
+              </ul>
+              @if (item.project; as project) {
+                <a class="text-link" [routerLink]="['/projects', project.slug]">{{
+                  project.title
+                }}</a>
+              }
+            </article>
+          }
         </div>
       </section>
-    </main>
-  } @else {
-    <main class="status-panel">
-      <section class="message-card">
-        <p class="eyebrow">{{ i18n.t('home.loadingEyebrow') }}</p>
-        <h1>{{ i18n.t('home.loadingTitle') }}</h1>
-        <p>{{ i18n.t('home.loadingText') }}</p>
-        <div class="loading-grid">
-          <div class="section-skeleton card"></div>
-          <div class="section-skeleton card"></div>
-          <div class="section-skeleton card"></div>
+    </div>
+  </div>
+</section>
+<section class="section shell" id="education" aria-labelledby="education-heading">
+  <div class="section-heading centered-heading">
+    <h2 id="education-heading">{{ lang.t('education') }}</h2>
+  </div>
+  <div class="education-grid" appScrollReveal>
+    @for (item of education; track item.degree.en) {
+      <article class="panel education-item">
+        <app-icon class="tile-icon" name="education" />
+        <div>
+          <h3>{{ lang.text(item.degree) }}</h3>
+          <p>{{ item.institution }}</p>
+          <p class="profile-meta">
+            {{ lang.text(item.period) }}
+            @if (item.status; as status) {
+              <span> · {{ lang.text(status) }}</span>
+            }
+          </p>
         </div>
-      </section>
-    </main>
-  }
-</div>
+      </article>
+    }
+  </div>
+</section>
+<section class="band" id="projects" aria-labelledby="projects-heading">
+  <div class="section shell">
+    <div class="section-heading centered-heading">
+      <h2 id="projects-heading">
+        @if (lang.language() === 'en') {
+          {{ lang.t('projectsTitleDescriptor') }}
+        }
+        <span>{{ lang.t('projectsTitleAccent') }}</span>
+        @if (lang.language() === 'es') {
+          {{ lang.t('projectsTitleDescriptor') }}
+        }
+      </h2>
+    </div>
+    <div class="projects-grid" appScrollReveal>
+      @for (project of projects; track project.id) {
+        <app-project-card [project]="project" (imageSelected)="imageViewer.open($event)" />
+      }
+    </div>
+  </div>
+</section>
+<app-project-image-viewer #imageViewer />
+<section class="section shell" id="contact" aria-labelledby="contact-heading">
+  <div class="section-heading centered-heading">
+    <h2 id="contact-heading">
+      {{ lang.t('contactTitle') }}
+      @if (lang.language() === 'en') {
+        <span>{{ ' ' + lang.t('contactTitleAccent') }}</span>
+      }
+    </h2>
+  </div>
+  <div class="contact panel" appScrollReveal>
+    <div>
+      <p>{{ lang.t('contactBody') }}</p>
+    </div>
+    <div class="actions">
+      @if (person.email) {
+        <a class="button button-primary" [href]="'mailto:' + person.email"
+          ><app-icon name="email" />{{ lang.t('email') }}</a
+        >
+      }
+      <a
+        class="button button-outline"
+        [href]="person.github"
+        target="_blank"
+        rel="noopener noreferrer"
+        ><app-icon name="github" />GitHub</a
+      >
+      @if (person.linkedin) {
+        <a
+          class="button button-outline"
+          [href]="person.linkedin"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><app-icon name="linkedin" />LinkedIn</a
+        >
+      }
+      <app-cv-download />
+    </div>
+  </div>
+</section>

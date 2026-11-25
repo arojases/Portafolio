@@ -1,18 +1,25 @@
-﻿export const portfolioConfig = {
-  githubUsername: 'arojases',
-  fullName: 'Ariel Rojas',
-  role: 'Desarrollador Full Stack',
-  headline: 'Portafolio conectado en tiempo real con GitHub.',
-  summary:
-    'Diseño y construyo experiencias web modernas, accesibles y mantenibles. Este portafolio se actualiza automaticamente con mis repositorios publicos para mostrar trabajo real y tecnologia utilizada.',
-  ctaPrimary: {
-    label: 'Ver proyectos',
-    target: '#projects',
+import type { Localized, ProjectImage } from '../models/project';
+
+interface PortfolioConfig {
+  name: string;
+  github: string;
+  linkedin?: string;
+  email?: string;
+  cv: Localized;
+  photo?: ProjectImage & { transparent?: boolean };
+}
+
+export const portfolio: PortfolioConfig = {
+  name: 'Ariel Rojas',
+  github: 'https://github.com/arojases',
+  linkedin: 'https://www.linkedin.com/in/arielrojasescudero',
+  email: 'arielalejandrorojas@gmail.com',
+  cv: { en: 'documents/CV_Ariel_Rojas_Software_EN.pdf', es: 'documents/CV_Ariel_Rojas_Software_ES.pdf' },
+  photo: {
+    src: 'images/profile/ariel-rojas.jpg',
+    alt: {
+      en: 'Ariel Rojas’s GitHub profile picture',
+      es: 'Foto de perfil de Ariel Rojas en GitHub',
+    },
   },
-  ctaSecondary: {
-    label: 'Abrir GitHub',
-    url: 'https://github.com/arojases',
-  },
-  footerMessage:
-    'Disponible para colaborar en productos digitales, interfaces escalables y experiencias frontend de alto impacto.',
 };

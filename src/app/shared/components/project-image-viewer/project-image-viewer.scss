@@ -1,0 +1,50 @@
+dialog {
+  position: fixed;
+  inset: 0;
+  width: min(94vw, 75rem);
+  max-width: none;
+  max-height: 94dvh;
+  padding: 0;
+  color: var(--text);
+  background: var(--deep);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overscroll-behavior: contain;
+}
+
+dialog::backdrop {
+  background: rgb(0 0 0 / 80%);
+}
+
+.viewer {
+  padding: 0.5rem;
+}
+
+form {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+button {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+button:hover {
+  color: var(--accent);
+  border-color: var(--accent-border);
+}
+
+img {
+  margin-inline: auto;
+  max-height: calc(94dvh - 4.4rem);
+  object-fit: contain;
+}

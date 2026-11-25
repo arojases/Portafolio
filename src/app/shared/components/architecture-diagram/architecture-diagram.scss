@@ -1,0 +1,91 @@
+.diagram {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 1.55rem;
+}
+li {
+  position: relative;
+  padding: 1rem 1.1rem;
+}
+h3 {
+  color: var(--accent);
+}
+p {
+  margin: 0.45rem 0 0;
+  font-size: 0.95rem;
+}
+li + li::before {
+  content: '';
+  position: absolute;
+  width: 1.55rem;
+  height: 1px;
+  background: var(--accent);
+  right: 100%;
+  top: 50%;
+}
+@media (max-width: 690px) {
+  .diagram {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+  }
+  li + li::before {
+    width: 1px;
+    height: 1.55rem;
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: 100%;
+  }
+}
+
+.with-flow li + li::after {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 0.2rem);
+  width: 0.45rem;
+  height: 0.45rem;
+  border-top: 1px solid var(--accent);
+  border-right: 1px solid var(--accent);
+  transform: translateY(-50%) rotate(45deg);
+  content: '';
+}
+
+@media (max-width: 690px) {
+  .with-flow li + li::after {
+    inset: auto auto calc(100% + 0.2rem) 50%;
+    transform: translateX(-50%) rotate(135deg);
+  }
+}
+
+.diagram.systems {
+  grid-auto-flow: row;
+  grid-auto-columns: auto;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: var(--grid-gap);
+}
+
+.systems li + li::before {
+  content: none;
+}
+
+@media (min-width: 691px) and (max-width: 940px) {
+  .with-flow:has(li:nth-child(5)) {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+  }
+
+  .with-flow:has(li:nth-child(5)) li + li::before {
+    inset: auto auto 100% 50%;
+    width: 1px;
+    height: 1.55rem;
+  }
+
+  .with-flow:has(li:nth-child(5)) li + li::after {
+    inset: auto auto calc(100% + 0.2rem) 50%;
+    transform: translateX(-50%) rotate(135deg);
+  }
+}

@@ -1,0 +1,18 @@
+<ul class="gallery">
+  @for (image of images(); track image.src) {
+    <li>
+      <figure>
+        <button
+          type="button"
+          (click)="viewer.open(image)"
+          [attr.aria-label]="lang.t('openProjectImage') + ' · ' + lang.text(image.alt)"
+        >
+          <img [src]="image.src" [alt]="lang.text(image.alt)" loading="lazy" decoding="async" />
+          <span class="zoom"><app-icon name="zoom" /></span>
+        </button>
+        <figcaption>{{ lang.text(image.alt) }}</figcaption>
+      </figure>
+    </li>
+  }
+</ul>
+<app-project-image-viewer #viewer />

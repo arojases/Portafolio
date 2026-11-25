@@ -1,0 +1,42 @@
+@let primaryDownload = !showDetails() && project().prioritizeDetailDownload;
+@let primaryDemo = !showDetails() && project().prioritizeDetailDemo;
+@let sourceButton = project().sourceButton || primaryDemo || primaryDownload;
+<div class="actions">
+  @if (showDetails()) {
+    <a class="button button-primary" [routerLink]="['/projects', project().slug]">{{
+      lang.t('viewDetails')
+    }}</a>
+  }
+  @if (project().demoUrl; as demo) {
+    <a
+      class="button"
+      [class.button-primary]="primaryDemo"
+      [class.button-outline]="!primaryDemo"
+      [href]="demo"
+      target="_blank"
+      rel="noopener noreferrer"
+      >{{ lang.t('demo') }}</a
+    >
+  }
+  @if (project().downloadUrl; as download) {
+    <a
+      class="button"
+      [class.button-primary]="primaryDownload"
+      [class.button-outline]="!primaryDownload"
+      [href]="download"
+      target="_blank"
+      rel="noopener noreferrer"
+      >{{ lang.t('download') }}</a
+    >
+  }
+  <a
+    [class.text-link]="!sourceButton"
+    [class.button]="sourceButton"
+    [class.button-outline]="sourceButton"
+    [href]="project().documentationUrl ?? project().githubUrl"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    {{ lang.t(project().documentationUrl ? 'showcase' : 'source') }}
+  </a>
+</div>

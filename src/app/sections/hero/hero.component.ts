@@ -1,32 +1,17 @@
-import { Component, Input, inject } from '@angular/core';
-
-import { portfolioConfig } from '../../core/config/portfolio.config';
-import { GitHubUser, PortfolioStats } from '../../core/models/github.models';
+import { Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { portfolio } from '../../core/config/portfolio.config';
 import { LanguageService } from '../../core/services/language.service';
-import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
+import { CvDownload } from '../../shared/components/cv-download/cv-download';
+import { Icon } from '../../shared/components/icon/icon';
 
 @Component({
   selector: 'app-hero',
-  imports: [ScrollRevealDirective],
+  imports: [RouterLink, CvDownload, Icon],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',
 })
-export class HeroComponent {
-  @Input({ required: true }) user!: GitHubUser;
-  @Input({ required: true }) stats!: PortfolioStats;
-
-  readonly config = portfolioConfig;
-  readonly i18n = inject(LanguageService);
-
-  getDisplayName(): string {
-    return this.user.name || this.user.login;
-  }
-
-  getBio(): string {
-    if (this.i18n.language() === 'en') {
-      return this.i18n.t('hero.bio');
-    }
-
-    return this.user.bio || this.i18n.t('hero.summary');
-  }
+export class Hero {
+  protected readonly person = portfolio;
+  protected readonly lang = inject(LanguageService);
 }

@@ -1,32 +1,25 @@
 {
   "name": "portfolio-app",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4300",
     "build": "ng build",
-    "build:pages": "ng build --base-href /Portafolio/",
-    "demo:contactos": "powershell -ExecutionPolicy Bypass -File scripts/start-django-demo.ps1",
-    "demo:autos": "powershell -ExecutionPolicy Bypass -File scripts/start-php-demo.ps1",
-    "demo:backends": "powershell -ExecutionPolicy Bypass -File scripts/start-project-demos.ps1",
-    "sync:github": "node scripts/generate-portfolio-data.mjs",
-    "sync:50-projects": "node scripts/sync-50-projects.mjs",
+    "build:pages": "ng build --base-href /Portafolio/ && node scripts/build-pages.mjs",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "node --test scripts/portfolio.test.mjs"
   },
   "private": true,
   "packageManager": "npm@11.8.0",
   "dependencies": {
-    "@angular/animations": "^21.2.7",
     "@angular/common": "^21.2.0",
     "@angular/compiler": "^21.2.0",
     "@angular/core": "^21.2.0",
-    "@angular/forms": "^21.2.0",
     "@angular/platform-browser": "^21.2.0",
     "@angular/router": "^21.2.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@angular/build": "^21.2.6",

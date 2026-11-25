@@ -1,0 +1,17 @@
+<dialog
+  #dialog
+  [attr.aria-label]="lang.t('projectImage')"
+  (click)="closeOnBackdrop($event)"
+  (close)="image.set(null)"
+>
+  <div class="viewer">
+    <form method="dialog">
+      <button type="submit" autofocus [attr.aria-label]="lang.t('closeImage')">
+        <app-icon name="close" />
+      </button>
+    </form>
+    @if (image(); as selected) {
+      <img [src]="selected.src" [alt]="lang.text(selected.alt)" />
+    }
+  </div>
+</dialog>

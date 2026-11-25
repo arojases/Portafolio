@@ -1,0 +1,93 @@
+:host {
+  display: block;
+}
+.project-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition: border-color 0.2s;
+}
+.project-card:focus-within,
+.project-card:hover {
+  border-color: var(--accent-border);
+}
+.cover {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  background: var(--deep);
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+button.cover {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  cursor: zoom-in;
+}
+
+.zoom-icon {
+  position: absolute;
+  inset: auto 0.65rem 0.65rem auto;
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background: var(--deep);
+  color: var(--text);
+  pointer-events: none;
+}
+
+.cover:focus-visible {
+  outline-offset: -4px;
+}
+.cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.3s ease;
+}
+.cover:hover img {
+  transform: scale(1.025);
+}
+.fallback {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.65rem;
+  color: var(--muted);
+}
+.card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: clamp(1.1rem, 2.4vw, 1.6rem);
+}
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem 0.65rem;
+  margin-bottom: 0.8rem;
+}
+h3 {
+  font-size: 1.4rem;
+}
+p {
+  margin-block: 0.55rem 1rem;
+}
+.tags {
+  margin-bottom: 1.15rem;
+}
+app-project-actions {
+  display: block;
+  margin-top: auto;
+}

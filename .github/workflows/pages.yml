@@ -2,10 +2,7 @@ name: Deploy GitHub Pages
 
 on:
   push:
-    branches:
-      - main
-  schedule:
-    - cron: '0 */6 * * *'
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -20,37 +17,18 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Sync GitHub portfolio data
-        run: npm run sync:github
+      - run: npm ci
+      - run: npm run build:pages
+      - run: npm test
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_PORTFOLIO_USERNAME: arojases
-
-      - name: Sync 50 Projects demos
-        run: npm run sync:50-projects
-
-      - name: Build for GitHub Pages
-        run: npm run build:pages
-
-      - name: Add SPA fallback
-        run: cp dist/portfolio-app/index.html dist/portfolio-app/404.html
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+          CHECK_PAGES: '1'
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: dist/portfolio-app
 
@@ -60,8 +38,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4

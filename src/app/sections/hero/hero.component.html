@@ -1,18 +1,49 @@
-<section id="hero" data-section class="hero">
-  <div class="hero-copy" appScrollReveal="left">
-    <p class="eyebrow">Angular + GitHub API</p>
-    <h1>{{ getDisplayName() }}</h1>
-    <p class="role">{{ i18n.t('hero.role') }}</p>
-    <p class="headline">{{ i18n.t('hero.headline') }}</p>
-    <p class="summary">{{ getBio() }}</p>
-  </div>
-
-  <aside class="hero-card" appScrollReveal="right" [revealDelay]="140">
-    <img [src]="user.avatar_url" [alt]="'Avatar de ' + getDisplayName()" loading="lazy" />
-    <div class="hero-card__content">
-      <p class="hero-card__label">{{ i18n.t('hero.cardLabel') }}</p>
-      <h2>{{ getDisplayName() }}</h2>
-      <p>{{ user.location || i18n.t('hero.remoteWork') }}</p>
+<section class="shell hero" id="home" aria-labelledby="hero-heading">
+  <div class="hero-copy">
+    <p class="intro">{{ lang.t('greeting') }}</p>
+    <h1 id="hero-heading">{{ person.name }}</h1>
+    <p class="role">{{ lang.t('role') }}</p>
+    <p class="description">{{ lang.t('heroDescription') }}</p>
+    <div class="actions hero-actions">
+      <a class="button button-primary" routerLink="/" fragment="projects">{{
+        lang.t('viewProjects')
+      }}</a>
+      <app-cv-download />
     </div>
-  </aside>
+    <div class="socials">
+      <a
+        class="social-icon"
+        [href]="person.github"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+        ><app-icon name="github"
+      /></a>
+      @if (person.linkedin) {
+        <a
+          class="social-icon"
+          [href]="person.linkedin"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          ><app-icon name="linkedin"
+        /></a>
+      }
+    </div>
+  </div>
+  <div class="portrait">
+    @if (person.photo; as photo) {
+      <img
+        class="portrait-photo"
+        [class.portrait-photo--opaque]="!photo.transparent"
+        [src]="photo.src"
+        [alt]="lang.text(photo.alt)"
+        width="460"
+        height="460"
+        fetchpriority="high"
+      />
+    } @else {
+      <div class="portrait-fallback" aria-hidden="true">AR</div>
+    }
+  </div>
 </section>

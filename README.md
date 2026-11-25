@@ -1,106 +1,129 @@
-# Portafolio Angular + GitHub API
+# Developer Portfolio
 
-Portafolio personal moderno construido con Angular 21, TypeScript, SCSS y RxJS. El sitio consume la API publica de GitHub en tiempo real para obtener repositorios, lenguajes usados y metricas del perfil.
+Personal software development portfolio built with Angular 21 and TypeScript, showcasing my professional background, technical skills, and selected software projects.
 
-## Stack
+My primary focus is Full Stack Development with C#, .NET, and ASP.NET Core.
 
-- Angular 21 con standalone components y routing
+## Live Website
+
+[Visit Portfolio](https://arojases.github.io/Portafolio/)
+
+## Features
+
+- Modern and responsive interface.
+- English and Spanish language support.
+- Professional experience and education.
+- Technical skills organized by category.
+- Selected projects with detailed case studies.
+- Software architecture diagrams.
+- Real application screenshots and interactive galleries.
+- Interactive project demos.
+- Downloadable résumés in English and Spanish.
+- Accessible navigation and keyboard support.
+- Automated deployment through GitHub Actions.
+
+## Featured Projects
+
+| Project | Technologies | Repository |
+| --- | --- | --- |
+| CashBoard Family | C#, ASP.NET Core, Angular, PostgreSQL | [Repository](https://github.com/arojases/CashBoard-Family) |
+| IT Incident Manager | Python, Flask, SQLite | [Repository](https://github.com/arojases/Gestion-de-Incidentes) |
+| Ashveil Relics | C#, Unity 6 | [Technical Showcase](https://github.com/arojases/AshveilRelics-Showcase) |
+| Developer Portfolio | Angular 21, TypeScript, SCSS | [Repository](https://github.com/arojases/Portafolio) |
+
+Each case study includes implementation details, architecture, screenshots, and links to documentation, demos, or downloads where available.
+
+## Technology Stack
+
+- Angular 21
 - TypeScript
-- Angular HttpClient
-- RxJS (`forkJoin`, `mergeMap`, `shareReplay`, `catchError`)
-- SCSS moderno con soporte dark/light mode
-- Angular animations
+- SCSS
+- Angular Standalone Components
+- Angular Router
+- GitHub Actions
+- GitHub Pages
 
-## Como ejecutar
-
-1. Instala dependencias:
-
-```bash
-npm install
-```
-
-2. Inicia el entorno local:
-
-```bash
-npm start
-```
-
-3. Abre `http://localhost:4200`.
-
-## Actualizar las demos de 50 Projects
-
-La galeria conserva una copia local de las demos para que funcionen dentro del portafolio. Para
-sincronizarla con el repositorio original, ejecuta:
-
-```bash
-npm run sync:50-projects
-```
-
-El despliegue de GitHub Pages también ejecuta esta sincronización automáticamente antes de cada
-compilación, incluyendo el despliegue programado cada seis horas.
-
-## Integracion con GitHub API
-
-El servicio `src/app/core/services/portfolio-data.service.ts` consulta:
-
-- `GET /users/arojases` para datos del perfil
-- `GET /users/arojases/repos` para repositorios publicos
-- `GET /repos/:owner/:repo/languages` para calcular lenguajes por proyecto y globales
-
-### Estrategia usada
-
-- `shareReplay(1)` evita repetir llamadas HTTP innecesarias.
-- `mergeMap(..., 5)` limita la concurrencia al pedir lenguajes por repositorio.
-- `catchError` intenta recuperar datos desde `localStorage` si la API falla.
-- El portafolio muestra si los datos vienen en vivo (`live`) o desde cache (`cache`).
-
-## Estructura principal
+## Project Structure
 
 ```text
 src/
   app/
     core/
-      config/
-      models/
-      services/
     pages/
-      home/
     sections/
-      about/
-      footer/
-      hero/
-      navbar/
-      projects/
     shared/
-      animations/
+  styles.scss
+public/
+scripts/
+.github/
+  workflows/
 ```
 
-## Personalizacion rapida
+The application uses centralized typed content, reusable components, and bilingual translations. Project information is maintained locally.
 
-- Usuario de GitHub: edita `src/app/core/config/portfolio.config.ts`
-- Textos CTA y resumen: edita `src/app/core/config/portfolio.config.ts`
-- Colores/tema: edita `src/styles.scss`
+## Getting Started
 
-## Despliegue sugerido
+Clone the repository and install dependencies from the lockfile. CI uses Node.js 22.
 
-### Vercel
+```bash
+git clone https://github.com/arojases/Portafolio.git
+cd Portafolio
+npm ci
+npm start
+```
 
-1. Importa el repositorio.
-2. Build command: `npm run build`
-3. Output directory: `dist/portfolio-app`
+Open [localhost:4300](http://localhost:4300/) in your browser.
 
-### Netlify
+## Production Build
 
-1. Build command: `npm run build`
-2. Publish directory: `dist/portfolio-app`
+```bash
+npm run build
+```
 
-### GitHub Pages
+Build for GitHub Pages under `/Portafolio/`.
 
-1. Ejecuta `ng build --base-href /NOMBRE_DEL_REPO/`
-2. Publica el contenido generado dentro de `dist/portfolio-app`
+```bash
+npm run build:pages
+```
 
-## Notas
+## Testing and Quality
 
-- La API publica de GitHub tiene limites de rate limit para peticiones no autenticadas.
-- No se expone ningun token sensible.
-- Si quieres agregar formulario de contacto real, conviene conectarlo a Formspree, Resend o un backend propio.
+Run the automated tests with `npm test`. To include deployment checks, build for Pages first and then run the suite with `CHECK_PAGES=1`.
+
+```bash
+npm run build:pages
+CHECK_PAGES=1 npm test
+```
+
+The latest Pages validation passed **9 automated tests** covering the project catalog, bilingual content, links, local assets, résumé PDFs, the static demo entry point, and direct project routes. Browser checks covered navigation, language persistence, downloads, demo interaction, responsive layouts, and keyboard accessibility.
+
+### Lighthouse Results
+
+Lighthouse 13.6.0 audited the production home page served locally with its mobile preset.
+
+| Category | Score |
+| --- | ---: |
+| Performance | 91 |
+| Accessibility | 100 |
+| Best Practices | 100 |
+| SEO | 100 |
+
+Cumulative Layout Shift (CLS) was 0. Results may vary by environment and build.
+
+## Deployment
+
+GitHub Actions deploys the portfolio to GitHub Pages on pushes to `main` or when triggered manually.
+
+## Author
+
+Ariel Rojas
+
+Full Stack Developer | C# | .NET | ASP.NET Core
+
+- [Portfolio](https://arojases.github.io/Portafolio/)
+- [GitHub](https://github.com/arojases)
+- [LinkedIn](https://www.linkedin.com/in/arielrojasescudero/)
+
+## Feedback
+
+Suggestions and bug reports are welcome through [GitHub Issues](https://github.com/arojases/Portafolio/issues).

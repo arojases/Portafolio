@@ -1,0 +1,43 @@
+<section class="section shell" id="skills" aria-labelledby="skills-heading">
+  <div class="section-heading skills-heading">
+    <h2 id="skills-heading">
+      {{ lang.t('skillsTitle') }} <span>{{ lang.t('skillsTitleAccent') }}</span>
+    </h2>
+  </div>
+  <div class="groups" appScrollReveal>
+    @for (group of groups; track group.id) {
+      <section
+        class="panel group"
+        [class.core]="group.emphasis === 'core'"
+        [class.secondary]="group.emphasis === 'secondary'"
+        [attr.aria-labelledby]="'skills-' + group.id"
+      >
+        <h3 [id]="'skills-' + group.id">
+          <app-icon class="tile-icon" [name]="group.icon" />
+          <span>{{ lang.text(group.title) }}</span>
+        </h3>
+        <ul class="items">
+          @for (item of group.items; track item.label.en) {
+            <li>
+              @if (item.logo; as logo) {
+                <img
+                  class="skill-symbol"
+                  [class.skill-symbol-light]="item.light"
+                  [src]="logo"
+                  alt=""
+                  width="24"
+                  height="24"
+                  loading="lazy"
+                  decoding="async"
+                />
+              } @else if (item.glyph; as glyph) {
+                <app-icon class="skill-symbol" [name]="glyph" />
+              }
+              <span>{{ lang.text(item.label) }}</span>
+            </li>
+          }
+        </ul>
+      </section>
+    }
+  </div>
+</section>

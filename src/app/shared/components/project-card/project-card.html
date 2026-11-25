@@ -1,0 +1,39 @@
+@let item = project();
+<article class="project-card" [attr.aria-labelledby]="item.slug + '-title'">
+  @if (item.cardImage ?? item.coverImage; as cover) {
+    <button
+      type="button"
+      class="cover"
+      (click)="imageSelected.emit(cover)"
+      [attr.aria-label]="lang.t('openProjectImage') + ' · ' + item.title"
+    >
+      <img
+        [src]="cover.src"
+        [alt]="lang.text(cover.alt)"
+        [style.object-fit]="cover.fit"
+        [style.object-position]="cover.position"
+        loading="lazy"
+        decoding="async"
+      />
+      <span class="zoom-icon"><app-icon name="zoom" /></span>
+    </button>
+  } @else {
+    <div class="cover fallback">
+      <app-icon name="code" /><span>{{ lang.t('preview') }}</span>
+    </div>
+  }
+  <div class="card-body">
+    <div class="card-meta">
+      <span class="category">{{ lang.text(item.category) }}</span>
+      <span class="status">{{ lang.text(item.status) }}</span>
+    </div>
+    <h3 [id]="item.slug + '-title'">{{ item.title }}</h3>
+    <p>{{ lang.text(item.description) }}</p>
+    <ul class="tags" [attr.aria-label]="lang.t('stack')">
+      @for (technology of item.cardTechnologies ?? item.technologies; track technology) {
+        <li>{{ technology }}</li>
+      }
+    </ul>
+    <app-project-actions [project]="item" [showDetails]="true" />
+  </div>
+</article>

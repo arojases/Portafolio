@@ -1,82 +1,91 @@
-import { ViewportScroller } from '@angular/common';
-import { AfterViewInit, Component, HostListener, computed, inject, OnDestroy, signal } from '@angular/core';
-
-import { portfolioConfig } from '../../core/config/portfolio.config';
+import { DOCUMENT } from '@angular/common';
+import {
+  Component,
+  DestroyRef,
+  HostListener,
+  computed,
+  inject,
+  signal,
+  viewChild,
+  ElementRef,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { portfolio } from '../../core/config/portfolio.config';
 import { LanguageService } from '../../core/services/language.service';
+import { Icon } from '../../shared/components/icon/icon';
 
-interface NavItem {
-  id: string;
-  label: string;
-}
+export const navigationItems = [
+  'home',
+  'about',
+  'skills',
+  'experience',
+  'projects',
+  'contact',
+] as const;
+type Section = (typeof navigationItems)[number];
 
 @Component({
   selector: 'app-navbar',
+  imports: [RouterLink, Icon],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
-export class NavbarComponent implements AfterViewInit, OnDestroy {
-  readonly i18n = inject(LanguageService);
-  readonly config = portfolioConfig;
-  readonly activeSection = signal('hero');
-  readonly menuOpen = signal(false);
-  readonly items = computed<NavItem[]>(() => [
-    { id: 'hero', label: this.i18n.t('nav.home') },
-    { id: 'projects', label: this.i18n.t('nav.projects') },
-    { id: 'contact', label: this.i18n.t('nav.contact') },
-  ]);
+export class Navbar {
+  protected readonly name = portfolio.name;
+  protected readonly nav = navigationItems;
+  protected readonly lang = inject(LanguageService);
+  protected readonly open = signal(false);
+  protected readonly current = signal<Section>('home');
+  private readonly route = signal('/');
+  protected readonly isHome = computed(() => this.route() === '/');
+  protected readonly projectPage = computed(() => this.route().startsWith('/projects/'));
+  private readonly document = inject(DOCUMENT);
+  private readonly router = inject(Router);
+  private readonly menuButton = viewChild<ElementRef<HTMLButtonElement>>('menuButton');
+  private frame = 0;
 
-  private observer?: IntersectionObserver;
-  private readonly viewportScroller = inject(ViewportScroller);
-
-  ngAfterViewInit(): void {
-    const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-section]'));
-
-    if (!sections.length) {
-      return;
-    }
-
-    this.observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((left, right) => right.intersectionRatio - left.intersectionRatio)[0];
-
-        if (visible?.target.id) {
-          this.activeSection.set(visible.target.id);
-        }
-      },
-      {
-        rootMargin: '-35% 0px -45% 0px',
-        threshold: [0.2, 0.4, 0.7],
-      },
-    );
-
-    sections.forEach((section) => this.observer?.observe(section));
+  constructor() {
+    this.router.events.pipe(takeUntilDestroyed()).subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.route.set(event.urlAfterRedirects.split(/[?#]/)[0]);
+        this.open.set(false);
+        this.updateSection();
+      }
+    });
+    inject(DestroyRef).onDestroy(() => this.document.defaultView?.cancelAnimationFrame(this.frame));
   }
 
-  ngOnDestroy(): void {
-    this.observer?.disconnect();
-  }
-
+  @HostListener('window:scroll')
   @HostListener('window:resize')
-  onResize(): void {
-    if (window.innerWidth > 900) {
-      this.menuOpen.set(false);
+  updateSection(): void {
+    const window = this.document.defaultView;
+    if (!window || !this.isHome() || this.frame) return;
+    this.frame = window.requestAnimationFrame(() => {
+      this.frame = 0;
+      let active: Section = 'home';
+      for (const section of this.nav) {
+        const area = this.document.getElementById(section);
+        if (area && area.getBoundingClientRect().top <= Math.max(126, window.innerHeight * 0.25)) {
+          active = section;
+        }
+      }
+      if (
+        window.scrollY > 0 &&
+        Math.ceil(window.scrollY + window.innerHeight) >=
+          this.document.documentElement.scrollHeight - 1
+      ) {
+        active = 'contact';
+      }
+      this.current.set(active);
+    });
+  }
+
+  @HostListener('document:keydown.escape')
+  protected closeWithEscape(): void {
+    if (this.open()) {
+      this.open.set(false);
+      this.menuButton()?.nativeElement.focus();
     }
-  }
-
-  scrollTo(id: string): void {
-    this.menuOpen.set(false);
-    this.activeSection.set(id);
-    this.viewportScroller.scrollToAnchor(id);
-  }
-
-  toggleMenu(): void {
-    this.menuOpen.update((current) => !current);
-  }
-
-  toggleLanguage(): void {
-    this.i18n.toggleLanguage();
-    this.menuOpen.set(false);
   }
 }
